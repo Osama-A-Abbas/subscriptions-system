@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "django_crontab", #
 
     # local apps
-    "users", # 
     "subscriptions", #
 ]
 
