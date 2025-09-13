@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
 from decimal import Decimal
 
@@ -23,6 +24,64 @@ class Category(models.Model):
    
     def __str__(self):
         return self.name
+    
+    def clean(self):
+        """
+        Validate category data to prevent invalid parent relationships.
+        
+        Raises:
+            ValidationError: If validation fails
+        """
+        super().clean()
+        
+        # Prevent self-referencing
+        if self.parent == self:
+            raise ValidationError({
+                'parent': 'A category cannot be its own parent.'
+            })
+        
+        # Prevent circular references
+        if self.parent:
+            self._check_circular_reference()
+    
+    def _check_circular_reference(self):
+        """
+        Check if setting this parent would create a circular reference.
+        
+        Raises:
+            ValidationError: If circular reference would be created
+        """
+        if not self.parent:
+            return
+            
+        # If this is a new instance (no pk), we can't check circular refs yet
+        if not self.pk:
+            return
+            
+        # Check if the parent is a descendant of this category
+        current = self.parent
+        visited = {self.pk}  # Track visited categories to prevent infinite loops
+        
+        while current:
+            if current.pk in visited:
+                raise ValidationError({
+                    'parent': f'Setting "{self.parent.name}" as parent would create a circular reference.'
+                })
+            
+            if current.pk == self.pk:
+                raise ValidationError({
+                    'parent': 'A category cannot be its own parent.'
+                })
+                
+            visited.add(current.pk)
+            current = current.parent
+    
+    def save(self, *args, **kwargs):
+        """
+        Override save to run validation before saving.
+        """
+        self.full_clean()
+        super().save(*args, **kwargs)
     
 
 # Subscription Model
