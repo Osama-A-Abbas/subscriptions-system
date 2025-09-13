@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     "django_crontab", #
 
     # local apps
+    #"users"
     "subscriptions", #
+    "accounts", #
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,9 @@ STATICFILES_DIRS = [BASE_DIR / "static"] #
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#AUTH_USER_MODEL = "users.User"   # Use a custom user model
+LOGIN_REDIRECT_URL = 'profile'   # where user goes after login
+LOGOUT_REDIRECT_URL = 'login'    # where user goes after logout
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Catches all outgoing
