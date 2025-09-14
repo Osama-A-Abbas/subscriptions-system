@@ -55,6 +55,26 @@
                             {% endif %}
                         </div>
                     </div>
+                    
+                    <!-- Duration Fields -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3" id="duration-months-field" style="display: none;">
+                            <label for="{{ form.duration_months.id_for_label }}" class="form-label">{{ form.duration_months.label }}</label>
+                            {{ form.duration_months }}
+                            {% if form.duration_months.errors %}
+                                <div class="text-danger small">{{ form.duration_months.errors.0 }}</div>
+                            {% endif %}
+                            <div class="form-text">How many months will this subscription last?</div>
+                        </div>
+                        <div class="col-md-6 mb-3" id="duration-years-field" style="display: none;">
+                            <label for="{{ form.duration_years.id_for_label }}" class="form-label">{{ form.duration_years.label }}</label>
+                            {{ form.duration_years }}
+                            {% if form.duration_years.errors %}
+                                <div class="text-danger small">{{ form.duration_years.errors.0 }}</div>
+                            {% endif %}
+                            <div class="form-text">How many years will this subscription last?</div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-check">
@@ -86,4 +106,39 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const billingCycleSelect = document.getElementById('{{ form.billing_cycle.id_for_label }}');
+    const durationMonthsField = document.getElementById('duration-months-field');
+    const durationYearsField = document.getElementById('duration-years-field');
+    
+    function toggleDurationFields() {
+        const selectedValue = billingCycleSelect.value;
+        
+        if (selectedValue === 'monthly') {
+            durationMonthsField.style.display = 'block';
+            durationYearsField.style.display = 'none';
+            // Clear yearly duration when switching to monthly
+            document.getElementById('{{ form.duration_years.id_for_label }}').value = '';
+        } else if (selectedValue === 'yearly') {
+            durationMonthsField.style.display = 'none';
+            durationYearsField.style.display = 'block';
+            // Clear monthly duration when switching to yearly
+            document.getElementById('{{ form.duration_months.id_for_label }}').value = '';
+        } else {
+            durationMonthsField.style.display = 'none';
+            durationYearsField.style.display = 'none';
+        }
+    }
+    
+    // Initial call to set the correct field visibility
+    toggleDurationFields();
+    
+    // Listen for changes to billing cycle
+    billingCycleSelect.addEventListener('change', toggleDurationFields);
+});
+</script>
 {% endblock %}

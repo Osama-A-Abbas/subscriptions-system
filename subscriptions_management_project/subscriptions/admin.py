@@ -10,11 +10,30 @@ class SubscriptionAdmin(admin.ModelAdmin):
         "billing_cycle",
         "monthly_cost",
         "yearly_cost",
+        "get_duration_display",
+        "get_total_cost_display",
         "renewal_date",
         "is_active",
     )
     list_filter = ("billing_cycle", "is_active", "category")
     search_fields = ("name",)
+    
+    def get_duration_display(self, obj):
+        """Display duration in a user-friendly format"""
+        if obj.billing_cycle == 'monthly' and obj.duration_months:
+            return f"{obj.duration_months} months"
+        elif obj.billing_cycle == 'yearly' and obj.duration_years:
+            return f"{obj.duration_years} years"
+        return "No duration set"
+    get_duration_display.short_description = "Duration"
+    
+    def get_total_cost_display(self, obj):
+        """Display total cost for the entire duration"""
+        total_cost = obj.get_total_cost()
+        if total_cost:
+            return f"${total_cost:.2f}"
+        return "N/A"
+    get_total_cost_display.short_description = "Total Cost"
 
 
 @admin.register(Category)

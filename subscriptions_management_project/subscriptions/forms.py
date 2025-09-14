@@ -6,7 +6,7 @@ class SubscriptionForm(forms.ModelForm):
         model = Subscription
         fields = [
             'name', 'monthly_cost', 'yearly_cost', 'billing_cycle', 
-            'start_date', 'ending_date', 'auto_renewal', 'category'
+            'start_date', 'duration_months', 'duration_years', 'auto_renewal', 'category'
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
@@ -14,7 +14,8 @@ class SubscriptionForm(forms.ModelForm):
             'yearly_cost': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
             'billing_cycle': forms.Select(attrs={'class': 'form-select'}),
             'start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'ending_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'duration_months': forms.NumberInput(attrs={'class': 'form-control', 'min': '1'}),
+            'duration_years': forms.NumberInput(attrs={'class': 'form-control', 'min': '1'}),
             'auto_renewal': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'category': forms.Select(attrs={'class': 'form-select'})
         }
@@ -24,7 +25,8 @@ class SubscriptionForm(forms.ModelForm):
             'yearly_cost': 'Yearly Cost ($)',
             'billing_cycle': 'Billing Cycle',
             'start_date': 'Start Date',
-            'ending_date': 'End Date (Optional)',
+            'duration_months': 'Duration (Months)',
+            'duration_years': 'Duration (Years)',
             'auto_renewal': 'Auto Renewal',
             'category': 'Category'
         }
@@ -33,6 +35,8 @@ class SubscriptionForm(forms.ModelForm):
         monthly_cost = cleaned_data.get('monthly_cost')
         yearly_cost = cleaned_data.get('yearly_cost')
         billing_cycle = cleaned_data.get('billing_cycle')
+        duration_months = cleaned_data.get('duration_months')
+        duration_years = cleaned_data.get('duration_years')
 
         # Ensure at least one cost is provided
         if not monthly_cost and not yearly_cost:
@@ -45,6 +49,18 @@ class SubscriptionForm(forms.ModelForm):
         # If billing cycle is yearly, require yearly cost
         if billing_cycle == 'yearly' and not yearly_cost:
             raise forms.ValidationError('Yearly cost is required for yearly billing cycle.')
+
+        # Duration validation
+        if billing_cycle == 'monthly':
+            if not duration_months:
+                raise forms.ValidationError('Duration in months is required for monthly billing cycle.')
+            if duration_years:
+                raise forms.ValidationError('Please only specify duration in months for monthly billing.')
+        elif billing_cycle == 'yearly':
+            if not duration_years:
+                raise forms.ValidationError('Duration in years is required for yearly billing cycle.')
+            if duration_months:
+                raise forms.ValidationError('Please only specify duration in years for yearly billing.')
 
         return cleaned_data
 

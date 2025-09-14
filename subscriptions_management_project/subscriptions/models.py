@@ -98,7 +98,10 @@ class Subscription(models.Model):
     # Lifecycle Dates
     start_date = models.DateField()
     renewal_date = models.DateField(null=True, blank=True)
-    ending_date = models.DateField(null=True, blank=True)  # Optional end date
+    
+    # Duration (replaces ending_date)
+    duration_months = models.PositiveIntegerField(null=True, blank=True, help_text="Duration in months (for monthly billing)")
+    duration_years = models.PositiveIntegerField(null=True, blank=True, help_text="Duration in years (for yearly billing)")
     
     # Status & Settings
     is_active = models.BooleanField(default=True)
@@ -116,6 +119,56 @@ class Subscription(models.Model):
         else:
             return self.yearly_cost or 0
     
+    def get_ending_date(self):
+        """Calculate ending date based on duration"""
+        if self.billing_cycle == 'monthly' and self.duration_months:
+            return self.start_date + relativedelta(months=self.duration_months)
+        elif self.billing_cycle == 'yearly' and self.duration_years:
+            return self.start_date + relativedelta(years=self.duration_years)
+        return None
+    
+    def get_total_payments(self):
+        """Get total number of payments for the entire duration"""
+        if self.billing_cycle == 'monthly' and self.duration_months:
+            return self.duration_months
+        elif self.billing_cycle == 'yearly' and self.duration_years:
+            return self.duration_years
+        return None
+    
+    def get_total_cost(self):
+        """Calculate total cost for the entire duration"""
+        total_payments = self.get_total_payments()
+        if total_payments:
+            return self.get_current_cost() * total_payments
+        return None
+    
+    def get_remaining_payments(self):
+        """Get remaining number of payments"""
+        if not self.get_ending_date():
+            return None
+            
+        today = timezone.now().date()
+        if today >= self.get_ending_date():
+            return 0
+            
+        # Calculate how many payments have passed
+        if self.billing_cycle == 'monthly':
+            months_passed = (today.year - self.start_date.year) * 12 + (today.month - self.start_date.month)
+            if today.day >= self.start_date.day:
+                months_passed += 1
+        else:  # yearly
+            years_passed = today.year - self.start_date.year
+            if today.month > self.start_date.month or (today.month == self.start_date.month and today.day >= self.start_date.day):
+                years_passed += 1
+        
+        total_payments = self.get_total_payments()
+        if total_payments:
+            if self.billing_cycle == 'monthly':
+                return max(0, total_payments - months_passed)
+            else:
+                return max(0, total_payments - years_passed)
+        return None
+    
     def calculate_next_renewal(self):
         """Calculate next renewal date from current renewal date"""
         if self.billing_cycle == "monthly":
@@ -130,7 +183,8 @@ class Subscription(models.Model):
         today = timezone.now().date()
         
         # Check if subscription has ended
-        if self.ending_date and self.ending_date <= today:
+        ending_date = self.get_ending_date()
+        if ending_date and ending_date <= today:
             self.is_active = False
             self.save()
             return "ended"
@@ -158,7 +212,7 @@ class Subscription(models.Model):
     
     def should_auto_renew(self):
         """Check if subscription should auto-renew (only if paid)"""
-        if not self.auto_renewal or not self.is_active or self.ending_date:
+        if not self.auto_renewal or not self.is_active or self.get_ending_date():
             return False
         
         # Only auto-renew if current period is paid
