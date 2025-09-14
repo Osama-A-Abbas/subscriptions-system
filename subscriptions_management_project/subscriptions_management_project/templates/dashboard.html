@@ -104,9 +104,11 @@
               <tr>
                 <td>{{ subscription.name }}</td>
                 <td>
-                  {% if subscription.billing_cycle == 'monthly' %} ${{
-                  subscription.monthly_cost|floatformat:2 }}/month {% else %}
-                  ${{ subscription.yearly_cost|floatformat:2 }}/year {% endif %}
+                  {% if subscription.billing_cycle == 'monthly' %}
+                     ${{subscription.monthly_cost|floatformat:2 }}/month 
+                  {% else %}
+                    ${{ subscription.yearly_cost|floatformat:2 }}/year
+                  {% endif %}
                 </td>
                 <td>
                   <span
