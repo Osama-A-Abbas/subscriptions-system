@@ -1,37 +1,22 @@
 from django import forms
-from .models import Subscription, Category
+from .models import Subscription, Category, Payment
 
 class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
-        fields = ['name', 'monthly_cost', 'yearly_cost', 'billing_cycle', 'start_date', 'category']
+        fields = [
+            'name', 'monthly_cost', 'yearly_cost', 'billing_cycle', 
+            'start_date', 'ending_date', 'auto_renewal', 'category'
+        ]
         widgets = {
-            'name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'e.g., Netflix, Spotify, Adobe Creative Cloud'
-            }),
-            'monthly_cost': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'step': '0.01',
-                'min': '0',
-                'placeholder': '0.00'
-            }),
-            'yearly_cost': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'step': '0.01',
-                'min': '0',
-                'placeholder': '0.00'
-            }),
-            'billing_cycle': forms.Select(attrs={
-                'class': 'form-select'
-            }),
-            'start_date': forms.DateInput(attrs={
-                'class': 'form-control',
-                'type': 'date'
-            }),
-            'category': forms.Select(attrs={
-                'class': 'form-select'
-            })
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'monthly_cost': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'yearly_cost': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'billing_cycle': forms.Select(attrs={'class': 'form-select'}),
+            'start_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'ending_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'auto_renewal': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'category': forms.Select(attrs={'class': 'form-select'})
         }
         labels = {
             'name': 'Subscription Name',
@@ -39,9 +24,10 @@ class SubscriptionForm(forms.ModelForm):
             'yearly_cost': 'Yearly Cost ($)',
             'billing_cycle': 'Billing Cycle',
             'start_date': 'Start Date',
+            'ending_date': 'End Date (Optional)',
+            'auto_renewal': 'Auto Renewal',
             'category': 'Category'
         }
-
     def clean(self):
         cleaned_data = super().clean()
         monthly_cost = cleaned_data.get('monthly_cost')
@@ -84,4 +70,16 @@ class CategoryForm(forms.ModelForm):
             'name': 'Category Name',
             'description': 'Description',
             'parent': 'Parent Category (Optional)'
+        }
+        
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = ['amount', 'payment_date', 'billing_period_start', 'billing_period_end', 'notes']
+        widgets = {
+            'amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'payment_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'billing_period_start': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'billing_period_end': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 3})
         }

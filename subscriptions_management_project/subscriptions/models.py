@@ -21,7 +21,7 @@ class Category(models.Model):
     # If  parent = null, then it is a parent category, but if it has an id;
     # parent = some_category_id then it is a subcategory
     parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.SET_NULL, related_name="subcategories")
-   
+
     def __str__(self):
         return self.name
     
@@ -84,87 +84,112 @@ class Category(models.Model):
         super().save(*args, **kwargs)
     
 
-# Subscription Model
+
+
+###############
 class Subscription(models.Model):
+    # Basic Info
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="subscriptions")
     name = models.CharField(max_length=200)
-    # cost = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal("0.00"))
     monthly_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     yearly_cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     billing_cycle = models.CharField(max_length=10, choices=BILLING_CYCLE_CHOICES)
-    start_date = models.DateField() # Subscription starting date
-    renewal_date = models.DateField(null=True, blank=True) # Subscription 
+    
+    # Lifecycle Dates
+    start_date = models.DateField()
+    renewal_date = models.DateField(null=True, blank=True)
+    ending_date = models.DateField(null=True, blank=True)  # Optional end date
+    
+    # Status & Settings
     is_active = models.BooleanField(default=True)
+    auto_renewal = models.BooleanField(default=True)  # Default enabled
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
-
+    
+    # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
-    def __str__(self):
-        return f"{self.name} ({self.user})"
+    def get_current_cost(self):
+        """Get current cost based on billing cycle"""
+        if self.billing_cycle == 'monthly':
+            return self.monthly_cost or 0
+        else:
+            return self.yearly_cost or 0
     
     def calculate_next_renewal(self):
-        """
-        Returns the next renewal date after today based on start_date and billing_cycle.
-        """
-        today = timezone.now().date()
-        current = self.start_date
+        """Calculate next renewal date from current renewal date"""
         if self.billing_cycle == "monthly":
             delta = relativedelta(months=1)
         else:
             delta = relativedelta(years=1)
-
-        # move forward until current > today
-        while current <= today:
-            current += delta
-        return current
-
-    def save(self, *args, **kwargs):
-        """
-        Override the default save method to automatically set renewal_date.
         
-        If renewal_date is not provided or is None, it will be automatically calculated
-        based on the subscription's start_date and billing_cycle using the 
-        calculate_next_renewal() method.
+        return self.renewal_date + delta
+    
+    def get_payment_status(self):
+        """Get current payment status"""
+        today = timezone.now().date()
         
-        Args:
-            *args: Variable length argument list passed to parent save method
-            **kwargs: Arbitrary keyword arguments passed to parent save method
+        # Check if subscription has ended
+        if self.ending_date and self.ending_date <= today:
+            self.is_active = False
+            self.save()
+            return "ended"
+        
+        # Check if renewal date has passed
+        if self.renewal_date <= today:
+            # Calculate the start of current billing period
+            if self.billing_cycle == 'monthly':
+                current_period_start = self.renewal_date - relativedelta(months=1)
+            else:
+                current_period_start = self.renewal_date - relativedelta(years=1)
             
-        Note:
-            This ensures that every subscription has a valid renewal_date when saved,
-            preventing the need for manual calculation in views or other parts of the code.
-        """
+            # Check if there's a payment for this period
+            has_payment = self.payments.filter(
+                billing_period_start=current_period_start,
+                is_paid=True
+            ).exists()
+            
+            if not has_payment:
+                return "unpaid"
+            else:
+                return "paid"
+        
+        return "paid"
+    
+    def should_auto_renew(self):
+        """Check if subscription should auto-renew (only if paid)"""
+        if not self.auto_renewal or not self.is_active or self.ending_date:
+            return False
+        
+        # Only auto-renew if current period is paid
+        return self.get_payment_status() == "paid"
+    
+    def save(self, *args, **kwargs):
+        """Override save to set initial renewal date"""
         if not self.renewal_date:
-            self.renewal_date = self.calculate_next_renewal()
+            if self.billing_cycle == "monthly":
+                delta = relativedelta(months=1)
+            else:
+                delta = relativedelta(years=1)
+            self.renewal_date = self.start_date + delta
         super().save(*args, **kwargs)
-           
-    def potential_savings(self):
-        """
-        Calculate potential savings by switching billing cycles.
         
-        For monthly subscriptions: calculates savings if switching to yearly billing.
-        For yearly subscriptions: calculates extra cost if switching to monthly billing.
         
-        Returns:
-            tuple or None: 
-                - If potential savings exist: (billing_cycle, amount) where:
-                    - billing_cycle (str): The alternative billing cycle ("yearly" or "monthly")
-                    - amount (Decimal): The savings amount (positive) or extra cost (negative)
-                - If no potential savings: None
-                
-        Examples:
-            - Monthly $10 subscription with yearly $100 option returns ("yearly", 20.00)
-            - Yearly $100 subscription with monthly $10 option returns ("monthly", 20.00)
-        """
-        if self.billing_cycle == "monthly" and self.yearly_cost and self.monthly_cost:
-            yearly_equivalent = self.monthly_cost * 12
-            saving = yearly_equivalent - self.yearly_cost
-            if saving > 0:
-                return ("yearly", saving)
-        elif self.billing_cycle == "yearly" and self.monthly_cost and self.yearly_cost:
-            monthly_equivalent = self.yearly_cost / 12
-            extra = self.monthly_cost * 12 - self.yearly_cost
-            if extra > 0:
-                return ("monthly", extra)
-        return None
+        
+class Payment(models.Model):
+    subscription = models.ForeignKey(Subscription, on_delete=models.CASCADE, related_name='payments')
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_date = models.DateField()
+    billing_period_start = models.DateField()  # Start of the billing period
+    billing_period_end = models.DateField()    # End of the billing period
+    is_paid = models.BooleanField(default=True)
+    notes = models.TextField(blank=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-billing_period_start']
+        unique_together = ['subscription', 'billing_period_start']  # One payment per period
+    
+    def __str__(self):
+        return f"{self.subscription.name} - {self.billing_period_start} to {self.billing_period_end}"
