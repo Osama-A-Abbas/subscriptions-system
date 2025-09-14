@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Subscription Manager{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">
+            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+            <small class="text-muted">Welcome back, {{ user.username }}!</small>
+        </h1>
+    </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>{{ total_subscriptions }}</h4>
+                        <p class="mb-0">Active Subscriptions</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-credit-card fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>${{ total_monthly_cost|floatformat:2 }}</h4>
+                        <p class="mb-0">Monthly Cost</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-dollar-sign fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4>${{ total_yearly_cost|floatformat:2 }}</h4>
+                        <p class="mb-0">Yearly Cost</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-calendar-alt fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'add_subscription' %}" class="btn btn-primary me-2">
+                    <i class="fas fa-plus me-1"></i>Add New Subscription
+                </a>
+                <a href="{% url 'subscription_list' %}" class="btn btn-outline-primary me-2">
+                    <i class="fas fa-list me-1"></i>View All Subscriptions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Subscriptions -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Subscriptions</h5>
+            </div>
+            <div class="card-body">
+                {% if subscriptions %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Cost</th>
+                                    <th>Billing Cycle</th>
+                                    <th>Next Renewal</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for subscription in subscriptions|slice:":5" %}
+                                <tr>
+                                    <td>{{ subscription.name }}</td>
+                                    <td>
+                                        {% if subscription.billing_cycle == 'monthly' %}
+                                            ${{ subscription.monthly_cost|floatformat:2 }}/month
+                                        {% else %}
+                                            ${{ subscription.yearly_cost|floatformat:2 }}/year
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-{% if subscription.billing_cycle == 'monthly' %}primary{% else %}success{% endif %}">
+                                            {{ subscription.billing_cycle|title }}
+                                        </span>
+                                    </td>
+                                    <td>{{ subscription.renewal_date|date:"M d, Y" }}</td>
+                                    <td>
+                                        <span class="badge bg-success">Active</span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-credit-card fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No subscriptions yet</h5>
+                        <p class="text-muted">Start by adding your first subscription!</p>
+                        <a href="{% url 'add_subscription' %}" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>Add Subscription
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

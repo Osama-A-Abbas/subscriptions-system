@@ -16,10 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+
 # from accounts import views
+def redirect_to_dashboard(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        return redirect('login')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('users/', include('users.urls')),  # include users app URLs
     path('accounts/', include('django.contrib.auth.urls')),  # login/logout/password reset
-    path('', include('accounts.urls')),  # include auth views
+    path('', include('accounts.urls')),  # register, profile
+    path('subscriptions/', include('subscriptions.urls')),  # subscription management
+    path('', redirect_to_dashboard, name='home'),  # redirect to appropriate page
 ]

@@ -68,7 +68,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': [],
-        "DIRS": [BASE_DIR / "templates"],   # global templates
+        "DIRS": [BASE_DIR / "subscriptions_management_project" /"templates"],   # global templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,7 +140,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"] #
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AUTH_USER_MODEL = "users.User"   # Use a custom user model
-LOGIN_REDIRECT_URL = 'profile'   # where user goes after login
+# LOGIN_REDIRECT_URL = 'profile'   # where user goes after login
 LOGOUT_REDIRECT_URL = 'login'    # where user goes after logout
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Catches all outgoing
