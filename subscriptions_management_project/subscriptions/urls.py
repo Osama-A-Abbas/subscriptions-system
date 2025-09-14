@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:pk>/edit/', views.edit_subscription, name='edit_subscription'),
     path('<int:pk>/delete/', views.delete_subscription, name='delete_subscription'),
     path('<int:pk>/payment/', views.add_payment, name='add_payment'),
+    path('<int:pk>/mark-paid/<str:period_start>/', views.mark_payment_paid, name='mark_payment_paid'),
 ]

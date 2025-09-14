@@ -32,33 +32,8 @@ def subscription_detail(request, pk):
     subscription = get_object_or_404(Subscription, pk=pk, user=request.user)
     payments = subscription.payments.all()
     
-    # Generate billing periods for the last 12 months
-    billing_periods = []
-    today = timezone.now().date()
-    current_date = subscription.start_date
-    
-    for i in range(12):
-        if subscription.billing_cycle == 'monthly':
-            period_end = current_date + relativedelta(months=1)
-        else:
-            period_end = current_date + relativedelta(years=1)
-        
-        # Check if there's a payment for this period
-        payment = subscription.payments.filter(
-            billing_period_start=current_date,
-            billing_period_end=period_end
-        ).first()
-        
-        billing_periods.append({
-            'start': current_date,
-            'end': period_end,
-            'payment': payment,
-            'is_paid': payment.is_paid if payment else False,
-            'is_current': current_date <= today < period_end,
-            'is_past_due': period_end < today and not (payment and payment.is_paid)
-        })
-        
-        current_date = period_end
+    # Get billing periods using the new virtual payment system
+    billing_periods = subscription.get_billing_periods()
     
     context = {
         'subscription': subscription,
@@ -99,6 +74,23 @@ def edit_subscription(request, pk):
     return render(request, 'subscriptions/edit_subscription.html', {
         'form': form, 'subscription': subscription
     })
+
+@login_required
+def mark_payment_paid(request, pk, period_start):
+    """Mark a specific billing period as paid"""
+    subscription = get_object_or_404(Subscription, pk=pk, user=request.user)
+    
+    if request.method == 'POST':
+        # Mark the payment as paid
+        payment = subscription.mark_payment_paid(period_start)
+        messages.success(request, f'Payment for period {period_start} marked as paid!')
+        return redirect('subscription_detail', pk=pk)
+    else:
+        # Show confirmation page
+        return render(request, 'subscriptions/mark_payment_paid.html', {
+            'subscription': subscription,
+            'period_start': period_start
+        })
 
 @login_required
 def delete_subscription(request, pk):
