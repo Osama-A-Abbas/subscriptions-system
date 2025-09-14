@@ -26,7 +26,9 @@
                                     <th>Name</th>
                                     <th>Cost</th>
                                     <th>Billing Cycle</th>
+                                    <th>Starting Date</th>
                                     <th>Next Renewal</th>
+                                    <th>Auto Renewal</th>
                                     <th>Category</th>
                                     <th>Actions</th>
                                 </tr>
@@ -47,7 +49,13 @@
                                             {{ subscription.billing_cycle|title }}
                                         </span>
                                     </td>
+                                    <td>{{ subscription.start_date|date:"M d, Y" }}</td>
                                     <td>{{ subscription.renewal_date|date:"M d, Y" }}</td>
+                                    <td>
+                                        <span class="badge bg-{% if subscription.auto_renewal %}success{% else %}danger{% endif %}">
+                                            {{ subscription.auto_renewal|yesno:"Enabled,Disabled" }}
+                                        </span>
+                                    </td>
                                     <td>{{ subscription.category.name|default:"No Category" }}</td>
                                     <td>
                                         <a href="{% url 'subscription_detail' subscription.pk %}" class="btn btn-sm btn-outline-primary">
