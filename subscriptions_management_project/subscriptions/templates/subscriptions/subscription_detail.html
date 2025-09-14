@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ subscription.name }} - Subscription Manager{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="fas fa-credit-card me-2"></i>{{ subscription.name }}</h1>
+            <div>
+                <a href="{% url 'edit_subscription' subscription.pk %}" class="btn btn-warning me-2">
+                    <i class="fas fa-edit me-1"></i>Edit
+                </a>
+                <a href="{% url 'add_payment' subscription.pk %}" class="btn btn-success me-2">
+                    <i class="fas fa-plus me-1"></i>Add Payment
+                </a>
+                <button type="button" class="btn btn-danger me-2" onclick="confirmDelete({{ subscription.pk }}, '{{ subscription.name }}')">
+                    <i class="fas fa-trash me-1"></i>Delete
+                </button>
+                <a href="{% url 'subscription_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subscription Details -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Subscription Details</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> {{ subscription.name }}</p>
+                <p><strong>Billing Cycle:</strong> 
+                    <span class="badge bg-{% if subscription.billing_cycle == 'monthly' %}primary{% else %}success{% endif %}">
+                        {{ subscription.billing_cycle|title }}
+                    </span>
+                </p>
+                <p><strong>Cost:</strong> 
+                    {% if subscription.billing_cycle == 'monthly' %}
+                        ${{ subscription.monthly_cost|floatformat:2 }}/month
+                    {% else %}
+                        ${{ subscription.yearly_cost|floatformat:2 }}/year
+                    {% endif %}
+                </p>
+                <p><strong>Start Date:</strong> {{ subscription.start_date|date:"M d, Y" }}</p>
+                <p><strong>Next Renewal:</strong> {{ subscription.renewal_date|date:"M d, Y" }}</p>
+                {% if subscription.ending_date %}
+                    <p><strong>End Date:</strong> {{ subscription.ending_date|date:"M d, Y" }}</p>
+                {% endif %}
+                <p><strong>Auto Renewal:</strong> 
+                    <span class="badge bg-{% if subscription.auto_renewal %}success{% else %}danger{% endif %}">
+                        {{ subscription.auto_renewal|yesno:"Enabled,Disabled" }}
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Payment Status</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Status:</strong> 
+                    <span class="badge bg-{% if subscription.get_payment_status == 'paid' %}success{% elif subscription.get_payment_status == 'unpaid' %}danger{% else %}secondary{% endif %}">
+                        {{ subscription.get_payment_status|title }}
+                    </span>
+                </p>
+                <p><strong>Total Payments:</strong> {{ payments.count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Billing Periods -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Billing History</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Status</th>
+                                <th>Payment Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for period in billing_periods %}
+                            <tr class="{% if period.is_current %}table-info{% elif period.is_past_due %}table-danger{% endif %}">
+                                <td>
+                                    {{ period.start|date:"M d, Y" }} - {{ period.end|date:"M d, Y" }}
+                                    {% if period.is_current %}<span class="badge bg-info">Current</span>{% endif %}
+                                </td>
+                                <td>
+                                    <span class="badge bg-{% if period.is_paid %}success{% else %}danger{% endif %}">
+                                        {{ period.is_paid|yesno:"Paid,Unpaid" }}
+                                    </span>
+                                </td>
+                                <td>
+                                    {% if period.payment %}
+                                        {{ period.payment.payment_date|date:"M d, Y" }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if period.payment %}
+                                        ${{ period.payment.amount|floatformat:2 }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include the reusable delete modal -->
+{% include 'partials/delete_modal.html' %}
+{% endblock %}

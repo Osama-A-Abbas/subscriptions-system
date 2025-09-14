@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:pk>/', views.subscription_detail, name='subscription_detail'),
     path('<int:pk>/edit/', views.edit_subscription, name='edit_subscription'),
     path('<int:pk>/delete/', views.delete_subscription, name='delete_subscription'),
+    path('<int:pk>/payment/', views.add_payment, name='add_payment'),
 ]

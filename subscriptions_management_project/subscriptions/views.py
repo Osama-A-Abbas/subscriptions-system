@@ -99,13 +99,15 @@ def edit_subscription(request, pk):
     return render(request, 'subscriptions/edit_subscription.html', {
         'form': form, 'subscription': subscription
     })
+
 @login_required
 def delete_subscription(request, pk):
     subscription = get_object_or_404(Subscription, pk=pk, user=request.user)
     if request.method == 'POST':
+        subscription_name = subscription.name
         subscription.delete()
-        messages.success(request, 'Subscription deleted successfully!')
+        messages.success(request, f'Subscription "{subscription_name}" deleted successfully!')
         return redirect('subscription_list')
-    return render(request, 'subscriptions/delete_subscription.html', {
-        'subscription': subscription
-    })
+    else:
+        # This shouldn't happen with the modal, but just in case
+        return redirect('subscription_list')

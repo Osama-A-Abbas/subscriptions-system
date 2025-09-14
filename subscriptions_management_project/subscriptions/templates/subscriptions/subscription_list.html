@@ -26,7 +26,6 @@
                                     <th>Name</th>
                                     <th>Cost</th>
                                     <th>Billing Cycle</th>
-                                    <th>Starting Date</th>
                                     <th>Next Renewal</th>
                                     <th>Category</th>
                                     <th>Actions</th>
@@ -48,7 +47,6 @@
                                             {{ subscription.billing_cycle|title }}
                                         </span>
                                     </td>
-                                    <td>{{ subscription.start_date|date:"M d, Y" }}</td>
                                     <td>{{ subscription.renewal_date|date:"M d, Y" }}</td>
                                     <td>{{ subscription.category.name|default:"No Category" }}</td>
                                     <td>
@@ -58,9 +56,9 @@
                                         <a href="{% url 'edit_subscription' subscription.pk %}" class="btn btn-sm btn-outline-warning">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{% url 'delete_subscription' subscription.pk %}" class="btn btn-sm btn-outline-danger">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete({{ subscription.pk }}, '{{ subscription.name }}')">
                                             <i class="fas fa-trash"></i>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -83,4 +81,7 @@
         {% endif %}
     </div>
 </div>
+
+<!-- Include the reusable delete modal -->
+{% include 'partials/delete_modal.html' %}
 {% endblock %}
