@@ -25,3 +25,7 @@
 Current Status: Core subscription management complete
 Next Phase: Testing, optimization, and additional features
 ===================================================================
+كمل البروفايل
+سوي موضوع الاقتراحات والتوفير
+تأكد من نظام الدفع
+راجع المستندات والتعليقات

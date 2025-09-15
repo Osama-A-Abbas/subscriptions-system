@@ -51,17 +51,17 @@ Subscription Manager{% endblock %} {% block content %}
         </p>
         <p>
           <strong>Cost:</strong>
-          {% if subscription.billing_cycle == 'monthly' %} ${{
-          subscription.monthly_cost|floatformat:2 }}/month {% else %} ${{
-          subscription.yearly_cost|floatformat:2 }}/year {% endif %}
+          {% if subscription.billing_cycle == 'monthly' %}
+          ${{subscription.monthly_cost|floatformat:2 }}/month {% else %}
+          ${{subscription.yearly_cost|floatformat:2 }}/year {% endif %}
         </p>
         <p>
-          <strong>Start Date:</strong> {{ subscription.start_date|date:"M d, Y"
-          }}
+          <strong>Start Date:</strong> 
+          {{ subscription.start_date|date:"M d, Y"}}
         </p>
         <p>
-          <strong>Next Renewal:</strong> {{ subscription.renewal_date|date:"M d,
-          Y" }}
+          <strong>Next Renewal:</strong> 
+          {{ subscription.renewal_date|date:"M d,Y" }}
         </p>
         {% if subscription.ending_date %}
         <p>
@@ -125,9 +125,9 @@ Subscription Manager{% endblock %} {% block content %}
                 class="{% if period.is_current %}table-info{% elif period.is_past_due %}table-danger{% endif %}"
               >
                 <td>
-                  {{ period.start|date:"M d, Y" }} - {{ period.end|date:"M d, Y"
-                  }} {% if period.is_current %}<span class="badge bg-info"
-                    >Current</span
+                  {{ period.start|date:"M d, Y" }} - {{ period.end|date:"M d, Y"}} 
+                  {% if period.is_current %}
+                  <span class="badge bg-info">Current</span
                   >{% endif %}
                 </td>
                 <td>
@@ -138,8 +138,7 @@ Subscription Manager{% endblock %} {% block content %}
                   </span>
                 </td>
                 <td>
-                  {% if period.payment %} {{ period.payment.payment_date|date:"M
-                  d, Y" }} {% else %} - {% endif %}
+                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }} {% else %} - {% endif %}
                 </td>
                 <td>${{ period.amount|floatformat:2 }}</td>
                 <td>
