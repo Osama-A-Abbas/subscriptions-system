@@ -153,6 +153,10 @@ class Subscription(
                     "Subscription %s schedule changed; reset payments: deleted=%s",
                     self.pk, result.get("deleted", 0)
                 )
+                
+                # Force refresh billing periods to ensure current period is detected correctly
+                self.refresh_billing_periods()
+                
             except Exception as exc:
                 logger.exception("Failed to reset payments for subscription %s: %s", self.pk, exc)
     

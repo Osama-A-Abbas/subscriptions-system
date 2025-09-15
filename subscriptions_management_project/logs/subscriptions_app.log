@@ -114,3 +114,46 @@ INFO 2025-09-15 23:29:11,585 subscriptions.middleware process_request 58 Request
 INFO 2025-09-15 23:29:11,587 subscriptions.middleware process_request 59 User: Ahmed
 INFO 2025-09-15 23:29:11,587 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-15 23:29:11,593 subscriptions.middleware process_response 66 Response: 404 for GET /favicon.ico
+INFO 2025-09-15 23:32:47,696 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:32:47,698 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:32:47,698 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:32:47,703 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:32:53,335 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:32:53,338 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:32:53,338 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:32:53,341 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:32:58,415 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:32:58,417 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:32:58,418 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:32:58,422 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:33:36,222 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:33:36,224 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:33:36,224 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:33:36,228 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:35:18,558 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:35:18,560 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:35:18,561 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:35:18,567 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:36:50,843 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-15 23:36:50,845 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:36:50,845 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:36:50,855 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-15 23:36:56,286 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/
+INFO 2025-09-15 23:36:56,288 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:36:56,288 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:36:56,345 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/
+INFO 2025-09-15 23:37:01,026 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/edit/
+INFO 2025-09-15 23:37:01,028 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:37:01,028 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:37:01,040 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/edit/
+INFO 2025-09-15 23:37:09,153 subscriptions.middleware process_request 58 Request: POST /subscriptions/14/edit/
+INFO 2025-09-15 23:37:09,155 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:37:09,156 subscriptions.middleware process_request 60 IP: 127.0.0.1
+WARNING 2025-09-15 23:37:09,160 subscriptions.form_mixins validate_costs 125 Unusual cost ratio detected: monthly=123.00, yearly=123.00, ratio=12
+WARNING 2025-09-15 23:37:09,161 subscriptions.forms _validate_business_rules 197 Very unusual cost ratio: monthly=123.00, yearly=123.00, ratio=12
+INFO 2025-09-15 23:37:09,175 subscriptions.models.subscription save 152 Subscription 14 schedule changed; reset payments: deleted=44
+INFO 2025-09-15 23:37:09,186 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/14/edit/
+INFO 2025-09-15 23:37:09,190 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/
+INFO 2025-09-15 23:37:09,195 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:37:09,196 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:37:09,223 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/

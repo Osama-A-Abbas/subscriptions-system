@@ -15,13 +15,19 @@ class ScheduleManagementMixin:
     
     def get_billing_periods(self):
         """Generate billing periods and create payment records as needed."""
+        import logging
+        logger = logging.getLogger(__name__)
+        
         periods = []
         current_date = self.start_date
         today = timezone.now().date()
         
         total_payments = self.get_total_payments()
         if not total_payments:
+            logger.debug(f"No total payments for subscription {self.pk}")
             return periods
+        
+        logger.debug(f"Generating {total_payments} billing periods for subscription {self.pk}, start_date: {current_date}, today: {today}")
         
         for period_num in range(1, total_payments + 1):
             if self.billing_cycle == 'monthly':
@@ -39,8 +45,11 @@ class ScheduleManagementMixin:
             # Create payment record if:
             # 1. Period is current or past due AND no payment record exists
             # 2. User manually marks as paid
+            is_current_period = self._is_current_period(current_date, period_end)
+            is_past_due_period = self._is_past_due(current_date, period_end)
+            
             should_create_record = (
-                (period_end >= today or current_date <= today) and 
+                (is_current_period or is_past_due_period) and 
                 not payment
             )
             
@@ -50,6 +59,15 @@ class ScheduleManagementMixin:
                     period_end=period_end,
                     period_number=period_num
                 )
+                logger.debug(f"Created payment record for period {period_num}: {current_date} to {period_end}")
+            
+            is_current = self._is_current_period(current_date, period_end)
+            is_past_due = self._is_past_due(current_date, period_end)
+            
+            if is_current:
+                logger.debug(f"Period {period_num} is CURRENT: {current_date} to {period_end}")
+            elif is_past_due:
+                logger.debug(f"Period {period_num} is PAST DUE: {current_date} to {period_end}")
             
             periods.append({
                 'period_number': period_num,
@@ -58,11 +76,29 @@ class ScheduleManagementMixin:
                 'amount': self.get_current_cost(),
                 'is_paid': payment.is_paid if payment else False,
                 'payment': payment,
-                'is_current': self._is_current_period(current_date, period_end),
-                'is_past_due': self._is_past_due(current_date, period_end)
+                'is_current': is_current,
+                'is_past_due': is_past_due
             })
             
             current_date = next_period_start
+        
+        return periods
+    
+    def refresh_billing_periods(self):
+        """Force refresh billing periods by clearing any cached data and regenerating."""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        logger.info(f"Refreshing billing periods for subscription {self.pk}")
+        
+        # Clear any existing payment records that might be stale
+        # This ensures we start fresh
+        self.payments.all().delete()
+        
+        # Regenerate billing periods
+        periods = self.get_billing_periods()
+        
+        logger.info(f"Refreshed billing periods for subscription {self.pk}: {len(periods)} periods generated")
         
         return periods
     
@@ -81,7 +117,16 @@ class ScheduleManagementMixin:
     def _is_current_period(self, period_start, period_end):
         """Check if this period is currently active."""
         today = timezone.now().date()
-        return period_start <= today <= period_end
+        # A period is current if today falls within its date range
+        # Include both start and end dates (end date is the last day of the period)
+        is_current = period_start <= today <= period_end
+        
+        # Debug logging for troubleshooting
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.debug(f"Checking if period {period_start} to {period_end} is current (today: {today}): {is_current}")
+        
+        return is_current
     
     def _is_past_due(self, period_start, period_end):
         """Check if this period is past due."""
@@ -156,7 +201,12 @@ class ScheduleManagementMixin:
 
         Returns dict with count of deleted rows.
         """
+        import logging
+        logger = logging.getLogger(__name__)
+        
         qs = self.payments.all()
         deleted = qs.count()
         qs.delete()
+        
+        logger.info(f"Reset payments for subscription {self.pk}: deleted {deleted} payment records")
         return {"deleted": deleted}
