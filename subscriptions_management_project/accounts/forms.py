@@ -67,6 +67,54 @@ class CustomUserCreationForm(UserCreationForm):
             raise ValidationError("A user with this email already exists.")
         return email
     
+    def clean_username(self):
+        """
+        Validate username uniqueness and format for registration.
+        
+        Ensures:
+        - Username is unique across all users
+        - Username follows Django's built-in validation rules
+        - Case-insensitive uniqueness check
+        - Proper error messages for different scenarios
+        """
+        username = self.cleaned_data.get('username')
+        
+        if not username:
+            return username
+        
+        # Normalize username (lowercase for case-insensitive check)
+        username_normalized = username.lower()
+        
+        # Check for case-insensitive uniqueness
+        existing_user = User.objects.filter(username__iexact=username_normalized).first()
+        
+        if existing_user:
+            # Provide helpful error message
+            if existing_user.username.lower() == username_normalized:
+                raise ValidationError("A user with this username already exists.")
+            else:
+                raise ValidationError(f"A user with a similar username '{existing_user.username}' already exists. Please choose a different username.")
+        
+        # Additional validation: Check for reserved usernames
+        reserved_usernames = ['admin', 'administrator', 'root', 'user', 'test', 'api', 'www', 'mail', 'support']
+        if username_normalized in reserved_usernames:
+            raise ValidationError("This username is reserved. Please choose a different username.")
+        
+        # Check for minimum length
+        if len(username) < 3:
+            raise ValidationError("Username must be at least 3 characters long.")
+        
+        # Check for maximum length (Django's default is 150)
+        if len(username) > 150:
+            raise ValidationError("Username must be 150 characters or fewer.")
+        
+        # Check for valid characters (letters, digits, @, ., +, -, _)
+        import re
+        if not re.match(r'^[\w.@+-]+$', username):
+            raise ValidationError("Username can only contain letters, digits, and @/./+/-/_ characters.")
+        
+        return username
+    
     def save(self, commit=True):
         """Save user with email."""
         user = super().save(commit=False)
@@ -179,8 +227,49 @@ class UserProfileForm(forms.ModelForm):
         return email
     
     def clean_username(self):
-        """Validate username uniqueness."""
+        """
+        Validate username uniqueness and format.
+        
+        Ensures:
+        - Username is unique across all users (excluding current user)
+        - Username follows Django's built-in validation rules
+        - Case-insensitive uniqueness check
+        - Proper error messages for different scenarios
+        """
         username = self.cleaned_data.get('username')
-        if username and User.objects.filter(username=username).exclude(pk=self.instance.pk).exists():
-            raise ValidationError("A user with this username already exists.")
+        
+        if not username:
+            return username
+        
+        # Normalize username (lowercase for case-insensitive check)
+        username_normalized = username.lower()
+        
+        # Check for case-insensitive uniqueness
+        existing_user = User.objects.filter(username__iexact=username_normalized).exclude(pk=self.instance.pk).first()
+        
+        if existing_user:
+            # Provide helpful error message
+            if existing_user.username.lower() == username_normalized:
+                raise ValidationError("A user with this username already exists.")
+            else:
+                raise ValidationError(f"A user with a similar username '{existing_user.username}' already exists. Please choose a different username.")
+        
+        # Additional validation: Check for reserved usernames
+        reserved_usernames = ['admin', 'administrator', 'root', 'user', 'test', 'api', 'www', 'mail', 'support']
+        if username_normalized in reserved_usernames:
+            raise ValidationError("This username is reserved. Please choose a different username.")
+        
+        # Check for minimum length
+        if len(username) < 3:
+            raise ValidationError("Username must be at least 3 characters long.")
+        
+        # Check for maximum length (Django's default is 150)
+        if len(username) > 150:
+            raise ValidationError("Username must be 150 characters or fewer.")
+        
+        # Check for valid characters (letters, digits, @, ., +, -, _)
+        import re
+        if not re.match(r'^[\w.@+-]+$', username):
+            raise ValidationError("Username can only contain letters, digits, and @/./+/-/_ characters.")
+        
         return username

@@ -1,12 +1,17 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
+from . import api_views
 
 urlpatterns = [
     # Custom views
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    
+    # API endpoints for real-time validation
+    path('api/check-username/', api_views.check_username_availability, name='check_username_availability'),
+    path('api/check-email/', api_views.check_email_availability, name='check_email_availability'),
     
     # Django built-in authentication views with custom templates
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
