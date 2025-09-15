@@ -17,6 +17,14 @@ class SubscriptionForm(forms.ModelForm):
             )
             .order_by('is_other', 'name')
         )
+        # Make category required and default to "Other" if present
+        self.fields['category'].required = True
+        self.fields['category'].empty_label = None
+        other = Category.objects.filter(name__iexact='other').first()
+        if other:
+            # Only set initial if form is not bound and instance has no category
+            if not self.is_bound and (not getattr(self.instance, 'category_id', None)):
+                self.fields['category'].initial = other.pk
     class Meta:
         model = Subscription
         fields = [

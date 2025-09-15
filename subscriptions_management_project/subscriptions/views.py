@@ -89,7 +89,23 @@ def mark_payment_paid(request, pk, period_start):
         # Show confirmation page
         return render(request, 'subscriptions/mark_payment_paid.html', {
             'subscription': subscription,
-            'period_start': period_start
+            'period_start': period_start,
+            'action': 'paid',
+        })
+
+@login_required
+def mark_payment_unpaid(request, pk, period_start):
+    """Mark a specific billing period as unpaid"""
+    subscription = get_object_or_404(Subscription, pk=pk, user=request.user)
+    if request.method == 'POST':
+        subscription.mark_payment_unpaid(period_start)
+        messages.success(request, f'Payment for period {period_start} marked as unpaid!')
+        return redirect('subscription_detail', pk=pk)
+    else:
+        return render(request, 'subscriptions/mark_payment_paid.html', {
+            'subscription': subscription,
+            'period_start': period_start,
+            'action': 'unpaid',
         })
 
 @login_required

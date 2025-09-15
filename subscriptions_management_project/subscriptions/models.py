@@ -106,7 +106,7 @@ class Subscription(models.Model):
     # Status & Settings
     is_active = models.BooleanField(default=True)
     auto_renewal = models.BooleanField(default=True)  # Default enabled
-    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
     
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
@@ -277,6 +277,30 @@ class Subscription(models.Model):
             payment.save()
         
         return payment
+    
+    def mark_payment_unpaid(self, period_start):
+        """Mark a specific period as unpaid (clears payment_date)."""
+        payment = self.payments.filter(
+            billing_period_start=period_start
+        ).first()
+        if payment:
+            payment.is_paid = False
+            payment.payment_date = None
+            payment.save()
+            return payment
+        # If no record exists yet, create an unpaid placeholder for consistency
+        if self.billing_cycle == 'monthly':
+            period_end = period_start + relativedelta(months=1) - timedelta(days=1)
+        else:
+            period_end = period_start + relativedelta(years=1) - timedelta(days=1)
+        return Payment.objects.create(
+            subscription=self,
+            billing_period_start=period_start,
+            billing_period_end=period_end,
+            amount=self.get_current_cost(),
+            payment_date=None,
+            is_paid=False
+        )
     
     def calculate_next_renewal(self):
         """Calculate next renewal date from current renewal date"""

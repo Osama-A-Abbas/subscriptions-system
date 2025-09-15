@@ -56,11 +56,11 @@ Subscription Manager{% endblock %} {% block content %}
           ${{subscription.yearly_cost|floatformat:2 }}/year {% endif %}
         </p>
         <p>
-          <strong>Start Date:</strong> 
+          <strong>Start Date:</strong>
           {{ subscription.start_date|date:"M d, Y"}}
         </p>
         <p>
-          <strong>Next Renewal:</strong> 
+          <strong>Next Renewal:</strong>
           {{ subscription.renewal_date|date:"M d,Y" }}
         </p>
         {% if subscription.ending_date %}
@@ -114,21 +114,22 @@ Subscription Manager{% endblock %} {% block content %}
               <tr>
                 <th>Period</th>
                 <th>Status</th>
-                <th>Payment Date</th>
+                <th>Marked As Paid At</th>
                 <th>Amount</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {% for period in billing_periods %}
+              {% for period in billing_periods %} {% comment %}Row color
+              precedence: current (blue) > overdue-unpaid (red) > paid (green) >
+              future-unpaid (default){% endcomment %}
               <tr
-                class="{% if period.is_current %}table-info{% elif period.is_past_due %}table-danger{% endif %}"
+                class="{% if period.is_current %}table-info{% elif period.is_past_due and not period.is_paid %}table-danger{% elif period.is_paid %}table-success{% endif %}"
               >
                 <td>
                   {{ period.start|date:"M d, Y" }} - {{ period.end|date:"M d, Y"}} 
                   {% if period.is_current %}
-                  <span class="badge bg-info">Current</span
-                  >{% endif %}
+                  <span class="badge bg-info">Current</span>{% endif %}
                 </td>
                 <td>
                   <span
@@ -138,21 +139,25 @@ Subscription Manager{% endblock %} {% block content %}
                   </span>
                 </td>
                 <td>
-                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }} {% else %} - {% endif %}
+                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }} 
+                  {% else %} - {% endif %}
                 </td>
                 <td>${{ period.amount|floatformat:2 }}</td>
                 <td>
                   {% if not period.is_paid %}
                   <a
                     href="{% url 'mark_payment_paid' subscription.pk period.start %}"
-                    class="btn btn-sm btn-outline-success"
+                    class="btn btn-sm btn-success"
                   >
                     <i class="fas fa-check me-1"></i>Mark as Paid
                   </a>
                   {% else %}
-                  <span class="text-success">
-                    <i class="fas fa-check-circle me-1"></i>Paid
-                  </span>
+                  <a
+                    href="{% url 'mark_payment_unpaid' subscription.pk period.start %}"
+                    class="btn btn-sm btn-outline-danger"
+                  >
+                    <i class="fas fa-undo me-1"></i>Mark as Unpaid
+                  </a>
                   {% endif %}
                 </td>
               </tr>
