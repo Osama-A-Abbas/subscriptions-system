@@ -367,7 +367,8 @@ class Subscription(models.Model):
         Returns one of: 'unpaid', 'progressing', 'completed'.
         """
         total_required = self.get_total_payments() or 0
-        paid_count = self.payments.filter(is_paid=True).count()
+        intended_starts = {start for start, _ in self._generate_intended_periods()}
+        paid_count = self.payments.filter(is_paid=True, billing_period_start__in=intended_starts).count()
 
         if total_required == 0:
             # No duration configured; fallback to current-period logic
@@ -380,7 +381,8 @@ class Subscription(models.Model):
         return "progressing"
 
     def get_paid_payments_count(self):
-        return self.payments.filter(is_paid=True).count()
+        intended_starts = {start for start, _ in self._generate_intended_periods()}
+        return self.payments.filter(is_paid=True, billing_period_start__in=intended_starts).count()
 
     def get_payment_progress_percentage(self):
         total_required = self.get_total_payments() or 0
