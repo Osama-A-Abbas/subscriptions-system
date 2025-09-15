@@ -1,10 +1,13 @@
 """
-Service for subscription status determination and lifecycle management.
+Subscription status and health determination services.
 
-Handles complex status calculations and subscription lifecycle logic.
+This module handles status calculations, health monitoring, and
+alert generation for subscriptions.
 """
 
-from typing import Dict, List
+from __future__ import annotations
+
+from typing import Dict, List, Any
 from django.utils import timezone
 
 
@@ -12,7 +15,7 @@ class SubscriptionStatusService:
     """Service for subscription status and lifecycle management."""
     
     @staticmethod
-    def determine_subscription_health(subscription) -> Dict[str, any]:
+    def determine_subscription_health(subscription) -> Dict[str, Any]:
         """Determine overall health and status of a subscription."""
         today = timezone.now().date()
         
@@ -115,3 +118,81 @@ class SubscriptionStatusService:
             health['is_overdue'] or 
             health['health_level'] == 'critical'
         )
+    
+    @staticmethod
+    def get_subscription_summary(subscription) -> Dict[str, Any]:
+        """Get a comprehensive summary of subscription status and metrics."""
+        health = SubscriptionStatusService.determine_subscription_health(subscription)
+        alerts = SubscriptionStatusService.get_subscription_alerts(subscription)
+        
+        # Add financial metrics
+        total_cost = subscription.get_total_cost()
+        remaining_payments = subscription.get_remaining_payments()
+        payment_progress = subscription.get_payment_progress_percentage()
+        
+        # Add lifecycle metrics
+        ending_date = subscription.get_ending_date()
+        days_until_end = None
+        if ending_date:
+            days_until_end = (ending_date - timezone.now().date()).days
+        
+        return {
+            'subscription': subscription,
+            'health': health,
+            'alerts': alerts,
+            'financial': {
+                'total_cost': total_cost,
+                'remaining_payments': remaining_payments,
+                'payment_progress': payment_progress,
+                'current_cost': subscription.get_current_cost()
+            },
+            'lifecycle': {
+                'ending_date': ending_date,
+                'days_until_end': days_until_end,
+                'is_ending_soon': days_until_end is not None and days_until_end <= 30,
+                'auto_renewal': subscription.auto_renewal
+            },
+            'recommendations': SubscriptionStatusService._generate_recommendations(
+                health, alerts, remaining_payments, days_until_end
+            )
+        }
+    
+    @staticmethod
+    def _generate_recommendations(
+        health: Dict[str, Any], 
+        alerts: List[Dict[str, str]], 
+        remaining_payments: int, 
+        days_until_end: int
+    ) -> List[str]:
+        """Generate actionable recommendations based on subscription status."""
+        recommendations = []
+        
+        if health['is_overdue']:
+            recommendations.append("Pay overdue amount immediately to avoid service interruption")
+        
+        if health['is_renewing_soon']:
+            recommendations.append("Prepare payment for upcoming renewal")
+        
+        if health['health_level'] == 'critical':
+            recommendations.append("Review subscription status and consider cancellation if no longer needed")
+        
+        if remaining_payments == 0 and days_until_end is not None and days_until_end <= 7:
+            recommendations.append("Subscription ending soon - consider renewal or cancellation")
+        
+        if len(alerts) > 3:
+            recommendations.append("Multiple issues detected - review subscription settings")
+        
+        if health['health_score'] >= 90:
+            recommendations.append("Subscription is in excellent health - no action needed")
+        
+        return recommendations
+
+
+def get_subscription_alerts(subscription) -> List[Dict[str, str]]:
+    """Convenience function to get subscription alerts."""
+    return SubscriptionStatusService.get_subscription_alerts(subscription)
+
+
+def should_send_reminder(subscription) -> bool:
+    """Convenience function to check if reminder should be sent."""
+    return SubscriptionStatusService.should_send_reminder(subscription)
