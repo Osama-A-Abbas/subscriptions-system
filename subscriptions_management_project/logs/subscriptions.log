@@ -30,3 +30,7 @@ INFO 2025-09-15 23:25:40,345 django.server log_message 212 "GET /subscriptions/1
 INFO 2025-09-15 23:25:40,361 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
 INFO 2025-09-15 23:27:22,946 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 11969
 INFO 2025-09-15 23:27:22,973 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:28:20,495 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14538
+INFO 2025-09-15 23:29:10,726 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:29:10,746 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 4592
+WARNING 2025-09-15 23:29:11,595 django.server log_message 212 "GET /favicon.ico HTTP/1.1" 404 3345

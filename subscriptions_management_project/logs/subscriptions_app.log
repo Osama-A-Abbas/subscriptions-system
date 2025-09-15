@@ -102,3 +102,15 @@ INFO 2025-09-15 23:27:22,914 subscriptions.middleware process_request 58 Request
 INFO 2025-09-15 23:27:22,919 subscriptions.middleware process_request 59 User: Ahmed
 INFO 2025-09-15 23:27:22,919 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-15 23:27:22,945 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/edit/
+INFO 2025-09-15 23:28:20,485 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:28:20,487 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:28:20,487 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:28:20,495 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:29:10,716 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-15 23:29:10,718 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:29:10,718 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:29:10,726 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-15 23:29:11,585 subscriptions.middleware process_request 58 Request: GET /favicon.ico
+INFO 2025-09-15 23:29:11,587 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:29:11,587 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:29:11,593 subscriptions.middleware process_response 66 Response: 404 for GET /favicon.ico
