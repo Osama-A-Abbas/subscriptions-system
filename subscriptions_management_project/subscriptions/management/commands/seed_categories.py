@@ -48,6 +48,11 @@ class Command(BaseCommand):
                 'description': 'Financial services, banking, and investment tools',
                 'parent': None
             },
+            {
+                'name': 'Other',
+                'description': 'Anything else',
+                'parent': None
+            },
         ]
 
         # Subcategories

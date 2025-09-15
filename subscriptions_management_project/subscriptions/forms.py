@@ -1,7 +1,22 @@
 from django import forms
+from django.db.models import Case, When, IntegerField
 from .models import Subscription, Category, Payment
 
 class SubscriptionForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Order categories alphabetically but always place "Other" at the end
+        self.fields['category'].queryset = (
+            Category.objects
+            .annotate(
+                is_other=Case(
+                    When(name__iexact='other', then=1),
+                    default=0,
+                    output_field=IntegerField()
+                )
+            )
+            .order_by('is_other', 'name')
+        )
     class Meta:
         model = Subscription
         fields = [
