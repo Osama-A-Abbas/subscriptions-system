@@ -29,13 +29,13 @@ Next Phase: Testing, optimization, and additional features
 
 سوي موضوع الاقتراحات والتوفير
 
-تأكد من نظام الدفع
+تأكد من نظام الدفع 
 
 راجع المستندات والتعليقات
 
 حسن الادخال والفالدينشين في صفحة الفورم
 
-make the payment action clickable - paid - unpaid
+make the payment action clickable - paid - unpaid t ✅
 
-make the payemnt status in the right side-of the payment_detailes page show more accurate status based on how many payments left unpaid and the renewal dates of these payment
+make the payemnt status in the right side-of the payment_detailes page show more accurate status based on how many payments left unpaid and the renewal dates of these payment ✅
 

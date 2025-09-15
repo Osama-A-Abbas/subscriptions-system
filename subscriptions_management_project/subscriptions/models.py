@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
+from datetime import timedelta
 from decimal import Decimal
 
 # Used in Subscription Model to determine the billing cycle choices
@@ -404,18 +405,27 @@ class Subscription(models.Model):
         - On update: if start_date or billing_cycle changed, reset renewal_date relative to start_date.
         """
         should_reset_renewal = False
+        schedule_changed = False
 
         if self.pk:
             try:
                 original = Subscription.objects.get(pk=self.pk)
+                if (original.start_date != self.start_date or
+                    original.billing_cycle != self.billing_cycle or
+                    original.duration_months != self.duration_months or
+                    original.duration_years != self.duration_years):
+                    schedule_changed = True
                 if original.start_date != self.start_date or original.billing_cycle != self.billing_cycle:
                     should_reset_renewal = True
             except Subscription.DoesNotExist:
                 # If somehow not found, treat as create
                 should_reset_renewal = not bool(self.renewal_date)
+                schedule_changed = True
         else:
             # New instance
             should_reset_renewal = not bool(self.renewal_date)
+            # On create we will reconcile after saving to create current/past due placeholders
+            schedule_changed = True
 
         if should_reset_renewal:
             if self.billing_cycle == "monthly":
@@ -425,6 +435,76 @@ class Subscription(models.Model):
             self.renewal_date = self.start_date + delta
 
         super().save(*args, **kwargs)
+
+        # Reconcile payment records if the schedule changed
+        if schedule_changed:
+            try:
+                self.reconcile_payments()
+            except Exception:
+                # Do not hard-fail save on reconciliation issues
+                pass
+
+    def _generate_intended_periods(self):
+        """Return a list of tuples (start_date, end_date) for intended periods."""
+        periods = []
+        total = self.get_total_payments() or 0
+        if total <= 0:
+            return periods
+        current_start = self.start_date
+        for _ in range(total):
+            if self.billing_cycle == 'monthly':
+                end = current_start + relativedelta(months=1) - timedelta(days=1)
+                next_start = current_start + relativedelta(months=1)
+            else:
+                end = current_start + relativedelta(years=1) - timedelta(days=1)
+                next_start = current_start + relativedelta(years=1)
+            periods.append((current_start, end))
+            current_start = next_start
+        return periods
+
+    def reconcile_payments(self):
+        """Reconcile stored Payment rows with the current schedule.
+
+        - Keep all paid payments (even if out of schedule) as history.
+        - Delete unpaid payments that are no longer part of the intended schedule.
+        - Ensure placeholders exist for current/past-due intended periods.
+
+        Returns a dict with counts of changes for optional display.
+        """
+        intended = self._generate_intended_periods()
+        intended_starts = {start for start, _ in intended}
+        today = timezone.now().date()
+
+        existing = list(self.payments.all())
+        deleted = 0
+        created = 0
+
+        # Delete unpaid records that do not belong to intended schedule
+        for p in existing:
+            if not p.is_paid and p.billing_period_start not in intended_starts:
+                p.delete()
+                deleted += 1
+
+        # Refresh existing after deletions
+        existing_by_start = {p.billing_period_start: p for p in self.payments.all()}
+
+        # Create placeholders for current/past-due intended periods if missing
+        for start, end in intended:
+            if start not in existing_by_start:
+                is_current = self._is_current_period(start, end)
+                is_past_due = end < today
+                if is_current or is_past_due:
+                    Payment.objects.create(
+                        subscription=self,
+                        billing_period_start=start,
+                        billing_period_end=end,
+                        amount=self.get_current_cost(),
+                        payment_date=None,
+                        is_paid=False,
+                    )
+                    created += 1
+
+        return {"deleted_unpaid": deleted, "created_placeholders": created}
         
         
         

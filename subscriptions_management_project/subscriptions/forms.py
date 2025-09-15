@@ -1,5 +1,6 @@
 from django import forms
 from django.db.models import Case, When, IntegerField
+import logging
 from .models import Subscription, Category, Payment
 
 class SubscriptionForm(forms.ModelForm):
@@ -54,6 +55,7 @@ class SubscriptionForm(forms.ModelForm):
             'category': 'Category'
         }
     def clean(self):
+        logger = logging.getLogger(__name__)
         cleaned_data = super().clean()
         monthly_cost = cleaned_data.get('monthly_cost')
         yearly_cost = cleaned_data.get('yearly_cost')
@@ -61,29 +63,36 @@ class SubscriptionForm(forms.ModelForm):
         duration_months = cleaned_data.get('duration_months')
         duration_years = cleaned_data.get('duration_years')
 
+        logger.debug("SubscriptionForm.clean: cycle=%s, duration_months=%s, duration_years=%s", billing_cycle, duration_months, duration_years)
+
         # Ensure at least one cost is provided
         if not monthly_cost and not yearly_cost:
+            logger.debug("Validation error: no cost provided")
             raise forms.ValidationError('Please provide either monthly or yearly cost.')
 
-        # If billing cycle is monthly, require monthly cost
+        # Cost required per cycle
         if billing_cycle == 'monthly' and not monthly_cost:
+            logger.debug("Validation error: monthly cycle without monthly_cost")
             raise forms.ValidationError('Monthly cost is required for monthly billing cycle.')
-
-        # If billing cycle is yearly, require yearly cost
         if billing_cycle == 'yearly' and not yearly_cost:
+            logger.debug("Validation error: yearly cycle without yearly_cost")
             raise forms.ValidationError('Yearly cost is required for yearly billing cycle.')
 
-        # Duration validation
+        # Normalize duration based on cycle (to avoid sticky opposite field when switching)
         if billing_cycle == 'monthly':
             if not duration_months:
+                logger.debug("Validation error: monthly cycle missing duration_months")
                 raise forms.ValidationError('Duration in months is required for monthly billing cycle.')
             if duration_years:
-                raise forms.ValidationError('Please only specify duration in months for monthly billing.')
+                logger.debug("Normalizing: clearing duration_years because cycle is monthly")
+                cleaned_data['duration_years'] = None
         elif billing_cycle == 'yearly':
             if not duration_years:
+                logger.debug("Validation error: yearly cycle missing duration_years")
                 raise forms.ValidationError('Duration in years is required for yearly billing cycle.')
             if duration_months:
-                raise forms.ValidationError('Please only specify duration in years for yearly billing.')
+                logger.debug("Normalizing: clearing duration_months because cycle is yearly")
+                cleaned_data['duration_months'] = None
 
         return cleaned_data
 
