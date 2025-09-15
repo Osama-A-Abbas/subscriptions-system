@@ -1,0 +1,61 @@
+<div id="recent-subs" class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Recent Subscriptions</h5>
+    <a
+      href="{% url 'subscription_list' %}"
+      class="btn btn-sm btn-outline-primary"
+      >View More</a
+    >
+  </div>
+  <div class="card-body">
+    {% if subscriptions %}
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Billing Cycle</th>
+            <th>Next Renewal</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for subscription in subscriptions|slice:":5" %}
+          <tr>
+            <td>{{ subscription.name }}</td>
+            <td>
+                {% if subscription.billing_cycle == 'monthly' %}
+                ${{subscription.monthly_cost|floatformat:2 }}/month 
+                {% else %}
+                ${{subscription.yearly_cost|floatformat:2 }}/year
+                {% endif %}
+            </td>
+            <td>
+              <span
+                class="badge bg-{% if subscription.billing_cycle == 'monthly' %}primary{% else %}success{% endif %}"
+              >
+                {{ subscription.billing_cycle|title }}
+              </span>
+            </td>
+            <td>{{ subscription.renewal_date|date:"M d, Y" }}</td>
+            <td>
+              {% include 'partials/badge_boolean.html' with value=subscription.is_active true_label='Active' false_label='Inactive' %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="text-center py-4">
+      <i class="fas fa-credit-card fa-3x text-muted mb-3"></i>
+      <h5 class="text-muted">No subscriptions yet</h5>
+      <p class="text-muted">Start by adding your first subscription!</p>
+      <a href="{% url 'add_subscription' %}" class="btn btn-primary">
+        <i class="fas fa-plus me-1"></i>Add Subscription
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
