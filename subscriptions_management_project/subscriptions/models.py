@@ -6,6 +6,9 @@ from django.core.exceptions import ValidationError
 from dateutil.relativedelta import relativedelta
 from datetime import timedelta
 from decimal import Decimal
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Used in Subscription Model to determine the billing cycle choices
 BILLING_CYCLE_CHOICES = [
@@ -438,13 +441,16 @@ class Subscription(models.Model):
 
         super().save(*args, **kwargs)
 
-        # Reconcile payment records if the schedule changed
+        # If the schedule changed, reset payments entirely (Option A)
         if schedule_changed:
             try:
-                self.reconcile_payments()
-            except Exception:
-                # Do not hard-fail save on reconciliation issues
-                pass
+                result = self.reset_payments_for_new_schedule()
+                logger.info(
+                    "Subscription %s schedule changed; reset payments: deleted=%s",
+                    self.pk, result.get("deleted", 0)
+                )
+            except Exception as exc:
+                logger.exception("Failed to reset payments for subscription %s: %s", self.pk, exc)
 
     def _generate_intended_periods(self):
         """Return a list of tuples (start_date, end_date) for intended periods."""
@@ -507,6 +513,16 @@ class Subscription(models.Model):
                     created += 1
 
         return {"deleted_unpaid": deleted, "created_placeholders": created}
+
+    def reset_payments_for_new_schedule(self):
+        """Delete all payments for this subscription (no placeholders created).
+
+        Returns dict with count of deleted rows.
+        """
+        qs = self.payments.all()
+        deleted = qs.count()
+        qs.delete()
+        return {"deleted": deleted}
         
         
         

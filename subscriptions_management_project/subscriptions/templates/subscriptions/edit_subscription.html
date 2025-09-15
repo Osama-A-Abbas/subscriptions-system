@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% block title %}Edit {{ subscription.name }} -
-Subscription Manager{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}Edit {{ subscription.name }} - Subscription Manager{% endblock %} {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-8 col-lg-6">
     <div class="card shadow">
@@ -142,7 +141,11 @@ Subscription Manager{% endblock %} {% block content %}
               class="btn btn-secondary me-md-2"
               >Cancel</a
             >
-            <button type="submit" class="btn btn-warning">
+            <button
+              type="button"
+              class="btn btn-warning"
+              id="submit-confirmation-trigger"
+            >
               <i class="fas fa-save me-1"></i>Update Subscription
             </button>
           </div>
@@ -151,7 +154,9 @@ Subscription Manager{% endblock %} {% block content %}
     </div>
   </div>
 </div>
+{% include 'partials/confirm_modal.html' with modal_id='confirmScheduleChange' title='Confirm Schedule Change' body='Changing start date, billing cycle, or duration will delete all existing payments for this subscription and reset the schedule. This cannot be undone. Continue?' confirm_label='Yes, reset payments' confirm_class='btn-danger' %} 
 {% endblock %} {% block extra_js %}
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const billingCycleSelect = document.getElementById(
@@ -202,6 +207,26 @@ Subscription Manager{% endblock %} {% block content %}
 
     // Listen for changes to billing cycle
     billingCycleSelect.addEventListener("change", toggleDurationFields);
+
+    // Confirmation flow on submit
+    const trigger = document.getElementById("submit-confirmation-trigger");
+    const confirmModalEl = document.getElementById("confirmScheduleChange");
+    const confirmBtn = document.getElementById(
+      "confirmScheduleChange__confirmBtn"
+    );
+    const bsModal = confirmModalEl ? new bootstrap.Modal(confirmModalEl) : null;
+
+    if (trigger && bsModal && confirmBtn) {
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        bsModal.show();
+      });
+      confirmBtn.addEventListener("click", function () {
+        bsModal.hide();
+        // Submit the form after confirmation
+        trigger.closest("form").submit();
+      });
+    }
   });
 </script>
 {% endblock %}

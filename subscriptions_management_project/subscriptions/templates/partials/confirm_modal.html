@@ -1,0 +1,34 @@
+{# Reusable Bootstrap confirm modal. Usage: {% include
+'partials/confirm_modal.html' with modal_id='confirmX' title='Confirm' body='Are
+you sure?' confirm_label='Confirm' cancel_label='Cancel'
+confirm_class='btn-danger' %} #}
+<div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ title }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-0">{{ body }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ cancel_label|default:'Cancel' }}
+        </button>
+        <button
+          type="button"
+          class="btn {{ confirm_class|default:'btn-danger' }}"
+          id="{{ modal_id }}__confirmBtn"
+        >
+          {{ confirm_label|default:'Confirm' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
