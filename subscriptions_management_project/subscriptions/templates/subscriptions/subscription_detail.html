@@ -135,8 +135,7 @@
                 class="{% if period.is_current %}table-info{% elif period.is_past_due and not period.is_paid %}table-danger{% elif period.is_paid %}table-success{% endif %}"
               >
                 <td>
-                  {{ period.start|date:"M d, Y" }} - 
-                  {{ period.end|date:"M d, Y"}}
+                  {{ period.start|date:"M d, Y" }} - {{ period.end|date:"M d, Y"}}
                   {% if period.is_current %}
                   <span class="badge bg-info">Current</span>{% endif %}
                 </td>
@@ -148,8 +147,7 @@
                   </span>
                 </td>
                 <td>
-                  {% if period.payment %}
-                  {{ period.payment.payment_date|date:"M d, Y" }}
+                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }}
                   {% else %} - {% endif %}
                 </td>
                 <td>${{ period.amount|floatformat:2 }}</td>
