@@ -132,3 +132,5 @@ WARNING 2025-09-16 01:43:55,274 django.server log_message 212 "POST /api/check-u
 WARNING 2025-09-16 01:43:56,308 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
 INFO 2025-09-16 01:43:56,537 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 200 11737
 INFO 2025-09-16 01:43:56,551 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:02:24,618 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
+INFO 2025-09-16 02:02:25,249 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
