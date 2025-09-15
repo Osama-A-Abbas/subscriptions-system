@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% block title %}{{ subscription.name }} -
-Subscription Manager{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}{{ subscription.name }} - Subscription Manager{% endblock %} {% block content %}
 <div class="row">
   <div class="col-12">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -71,11 +70,11 @@ Subscription Manager{% endblock %} {% block content %}
         {% endif %}
         <p>
           <strong>Auto Renewal:</strong>
-          <span
-            class="badge bg-{% if subscription.auto_renewal %}success{% else %}danger{% endif %}"
-          >
-            {{ subscription.auto_renewal|yesno:"Enabled,Disabled" }}
-          </span>
+          {% include 'partials/badge_boolean.html' with value=subscription.auto_renewal true_label='Enabled' false_label='Disabled' %}
+        </p>
+        <p>
+          <strong>Status:</strong>
+          {% include 'partials/badge_boolean.html' with value=subscription.is_active true_label='Active' false_label='Inactive' %}
         </p>
       </div>
     </div>
@@ -98,8 +97,8 @@ Subscription Manager{% endblock %} {% block content %}
         </p>
         <p>
           <strong>Progress:</strong>
-          {{ subscription.get_paid_payments_count }} / 
-          {{subscription.get_total_payments|default:'0' }} 
+          {{ subscription.get_paid_payments_count }} /
+          {{subscription.get_total_payments|default:'0' }}
           ({% firstof subscription.get_payment_progress_percentage 0 %}%)
         </p>
         <p><strong>Total Payments:</strong> {{ payments.count }}</p>
@@ -128,14 +127,16 @@ Subscription Manager{% endblock %} {% block content %}
               </tr>
             </thead>
             <tbody>
-              {% for period in billing_periods %} {% comment %}Row color
+              {% for period in billing_periods %} 
+              {% comment %}Row color
               precedence: current (blue) > overdue-unpaid (red) > paid (green) >
               future-unpaid (default){% endcomment %}
               <tr
                 class="{% if period.is_current %}table-info{% elif period.is_past_due and not period.is_paid %}table-danger{% elif period.is_paid %}table-success{% endif %}"
               >
                 <td>
-                  {{ period.start|date:"M d, Y" }} - {{ period.end|date:"M d, Y"}} 
+                  {{ period.start|date:"M d, Y" }} - 
+                  {{ period.end|date:"M d, Y"}}
                   {% if period.is_current %}
                   <span class="badge bg-info">Current</span>{% endif %}
                 </td>
@@ -147,8 +148,9 @@ Subscription Manager{% endblock %} {% block content %}
                   </span>
                 </td>
                 <td>
-                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }}
-                   {% else %} - {% endif %}
+                  {% if period.payment %}
+                  {{ period.payment.payment_date|date:"M d, Y" }}
+                  {% else %} - {% endif %}
                 </td>
                 <td>${{ period.amount|floatformat:2 }}</td>
                 <td>
