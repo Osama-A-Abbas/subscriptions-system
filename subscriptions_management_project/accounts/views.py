@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from subscriptions.models import Subscription
+from subscriptions.selectors import get_user_subscriptions, compute_dashboard_totals
 
 def register(request):
     if request.method == 'POST':
@@ -24,25 +25,19 @@ def profile(request):
 
 @login_required
 def dashboard(request):
-    # Get user's subscriptions
-    subscriptions = Subscription.objects.filter(user=request.user, is_active=True)
-    
-    # Calculate total monthly cost
-    total_monthly = sum(sub.monthly_cost or 0 for sub in subscriptions if sub.billing_cycle == 'monthly')
-    total_yearly = sum(sub.yearly_cost or 0 for sub in subscriptions if sub.billing_cycle == 'yearly')
-    
-    # Convert yearly to monthly equivalent for total
-    yearly_monthly_equivalent = total_yearly / 12 if total_yearly > 0 else 0
-    total_monthly_cost = total_monthly + yearly_monthly_equivalent
-    
-    # Calculate yearly cost (monthly * 12)
-    total_yearly_cost = total_monthly_cost * 12
-    
+    """Dashboard view using selectors (thin view).
+
+    - Fetches active subscriptions via selector with eager loading
+    - Computes totals via selector to keep logic out of the view
+    """
+    subscriptions_qs = get_user_subscriptions(request.user)
+    total_monthly_cost, total_yearly_cost, total_count = compute_dashboard_totals(subscriptions_qs)
+
     context = {
-        'subscriptions': subscriptions,
+        'subscriptions': list(subscriptions_qs),  # materialize for reuse in templates
         'total_monthly_cost': total_monthly_cost,
         'total_yearly_cost': total_yearly_cost,
-        'total_subscriptions': subscriptions.count(),
+        'total_subscriptions': total_count,
     }
     return render(request, 'dashboard.html', context)
 
