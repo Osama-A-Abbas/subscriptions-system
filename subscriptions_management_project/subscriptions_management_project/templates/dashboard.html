@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}Dashboard - Subscription Manager{%endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %} Dashboard -Subscription Manager{% endblock %} {% block content %}
 <div class="row">
   <div class="col-12">
     <h1 class="mb-4">
@@ -80,9 +80,19 @@
         >
           <i class="fas fa-clock me-1"></i>View Recent
         </button>
+        <span class="mx-2">|</span>
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          id="action-compare"
+        >
+          <i class="fas fa-chart-line me-1"></i>Compare Plans
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Dynamic Content Container -->
   <div class="col-12 mt-3" id="actions-container">
     <div class="card">
       <div
@@ -92,15 +102,16 @@
         <a
           href="{% url 'subscription_list' %}"
           class="btn btn-sm btn-outline-primary"
-          >View More</a
         >
+          View More
+        </a>
       </div>
       <div class="card-body">
-        {% with subs=subscriptions|slice:":5" %}
-        {% include 'partials/subscriptions_table.html' with subscriptions=subs %}
-        {% endwith %}
-          </div>
+        {% with subs=subscriptions|slice:":5" %} {% include 'partials/subscriptions_table.html' with subscriptions=subs %} {% endwith %}
+      </div>
     </div>
   </div>
 </div>
+{% endblock %} {% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}

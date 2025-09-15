@@ -1,0 +1,26 @@
+{% comment %} Reusable form actions component with cancel and submit buttons.
+Usage: {% include 'partials/form_actions.html' with
+cancel_url="subscription_list" submit_text="Add Subscription"
+submit_class="btn-primary" %} Parameters: - cancel_url: URL name for cancel
+button (optional) - cancel_text: Text for cancel button (default: "Cancel") -
+submit_text: Text for submit button (default: "Submit") - submit_class: CSS
+class for submit button (default: "btn-primary") - submit_icon: Icon for submit
+button (optional) - show_cancel: Whether to show cancel button (default: true)
+{% endcomment %}
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  {% if show_cancel|default:true %}
+  <a
+    href="{% if cancel_url %}{% url cancel_url %}{% else %}javascript:history.back(){% endif %}"
+    class="btn btn-secondary me-md-2"
+  >
+    {{ cancel_text|default:"Cancel" }}
+  </a>
+  {% endif %}
+
+  <button type="submit" class="btn {{ submit_class|default:'btn-primary' }}">
+    {% if submit_icon %}
+    <i class="{{ submit_icon }} me-1"></i>
+    {% endif %} {{ submit_text|default:"Submit" }}
+  </button>
+</div>

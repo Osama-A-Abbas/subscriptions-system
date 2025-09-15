@@ -1,0 +1,29 @@
+{% load form_extras %} 
+{% comment %} Reusable duration fields component for
+subscription forms. Usage: {% include 'partials/duration_fields.html' with
+form=form %} Parameters: - form: Django form instance {% endcomment %}
+
+<!-- Duration Fields -->
+<div class="row">
+  <div class="col-md-6 mb-3" id="duration-months-field" style="display: none">
+    <label for="{{ form.duration_months.id_for_label }}" class="form-label">
+      {{ form.duration_months.label }}
+    </label>
+    {{ form.duration_months|add_class:"form-control" }}
+    {% if form.duration_months.errors %}
+      <div class="text-danger small">{{ form.duration_months.errors.0 }}</div>
+    {% endif %}
+    <div class="form-text">How many months will this subscription last?</div>
+  </div>
+
+  <div class="col-md-6 mb-3" id="duration-years-field" style="display: none">
+    <label for="{{ form.duration_years.id_for_label }}" class="form-label">
+      {{ form.duration_years.label }}
+    </label>
+    {{ form.duration_years|add_class:"form-control" }}
+    {% if form.duration_years.errors %}
+      <div class="text-danger small">{{ form.duration_years.errors.0 }}</div>
+    {% endif %}
+    <div class="form-text">How many years will this subscription last?</div>
+  </div>
+</div>
