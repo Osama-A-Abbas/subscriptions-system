@@ -15,10 +15,13 @@ from django.db import transaction
 from django.core.exceptions import ValidationError
 
 from ..models import Subscription
+from ..exceptions import PaymentError, ValidationError as CustomValidationError, BusinessLogicError
+from ..error_handlers import handle_service_errors
 
 logger = logging.getLogger(__name__)
 
 
+@handle_service_errors('PaymentService')
 @transaction.atomic
 def mark_period_paid(subscription: Subscription, period_start: date, payment_date: Optional[date] = None) -> Dict[str, any]:
     """
@@ -63,6 +66,7 @@ def mark_period_paid(subscription: Subscription, period_start: date, payment_dat
 
 
 @transaction.atomic
+@handle_service_errors('PaymentService')
 def mark_period_unpaid(subscription: Subscription, period_start: date) -> Dict[str, any]:
     """
     Mark a specific billing period as unpaid.

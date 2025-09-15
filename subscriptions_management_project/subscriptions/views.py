@@ -22,11 +22,13 @@ from .forms import SubscriptionForm, PaymentForm
 from .services import mark_period_paid, mark_period_unpaid
 from .selectors import get_user_subscriptions
 from .mixins import UserOwnershipMixin, LoggingMixin, MessageMixin, TransactionMixin, ContextDataMixin
+from .error_handlers import handle_errors, ErrorHandlerMixin, log_operation
+from .exceptions import SubscriptionError, PaymentError, ValidationError, BusinessLogicError
 
 logger = logging.getLogger(__name__)
 
 
-class SubscriptionListView(LoginRequiredMixin, LoggingMixin, MessageMixin, ContextDataMixin, ListView):
+class SubscriptionListView(LoginRequiredMixin, LoggingMixin, MessageMixin, ContextDataMixin, ErrorHandlerMixin, ListView):
     """
     List view for user's subscriptions with enhanced functionality.
     
@@ -64,7 +66,7 @@ class SubscriptionListView(LoginRequiredMixin, LoggingMixin, MessageMixin, Conte
         return context
 
 
-class SubscriptionDetailView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixin, MessageMixin, ContextDataMixin, DetailView):
+class SubscriptionDetailView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixin, MessageMixin, ContextDataMixin, ErrorHandlerMixin, DetailView):
     """
     Detail view for individual subscription with billing periods.
     
@@ -107,7 +109,7 @@ class SubscriptionDetailView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
         return context
 
 
-class SubscriptionCreateView(LoginRequiredMixin, LoggingMixin, MessageMixin, ContextDataMixin, CreateView):
+class SubscriptionCreateView(LoginRequiredMixin, LoggingMixin, MessageMixin, ContextDataMixin, ErrorHandlerMixin, CreateView):
     """
     Create view for new subscriptions with enhanced validation.
     
@@ -145,7 +147,7 @@ class SubscriptionCreateView(LoginRequiredMixin, LoggingMixin, MessageMixin, Con
         return super().form_invalid(form)
 
 
-class SubscriptionUpdateView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixin, MessageMixin, ContextDataMixin, UpdateView):
+class SubscriptionUpdateView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixin, MessageMixin, ContextDataMixin, ErrorHandlerMixin, UpdateView):
     """
     Update view for existing subscriptions with change tracking.
     
@@ -199,7 +201,7 @@ class SubscriptionUpdateView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
             return self.form_invalid(form)
 
 
-class SubscriptionDeleteView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixin, MessageMixin, ContextDataMixin, DeleteView):
+class SubscriptionDeleteView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixin, MessageMixin, ContextDataMixin, ErrorHandlerMixin, DeleteView):
     """
     Delete view for subscriptions with confirmation.
     
@@ -237,7 +239,7 @@ class SubscriptionDeleteView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
             return redirect('subscription_list')
 
 
-class PaymentActionView(LoginRequiredMixin, View):
+class PaymentActionView(LoginRequiredMixin, ErrorHandlerMixin, View):
     """
     Base view for payment actions (paid/unpaid) with confirmation.
     
@@ -338,7 +340,7 @@ class MarkPaymentUnpaidView(PaymentActionView):
             return redirect('subscription_detail', pk=subscription.pk)
 
 
-class AddPaymentView(LoginRequiredMixin, CreateView):
+class AddPaymentView(LoginRequiredMixin, ErrorHandlerMixin, CreateView):
     """
     View for manually adding payment records.
     

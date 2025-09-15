@@ -16,7 +16,12 @@ class SubscriptionFormManager {
     this.durationMonthsInput = null;
     this.durationYearsInput = null;
 
-    this.init();
+    try {
+      this.init();
+    } catch (error) {
+      console.error("Error initializing SubscriptionFormManager:", error);
+      this.showError("Failed to initialize form. Please refresh the page.");
+    }
   }
 
   init() {
@@ -116,6 +121,15 @@ class SubscriptionFormManager {
       this.durationYearsInput.value = "";
     }
   }
+
+  showError(message) {
+    // Show error message to user
+    if (window.Utils && window.Utils.showToast) {
+      window.Utils.showToast(message, "error");
+    } else {
+      alert(message);
+    }
+  }
 }
 
 class ConfirmationModalManager {
@@ -125,7 +139,12 @@ class ConfirmationModalManager {
     this.modal = null;
     this.confirmBtn = null;
 
-    this.init();
+    try {
+      this.init();
+    } catch (error) {
+      console.error("Error initializing ConfirmationModalManager:", error);
+      this.showError("Failed to initialize confirmation modal.");
+    }
   }
 
   init() {
@@ -167,32 +186,53 @@ class ConfirmationModalManager {
       }
     }
   }
+
+  showError(message) {
+    // Show error message to user
+    if (window.Utils && window.Utils.showToast) {
+      window.Utils.showToast(message, "error");
+    } else {
+      alert(message);
+    }
+  }
 }
 
 // Initialize forms when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize subscription forms
-  const subscriptionForms = document.querySelectorAll("form");
-  subscriptionForms.forEach((form) => {
-    // Check if this is a subscription form by looking for billing_cycle field
-    const billingCycleField = form.querySelector(
-      'select[name="billing_cycle"]'
-    );
-    if (billingCycleField) {
-      new SubscriptionFormManager(form);
-    }
-  });
+  try {
+    // Initialize subscription forms
+    const subscriptionForms = document.querySelectorAll("form");
+    subscriptionForms.forEach((form) => {
+      try {
+        // Check if this is a subscription form by looking for billing_cycle field
+        const billingCycleField = form.querySelector(
+          'select[name="billing_cycle"]'
+        );
+        if (billingCycleField) {
+          new SubscriptionFormManager(form);
+        }
+      } catch (error) {
+        console.error("Error initializing form:", error);
+      }
+    });
 
-  // Initialize confirmation modals
-  const confirmationTriggers = document.querySelectorAll(
-    '[id*="confirmation-trigger"]'
-  );
-  confirmationTriggers.forEach((trigger) => {
-    const modalId =
-      trigger.getAttribute("data-modal-id") ||
-      trigger.id.replace("-trigger", "");
-    new ConfirmationModalManager(trigger, modalId);
-  });
+    // Initialize confirmation modals
+    const confirmationTriggers = document.querySelectorAll(
+      '[id*="confirmation-trigger"]'
+    );
+    confirmationTriggers.forEach((trigger) => {
+      try {
+        const modalId =
+          trigger.getAttribute("data-modal-id") ||
+          trigger.id.replace("-trigger", "");
+        new ConfirmationModalManager(trigger, modalId);
+      } catch (error) {
+        console.error("Error initializing confirmation modal:", error);
+      }
+    });
+  } catch (error) {
+    console.error("Error during form initialization:", error);
+  }
 });
 
 // Export for potential external use
