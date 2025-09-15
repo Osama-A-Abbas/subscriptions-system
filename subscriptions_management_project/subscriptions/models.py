@@ -287,6 +287,23 @@ class Subscription(models.Model):
         
         return self.renewal_date + delta
     
+    def days_until_renewal(self):
+        """Return number of days until next renewal, or None if unknown"""
+        if not self.renewal_date or not self.is_active:
+            return None
+        today = timezone.now().date()
+        return (self.renewal_date - today).days
+    
+    def is_renewing_within(self, days: int = 7) -> bool:
+        """Whether the subscription renews within given days from today."""
+        remaining_days = self.days_until_renewal()
+        if remaining_days is None:
+            return False
+        # Do not flag if already past due
+        if remaining_days < 0:
+            return False
+        return remaining_days <= days
+    
     def get_payment_status(self):
         """Get current payment status"""
         today = timezone.now().date()
@@ -328,13 +345,33 @@ class Subscription(models.Model):
         return self.get_payment_status() == "paid"
     
     def save(self, *args, **kwargs):
-        """Override save to set initial renewal date"""
-        if not self.renewal_date:
+        """Override save to keep renewal_date in sync with start_date and billing_cycle.
+
+        Behaviors:
+        - On create: if no renewal_date provided, set to start_date + 1 period.
+        - On update: if start_date or billing_cycle changed, reset renewal_date relative to start_date.
+        """
+        should_reset_renewal = False
+
+        if self.pk:
+            try:
+                original = Subscription.objects.get(pk=self.pk)
+                if original.start_date != self.start_date or original.billing_cycle != self.billing_cycle:
+                    should_reset_renewal = True
+            except Subscription.DoesNotExist:
+                # If somehow not found, treat as create
+                should_reset_renewal = not bool(self.renewal_date)
+        else:
+            # New instance
+            should_reset_renewal = not bool(self.renewal_date)
+
+        if should_reset_renewal:
             if self.billing_cycle == "monthly":
                 delta = relativedelta(months=1)
             else:
                 delta = relativedelta(years=1)
             self.renewal_date = self.start_date + delta
+
         super().save(*args, **kwargs)
         
         

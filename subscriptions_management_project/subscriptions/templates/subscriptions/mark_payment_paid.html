@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% block title %}Mark Payment as Paid - {{
-subscription.name }}{% endblock %} {% block content %}
+{% extends 'base.html' %} {% block title %}Mark Payment as Paid - 
+{{subscription.name }}{% endblock %} {% block content %}
+
 <div class="row justify-content-center">
   <div class="col-md-6">
     <div class="card shadow">
@@ -8,16 +9,16 @@ subscription.name }}{% endblock %} {% block content %}
       </div>
       <div class="card-body">
         <div class="alert alert-info">
-          <h5>Payment Details</h5>
+          <h5 class=><strong>Payment Details:</strong></h5>
           <p><strong>Subscription:</strong> {{ subscription.name }}</p>
           <p><strong>Period Start:</strong> {{ period_start|date:"M d, Y" }}</p>
           <p>
-            <strong>Amount:</strong> ${{
-            subscription.get_current_cost|floatformat:2 }}
+            <strong>Amount:</strong> 
+            ${{subscription.get_current_cost|floatformat:2 }}
           </p>
           <p>
-            <strong>Billing Cycle:</strong> {{
-            subscription.get_billing_cycle_display }}
+            <strong>Billing Cycle:</strong> 
+            {{subscription.get_billing_cycle_display }}
           </p>
         </div>
 
