@@ -1,0 +1,5 @@
+
+<span class="badge bg-{% if value %}success{% else %}danger{% endif %}">
+  {% if value %} {{ true_label|default:'Enabled' }} {% else %} {{
+  false_label|default:'Disabled' }} {% endif %}
+</span>

@@ -26,6 +26,7 @@
                 <th>Next Renewal</th>
                 <th>Auto Renewal</th>
                 <th>Category</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -36,7 +37,7 @@
               >
                 <td>{{ subscription.name }}</td>
                 <td>
-                  {% if subscription.billing_cycle == 'monthly' %}
+                  {% if subscription.billing_cycle == 'monthly' %} 
                   ${{ subscription.monthly_cost|floatformat:2 }}/month {% else %}
                   ${{ subscription.yearly_cost|floatformat:2 }}/year {% endif %}
                 </td>
@@ -57,13 +58,12 @@
                   {% endif %}
                 </td>
                 <td>
-                  <span
-                    class="badge bg-{% if subscription.auto_renewal %}success{% else %}danger{% endif %}"
-                  >
-                    {{ subscription.auto_renewal|yesno:"Enabled,Disabled" }}
-                  </span>
+                  {% include 'partials/badge_boolean.html' with value=subscription.auto_renewal true_label='Enabled' false_label='Disabled' %}
                 </td>
                 <td>{{ subscription.category.name|default:"No Category" }}</td>
+                <td>
+                  {% include 'partials/badge_boolean.html' with value=subscription.is_active true_label='Active' false_label='Inactive' %}
+                </td>
                 <td>
                   <a
                     href="{% url 'subscription_detail' subscription.pk %}"
