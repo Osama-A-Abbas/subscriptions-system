@@ -1,34 +1,60 @@
 <!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="deleteModalLabel">
-                    <i class="fas fa-exclamation-triangle me-2"></i>Delete Subscription
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete the subscription <strong id="subscriptionName"></strong>?</p>
-                <p class="text-muted">This action cannot be undone and will also delete all associated payment records.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-trash me-1"></i>Delete Subscription
-                    </button>
-                </form>
-            </div>
-        </div>
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="deleteModalLabel">
+          <i class="fas fa-exclamation-triangle me-2"></i>Delete Subscription
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure you want to delete the subscription
+          <strong id="subscriptionName"></strong>?
+        </p>
+        <p class="text-muted">
+          This action cannot be undone and will also delete all associated
+          payment records.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <form id="deleteForm" method="post" style="display: inline">
+          {% csrf_token %}
+          <input type="hidden" id="nextUrl" name="next" value="" />
+          <button type="submit" class="btn btn-danger">
+            <i class="fas fa-trash me-1"></i>Delete Subscription
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <script>
-function confirmDelete(subscriptionId, subscriptionName) {
-    document.getElementById('subscriptionName').textContent = '"' + subscriptionName + '"';
-    document.getElementById('deleteForm').action = '/subscriptions/' + subscriptionId + '/delete/';
-    new bootstrap.Modal(document.getElementById('deleteModal')).show();
-}
+  function confirmDelete(subscriptionId, subscriptionName) {
+    document.getElementById("subscriptionName").textContent =
+      '"' + subscriptionName + '"';
+    document.getElementById("deleteForm").action =
+      "/subscriptions/" + subscriptionId + "/delete/";
+
+    // Set the current page URL as the next parameter for proper redirect
+    document.getElementById("nextUrl").value = window.location.pathname;
+
+    new bootstrap.Modal(document.getElementById("deleteModal")).show();
+  }
 </script>

@@ -134,3 +134,68 @@ INFO 2025-09-16 01:43:56,537 django.server log_message 212 "POST /accounts/profi
 INFO 2025-09-16 01:43:56,551 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
 INFO 2025-09-16 02:02:24,618 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
 INFO 2025-09-16 02:02:25,249 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:03:52,551 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 02:03:52,565 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:04:53,960 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:04:57,102 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 12004
+INFO 2025-09-16 02:04:57,163 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 200 6377
+INFO 2025-09-16 02:05:06,913 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 02:05:08,715 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 02:05:10,541 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18472
+INFO 2025-09-16 02:05:14,849 django.server log_message 212 "POST /subscriptions/14/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:05:14,869 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 17306
+INFO 2025-09-16 02:05:19,026 django.server log_message 212 "POST /subscriptions/13/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:05:19,044 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 16140
+INFO 2025-09-16 02:05:21,803 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14573
+INFO 2025-09-16 02:07:18,897 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 16469
+INFO 2025-09-16 02:07:23,356 django.server log_message 212 "POST /subscriptions/12/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:07:23,372 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 14977
+ERROR 2025-09-16 02:07:32,476 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:07:36,885 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:07:45,333 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:07:49,568 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 14977
+INFO 2025-09-16 02:07:51,022 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:07:57,690 django.server log_message 212 "POST /subscriptions/11/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:07:57,702 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 13680
+ERROR 2025-09-16 02:07:59,297 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:08:42,556 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 16343
+INFO 2025-09-16 02:08:50,253 django.server log_message 212 "POST /subscriptions/8/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:08:50,266 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 12520
+INFO 2025-09-16 02:11:54,645 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:11:55,247 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:19,242 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:12:19,997 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:34,699 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:12:35,281 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:47,955 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:12:48,636 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:49,179 django.server log_message 212 "POST /subscriptions/6/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:12:49,208 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:12:53,945 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:13:03,091 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10667
+INFO 2025-09-16 02:13:10,533 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10677
+INFO 2025-09-16 02:13:30,040 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10678
+INFO 2025-09-16 02:13:30,052 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:13:41,388 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10678
+INFO 2025-09-16 02:13:48,033 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:13:51,552 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:13:53,130 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:14:13,851 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:14:13,864 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 13159
+INFO 2025-09-16 02:14:19,392 django.server log_message 212 "GET /subscriptions/15/edit/ HTTP/1.1" 200 12007
+INFO 2025-09-16 02:14:22,222 django.server log_message 212 "GET /subscriptions/15/ HTTP/1.1" 200 12042
+INFO 2025-09-16 02:14:27,313 django.server log_message 212 "POST /subscriptions/15/delete/ HTTP/1.1" 302 0
+ERROR 2025-09-16 02:14:27,346 django.server log_message 212 "GET /subscriptions/15/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:14:38,064 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:16:09,235 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:09,771 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:16:25,547 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:26,086 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:16:34,631 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:35,209 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:16:44,800 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:45,323 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:17:12,506 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:17:13,097 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:17:26,816 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:17:27,329 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader

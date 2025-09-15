@@ -347,3 +347,511 @@ INFO 2025-09-16 01:43:56,531 subscriptions.middleware process_request 58 Request
 INFO 2025-09-16 01:43:56,533 subscriptions.middleware process_request 59 User: ahmed
 INFO 2025-09-16 01:43:56,533 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-16 01:43:56,537 subscriptions.middleware process_response 66 Response: 200 for POST /accounts/profile/
+INFO 2025-09-16 02:03:52,524 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:03:52,528 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:03:52,528 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:03:52,551 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 02:04:57,067 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/edit/
+INFO 2025-09-16 02:04:57,070 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:04:57,070 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:04:57,101 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/edit/
+INFO 2025-09-16 02:05:06,901 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:05:06,904 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:06,904 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:06,912 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 02:05:08,708 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:05:08,710 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:08,710 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:08,714 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 02:05:10,528 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:05:10,530 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:10,530 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:10,541 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:05:14,819 subscriptions.middleware process_request 58 Request: POST /subscriptions/14/delete/
+INFO 2025-09-16 02:05:14,821 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:14,821 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:14,849 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/14/delete/
+INFO 2025-09-16 02:05:14,852 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:05:14,858 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:14,858 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:14,868 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:05:19,010 subscriptions.middleware process_request 58 Request: POST /subscriptions/13/delete/
+INFO 2025-09-16 02:05:19,013 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:19,014 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:19,025 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/13/delete/
+INFO 2025-09-16 02:05:19,029 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:05:19,034 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:19,034 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:19,043 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:05:21,796 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:05:21,798 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:05:21,798 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:05:21,803 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 02:07:18,886 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:07:18,889 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:18,889 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:18,897 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 02:07:23,347 subscriptions.middleware process_request 58 Request: POST /subscriptions/12/delete/
+INFO 2025-09-16 02:07:23,349 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:23,349 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:23,356 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/12/delete/
+INFO 2025-09-16 02:07:23,358 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:07:23,361 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:23,361 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:23,371 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:07:32,364 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:07:32,367 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:32,367 subscriptions.middleware process_request 60 IP: 127.0.0.1
+ERROR 2025-09-16 02:07:32,370 subscriptions.middleware process_exception 24 Unhandled exception in /accounts/dashboard/: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+ERROR 2025-09-16 02:07:32,370 subscriptions.middleware process_exception 25 Request method: GET
+ERROR 2025-09-16 02:07:32,370 subscriptions.middleware process_exception 26 Request user: ahmed
+ERROR 2025-09-16 02:07:32,473 subscriptions.middleware process_exception 27 Traceback: Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\views.py", line 100, in dashboard
+    return render(request, 'dashboard.html', context)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\defaulttags.py", line 1491, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+
+INFO 2025-09-16 02:07:32,474 subscriptions.middleware process_response 66 Response: 500 for GET /accounts/dashboard/
+INFO 2025-09-16 02:07:36,874 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:07:36,876 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:36,876 subscriptions.middleware process_request 60 IP: 127.0.0.1
+ERROR 2025-09-16 02:07:36,879 subscriptions.middleware process_exception 24 Unhandled exception in /accounts/dashboard/: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+ERROR 2025-09-16 02:07:36,879 subscriptions.middleware process_exception 25 Request method: GET
+ERROR 2025-09-16 02:07:36,879 subscriptions.middleware process_exception 26 Request user: ahmed
+ERROR 2025-09-16 02:07:36,883 subscriptions.middleware process_exception 27 Traceback: Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\views.py", line 100, in dashboard
+    return render(request, 'dashboard.html', context)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\defaulttags.py", line 1491, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+
+INFO 2025-09-16 02:07:36,884 subscriptions.middleware process_response 66 Response: 500 for GET /accounts/dashboard/
+INFO 2025-09-16 02:07:45,318 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:07:45,321 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:45,321 subscriptions.middleware process_request 60 IP: 127.0.0.1
+ERROR 2025-09-16 02:07:45,327 subscriptions.middleware process_exception 24 Unhandled exception in /accounts/dashboard/: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+ERROR 2025-09-16 02:07:45,327 subscriptions.middleware process_exception 25 Request method: GET
+ERROR 2025-09-16 02:07:45,327 subscriptions.middleware process_exception 26 Request user: ahmed
+ERROR 2025-09-16 02:07:45,331 subscriptions.middleware process_exception 27 Traceback: Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\views.py", line 100, in dashboard
+    return render(request, 'dashboard.html', context)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\defaulttags.py", line 1491, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+
+INFO 2025-09-16 02:07:45,332 subscriptions.middleware process_response 66 Response: 500 for GET /accounts/dashboard/
+INFO 2025-09-16 02:07:49,558 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:07:49,560 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:49,560 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:49,567 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:07:51,008 subscriptions.middleware process_request 58 Request: GET /subscriptions/add/
+INFO 2025-09-16 02:07:51,010 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:51,010 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:51,021 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/add/
+INFO 2025-09-16 02:07:57,680 subscriptions.middleware process_request 58 Request: POST /subscriptions/11/delete/
+INFO 2025-09-16 02:07:57,682 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:57,683 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:57,689 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/11/delete/
+INFO 2025-09-16 02:07:57,692 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:07:57,695 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:57,695 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:07:57,701 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:07:59,286 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:07:59,289 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:07:59,289 subscriptions.middleware process_request 60 IP: 127.0.0.1
+ERROR 2025-09-16 02:07:59,291 subscriptions.middleware process_exception 24 Unhandled exception in /accounts/dashboard/: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+ERROR 2025-09-16 02:07:59,292 subscriptions.middleware process_exception 25 Request method: GET
+ERROR 2025-09-16 02:07:59,292 subscriptions.middleware process_exception 26 Request user: ahmed
+ERROR 2025-09-16 02:07:59,295 subscriptions.middleware process_exception 27 Traceback: Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\views.py", line 100, in dashboard
+    return render(request, 'dashboard.html', context)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\defaulttags.py", line 1491, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 120: 'endblock', expected 'endwith'. Did you forget to register or load this tag?
+
+INFO 2025-09-16 02:07:59,296 subscriptions.middleware process_response 66 Response: 500 for GET /accounts/dashboard/
+INFO 2025-09-16 02:08:42,545 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 02:08:42,547 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:08:42,548 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:08:42,556 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 02:08:50,242 subscriptions.middleware process_request 58 Request: POST /subscriptions/8/delete/
+INFO 2025-09-16 02:08:50,245 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:08:50,245 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:08:50,252 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/8/delete/
+INFO 2025-09-16 02:08:50,255 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:08:50,259 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:08:50,259 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:08:50,265 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:12:49,161 subscriptions.middleware process_request 58 Request: POST /subscriptions/6/delete/
+INFO 2025-09-16 02:12:49,164 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:12:49,164 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:12:49,179 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/6/delete/
+INFO 2025-09-16 02:12:49,183 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:12:49,186 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:12:49,187 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:12:49,207 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:12:53,924 subscriptions.middleware process_request 58 Request: GET /subscriptions/add/
+INFO 2025-09-16 02:12:53,927 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:12:53,927 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:12:53,944 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/add/
+INFO 2025-09-16 02:13:03,075 subscriptions.middleware process_request 58 Request: POST /subscriptions/add/
+INFO 2025-09-16 02:13:03,077 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:03,078 subscriptions.middleware process_request 60 IP: 127.0.0.1
+WARNING 2025-09-16 02:13:03,082 subscriptions.form_mixins log_validation_error 179 Form validation error: field=form, error=['Duration in years is required for yearly billing cycle.'], form=SubscriptionForm, context={}
+WARNING 2025-09-16 02:13:03,083 subscriptions.views form_invalid 145 Subscription form validation failed for user 2: <ul class="errorlist"><li>__all__[&quot;[&#x27;Duration in years is required for yearly billing cycle.&#x27;]&quot;, ValidationError([&#x27;Duration in years is required for yearly billing cycle.&#x27;])]</li></ul>
+INFO 2025-09-16 02:13:03,090 subscriptions.middleware process_response 66 Response: 200 for POST /subscriptions/add/
+INFO 2025-09-16 02:13:10,520 subscriptions.middleware process_request 58 Request: POST /subscriptions/add/
+INFO 2025-09-16 02:13:10,522 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:10,523 subscriptions.middleware process_request 60 IP: 127.0.0.1
+WARNING 2025-09-16 02:13:10,526 subscriptions.form_mixins validate_costs 125 Unusual cost ratio detected: monthly=5, yearly=23, ratio=2.608695652173913043478260869
+WARNING 2025-09-16 02:13:10,526 subscriptions.form_mixins log_validation_error 179 Form validation error: field=form, error=['Duration in years is required for yearly billing cycle.'], form=SubscriptionForm, context={}
+WARNING 2025-09-16 02:13:10,527 subscriptions.views form_invalid 145 Subscription form validation failed for user 2: <ul class="errorlist"><li>__all__[&quot;[&#x27;Duration in years is required for yearly billing cycle.&#x27;]&quot;, ValidationError([&#x27;Duration in years is required for yearly billing cycle.&#x27;])]</li></ul>
+INFO 2025-09-16 02:13:10,532 subscriptions.middleware process_response 66 Response: 200 for POST /subscriptions/add/
+INFO 2025-09-16 02:13:30,025 subscriptions.middleware process_request 58 Request: POST /subscriptions/add/
+INFO 2025-09-16 02:13:30,028 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:30,028 subscriptions.middleware process_request 60 IP: 127.0.0.1
+WARNING 2025-09-16 02:13:30,032 subscriptions.form_mixins log_validation_error 179 Form validation error: field=form, error=['Duration in years is required for yearly billing cycle.'], form=SubscriptionForm, context={}
+WARNING 2025-09-16 02:13:30,033 subscriptions.views form_invalid 145 Subscription form validation failed for user 2: <ul class="errorlist"><li>__all__[&quot;[&#x27;Duration in years is required for yearly billing cycle.&#x27;]&quot;, ValidationError([&#x27;Duration in years is required for yearly billing cycle.&#x27;])]</li></ul>
+INFO 2025-09-16 02:13:30,039 subscriptions.middleware process_response 66 Response: 200 for POST /subscriptions/add/
+INFO 2025-09-16 02:13:41,375 subscriptions.middleware process_request 58 Request: POST /subscriptions/add/
+INFO 2025-09-16 02:13:41,377 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:41,377 subscriptions.middleware process_request 60 IP: 127.0.0.1
+WARNING 2025-09-16 02:13:41,380 subscriptions.form_mixins log_validation_error 179 Form validation error: field=form, error=['Duration in years is required for yearly billing cycle.'], form=SubscriptionForm, context={}
+WARNING 2025-09-16 02:13:41,381 subscriptions.views form_invalid 145 Subscription form validation failed for user 2: <ul class="errorlist"><li>__all__[&quot;[&#x27;Duration in years is required for yearly billing cycle.&#x27;]&quot;, ValidationError([&#x27;Duration in years is required for yearly billing cycle.&#x27;])]</li></ul>
+INFO 2025-09-16 02:13:41,387 subscriptions.middleware process_response 66 Response: 200 for POST /subscriptions/add/
+INFO 2025-09-16 02:13:48,023 subscriptions.middleware process_request 58 Request: GET /subscriptions/add/
+INFO 2025-09-16 02:13:48,025 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:48,026 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:13:48,032 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/add/
+INFO 2025-09-16 02:13:51,544 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:13:51,547 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:51,547 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:13:51,552 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:13:53,118 subscriptions.middleware process_request 58 Request: GET /subscriptions/add/
+INFO 2025-09-16 02:13:53,120 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:13:53,121 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:13:53,129 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/add/
+INFO 2025-09-16 02:14:13,819 subscriptions.middleware process_request 58 Request: POST /subscriptions/add/
+INFO 2025-09-16 02:14:13,821 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:13,821 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:14:13,834 subscriptions.models.mixins.schedule_management reset_payments_for_new_schedule 211 Reset payments for subscription 15: deleted 0 payment records
+INFO 2025-09-16 02:14:13,834 subscriptions.models.subscription save 152 Subscription 15 schedule changed; reset payments: deleted=0
+INFO 2025-09-16 02:14:13,834 subscriptions.models.mixins.schedule_management refresh_billing_periods 92 Refreshing billing periods for subscription 15
+INFO 2025-09-16 02:14:13,843 subscriptions.models.mixins.schedule_management refresh_billing_periods 101 Refreshed billing periods for subscription 15: 2 periods generated
+INFO 2025-09-16 02:14:13,844 subscriptions.mixins log_action 52 View action: {'action': 'create', 'user_id': 2, 'view_name': 'SubscriptionCreateView', 'object': '55555'}
+INFO 2025-09-16 02:14:13,850 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/add/
+INFO 2025-09-16 02:14:13,854 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:14:13,857 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:13,857 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:14:13,864 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 02:14:19,376 subscriptions.middleware process_request 58 Request: GET /subscriptions/15/edit/
+INFO 2025-09-16 02:14:19,379 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:19,379 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:14:19,391 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/15/edit/
+INFO 2025-09-16 02:14:22,206 subscriptions.middleware process_request 58 Request: GET /subscriptions/15/
+INFO 2025-09-16 02:14:22,209 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:22,209 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:14:22,221 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/15/
+INFO 2025-09-16 02:14:27,302 subscriptions.middleware process_request 58 Request: POST /subscriptions/15/delete/
+INFO 2025-09-16 02:14:27,304 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:27,305 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:14:27,312 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/15/delete/
+INFO 2025-09-16 02:14:27,315 subscriptions.middleware process_request 58 Request: GET /subscriptions/15/
+INFO 2025-09-16 02:14:27,318 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:27,318 subscriptions.middleware process_request 60 IP: 127.0.0.1
+ERROR 2025-09-16 02:14:27,319 subscriptions.middleware process_exception 24 Unhandled exception in /subscriptions/15/: No Subscription found matching the query
+ERROR 2025-09-16 02:14:27,319 subscriptions.middleware process_exception 25 Request method: GET
+ERROR 2025-09-16 02:14:27,319 subscriptions.middleware process_exception 26 Request user: ahmed
+ERROR 2025-09-16 02:14:27,343 subscriptions.middleware process_exception 27 Traceback: Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\views\generic\detail.py", line 53, in get_object
+    obj = queryset.get()
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\db\models\query.py", line 637, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+subscriptions.models.subscription.Subscription.DoesNotExist: Subscription matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\views\generic\detail.py", line 108, in get
+    self.object = self.get_object()
+                  ~~~~~~~~~~~~~~~^^
+  File "C:\Python-Projects\subscriptions-system\venv\Lib\site-packages\django\views\generic\detail.py", line 55, in get_object
+    raise Http404(
+    ...<2 lines>...
+    )
+django.http.response.Http404: No Subscription found matching the query
+
+INFO 2025-09-16 02:14:27,345 subscriptions.middleware process_response 66 Response: 500 for GET /subscriptions/15/
+INFO 2025-09-16 02:14:38,053 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 02:14:38,055 subscriptions.middleware process_request 59 User: ahmed
+INFO 2025-09-16 02:14:38,056 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 02:14:38,063 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/

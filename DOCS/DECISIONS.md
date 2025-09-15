@@ -275,3 +275,162 @@ Core goals: allow users to track subscriptions, get renewal reminders, and analy
   └── views.py (refactored to CBVs)
   ```
 - **Decision**: This structure promotes separation of concerns, reusability, and maintainability
+
+## 7. Authentication System & Username Uniqueness (17 Sep 2025)
+
+### 7.1 Complete Authentication System Implementation
+
+**Decision**: Implement a comprehensive authentication system with full user management capabilities.
+
+**Rationale**:
+
+- Users need complete control over their accounts
+- Professional applications require robust authentication
+- Security and user experience are paramount
+
+**Implementation Details**:
+
+#### 7.1.1 Custom User Forms
+
+- **CustomUserCreationForm**: Extended Django's UserCreationForm to include email field
+- **UserProfileForm**: ModelForm for updating user profile information
+- **Features**:
+  - Email validation and uniqueness checking
+  - Bootstrap styling integration
+  - Comprehensive help text and validation messages
+  - Support for first name and last name fields
+
+#### 7.1.2 Authentication Views Integration
+
+- **Django Built-in Views**: Leveraged Django's authentication views with custom templates
+- **Custom Views**: Registration and profile management views
+- **URL Configuration**: Complete URL routing for all authentication operations
+- **Features**:
+  - Login/Logout with custom templates
+  - Password change functionality
+  - Password reset with email integration
+  - Profile management with modal interface
+
+#### 7.1.3 Template System
+
+- **Bootstrap Integration**: All authentication templates use Bootstrap 5 styling
+- **Responsive Design**: Mobile-friendly authentication forms
+- **User Experience**: Clear error messages and loading states
+- **Accessibility**: Proper form labels and ARIA attributes
+
+### 7.2 Username Uniqueness System
+
+**Decision**: Implement multi-layered username uniqueness validation with real-time feedback.
+
+**Rationale**:
+
+- Prevent username conflicts and confusion
+- Provide immediate user feedback
+- Ensure data integrity and security
+- Professional user experience
+
+**Implementation Details**:
+
+#### 7.2.1 Server-Side Validation
+
+- **Case-Insensitive Uniqueness**: Using `username__iexact` for database queries
+- **Reserved Username Protection**: Block system-reserved usernames
+- **Format Validation**: Comprehensive character and pattern validation
+- **Error Messages**: Specific, helpful error messages for different scenarios
+
+**Validation Rules**:
+
+```python
+# Case-insensitive uniqueness check
+existing_user = User.objects.filter(username__iexact=username_normalized).exclude(pk=self.instance.pk).first()
+
+# Reserved username protection
+reserved_usernames = ['admin', 'administrator', 'root', 'user', 'test', 'api', 'www', 'mail', 'support']
+
+# Format validation
+if not re.match(r'^[\w.@+-]+$', username):
+    raise ValidationError("Username can only contain letters, digits, and @/./+/-/_ characters.")
+```
+
+#### 7.2.2 Real-Time Client-Side Validation
+
+- **JavaScript Class**: `UsernameValidator` for client-side validation
+- **Debounced API Calls**: 500ms delay to prevent excessive server requests
+- **Visual Feedback**: Bootstrap validation classes and messages
+- **Format Checking**: Immediate validation for format issues
+
+**Features**:
+
+- Real-time format validation as user types
+- Debounced uniqueness checking via API
+- Visual feedback with green/red borders
+- Loading states during API calls
+- Comprehensive error messages
+
+#### 7.2.3 API Endpoints
+
+- **Username Availability**: `/api/check-username/` endpoint
+- **Email Availability**: `/api/check-email/` endpoint
+- **JSON Responses**: Structured API responses with availability status
+- **Security**: CSRF protection and proper error handling
+
+**API Response Format**:
+
+```json
+{
+    "available": true/false,
+    "message": "Username is available" or error message
+}
+```
+
+#### 7.2.4 User Experience Features
+
+- **Immediate Feedback**: Users see validation results as they type
+- **Clear Error Messages**: Specific guidance for fixing validation issues
+- **Visual Indicators**: Bootstrap validation classes for easy recognition
+- **Loading States**: Users know when the system is checking availability
+- **Accessibility**: Proper form feedback and screen reader support
+
+### 7.3 Security Considerations
+
+**Decision**: Implement comprehensive security measures for authentication.
+
+**Security Features**:
+
+- **CSRF Protection**: All forms and API endpoints protected
+- **Input Validation**: Server-side validation as primary security layer
+- **Reserved Username Protection**: Prevent system conflicts
+- **Case-Insensitive Uniqueness**: Prevent confusion and conflicts
+- **Error Logging**: Security event logging for monitoring
+- **Input Sanitization**: Proper data cleaning and validation
+
+### 7.4 Technical Architecture
+
+**Decision**: Use layered architecture for authentication system.
+
+**Architecture Components**:
+
+- **Forms Layer**: Custom forms with validation logic
+- **Views Layer**: Django views and API endpoints
+- **Templates Layer**: Bootstrap-styled authentication templates
+- **JavaScript Layer**: Client-side validation and user experience
+- **API Layer**: Real-time validation endpoints
+
+**Benefits**:
+
+- **Separation of Concerns**: Each layer has specific responsibilities
+- **Maintainability**: Easy to modify and extend
+- **Reusability**: Components can be reused across the application
+- **Testability**: Each layer can be tested independently
+- **Security**: Multiple validation layers provide defense in depth
+
+### 7.5 Future Enhancements
+
+**Planned Improvements**:
+
+- **Email Verification**: Require email verification for new accounts
+- **Two-Factor Authentication**: Add 2FA support for enhanced security
+- **Social Login**: Integration with Google, Facebook, etc.
+- **Account Lockout**: Implement account lockout after failed attempts
+- **Password Strength**: Enhanced password strength requirements
+- **Audit Logging**: Comprehensive user action logging
