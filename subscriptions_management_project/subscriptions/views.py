@@ -6,6 +6,7 @@ from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 from .models import Subscription, Category
 from .forms import SubscriptionForm, PaymentForm
+from .services import mark_period_paid, mark_period_unpaid
 @login_required
 def subscription_list(request):
     subscriptions = Subscription.objects.filter(user=request.user).order_by('-created_at')
@@ -81,8 +82,8 @@ def mark_payment_paid(request, pk, period_start):
     subscription = get_object_or_404(Subscription, pk=pk, user=request.user)
     
     if request.method == 'POST':
-        # Mark the payment as paid
-        payment = subscription.mark_payment_paid(period_start)
+        # Mark the payment as paid via service layer
+        mark_period_paid(subscription, period_start)
         messages.success(request, f'Payment for period {period_start} marked as paid!')
         return redirect('subscription_detail', pk=pk)
     else:
@@ -98,7 +99,8 @@ def mark_payment_unpaid(request, pk, period_start):
     """Mark a specific billing period as unpaid"""
     subscription = get_object_or_404(Subscription, pk=pk, user=request.user)
     if request.method == 'POST':
-        subscription.mark_payment_unpaid(period_start)
+        # Mark the payment as unpaid via service layer
+        mark_period_unpaid(subscription, period_start)
         messages.success(request, f'Payment for period {period_start} marked as unpaid!')
         return redirect('subscription_detail', pk=pk)
     else:

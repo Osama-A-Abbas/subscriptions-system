@@ -1,0 +1,522 @@
+"""
+Subscription model with comprehensive business logic.
+
+This model handles subscription lifecycle, billing periods, payment tracking,
+and various calculations for the subscription management system.
+"""
+
+from django.conf import settings
+from django.db import models
+from django.utils import timezone
+from django.core.exceptions import ValidationError
+from dateutil.relativedelta import relativedelta
+from datetime import timedelta
+from decimal import Decimal
+import logging
+
+from .base import BILLING_CYCLE_CHOICES, TimestampMixin, ValidationMixin
+from .managers import SubscriptionManager
+
+logger = logging.getLogger(__name__)
+
+
+class Subscription(ValidationMixin, TimestampMixin, models.Model):
+    """
+    Subscription model representing a user's subscription service.
+    
+    Handles both monthly and yearly billing cycles with duration-based
+    payment tracking and comprehensive business logic.
+    """
+    
+    # Basic Information
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name="subscriptions"
+    )
+    name = models.CharField(max_length=200)
+    monthly_cost = models.DecimalField(
+        max_digits=10, 
+        decimal_places=2, 
+        null=True, 
+        blank=True
+    )
+    yearly_cost = models.DecimalField(
+        max_digits=10, 
+        decimal_places=2, 
+        null=True, 
+        blank=True
+    )
+    billing_cycle = models.CharField(
+        max_length=10, 
+        choices=BILLING_CYCLE_CHOICES
+    )
+    
+    # Lifecycle Dates
+    start_date = models.DateField()
+    renewal_date = models.DateField(null=True, blank=True)
+    
+    # Duration (replaces ending_date)
+    duration_months = models.PositiveIntegerField(
+        null=True, 
+        blank=True, 
+        help_text="Duration in months (for monthly billing)"
+    )
+    duration_years = models.PositiveIntegerField(
+        null=True, 
+        blank=True, 
+        help_text="Duration in years (for yearly billing)"
+    )
+    
+    # Status & Settings
+    is_active = models.BooleanField(default=True)
+    auto_renewal = models.BooleanField(
+        default=True,
+        help_text="Whether subscription auto-renews"
+    )
+    category = models.ForeignKey(
+        'Category', 
+        on_delete=models.PROTECT
+    )
+    
+    # Custom manager
+    objects = SubscriptionManager()
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Subscription"
+        verbose_name_plural = "Subscriptions"
+    
+    def __str__(self):
+        """String representation of the subscription."""
+        return f"{self.name} ({self.user.username})"
+    
+    # Cost and Duration Methods
+    def get_current_cost(self):
+        """Get current cost based on billing cycle."""
+        if self.billing_cycle == 'monthly':
+            return self.monthly_cost or 0
+        else:
+            return self.yearly_cost or 0
+    
+    def get_ending_date(self):
+        """Calculate ending date based on duration."""
+        if self.billing_cycle == 'monthly' and self.duration_months:
+            return self.start_date + relativedelta(months=self.duration_months)
+        elif self.billing_cycle == 'yearly' and self.duration_years:
+            return self.start_date + relativedelta(years=self.duration_years)
+        return None
+    
+    def get_total_payments(self):
+        """Get total number of payments for the entire duration."""
+        if self.billing_cycle == 'monthly' and self.duration_months:
+            return self.duration_months
+        elif self.billing_cycle == 'yearly' and self.duration_years:
+            return self.duration_years
+        return None
+    
+    def get_total_cost(self):
+        """Calculate total cost for the entire duration."""
+        total_payments = self.get_total_payments()
+        if total_payments:
+            return self.get_current_cost() * total_payments
+        return None
+    
+    def get_remaining_payments(self):
+        """Get remaining number of payments."""
+        if not self.get_ending_date():
+            return None
+            
+        today = timezone.now().date()
+        if today >= self.get_ending_date():
+            return 0
+            
+        # Calculate how many payments have passed
+        if self.billing_cycle == 'monthly':
+            months_passed = (today.year - self.start_date.year) * 12 + (today.month - self.start_date.month)
+            if today.day >= self.start_date.day:
+                months_passed += 1
+        else:  # yearly
+            years_passed = today.year - self.start_date.year
+            if today.month > self.start_date.month or (today.month == self.start_date.month and today.day >= self.start_date.day):
+                years_passed += 1
+        
+        total_payments = self.get_total_payments()
+        if total_payments:
+            if self.billing_cycle == 'monthly':
+                return max(0, total_payments - months_passed)
+            else:
+                return max(0, total_payments - years_passed)
+        return None
+    
+    # Billing Period Management
+    def get_billing_periods(self):
+        """Generate billing periods and create payment records as needed."""
+        periods = []
+        current_date = self.start_date
+        today = timezone.now().date()
+        
+        total_payments = self.get_total_payments()
+        if not total_payments:
+            return periods
+        
+        for period_num in range(1, total_payments + 1):
+            if self.billing_cycle == 'monthly':
+                period_end = current_date + relativedelta(months=1) - timedelta(days=1)
+                next_period_start = current_date + relativedelta(months=1)
+            else:  # yearly
+                period_end = current_date + relativedelta(years=1) - timedelta(days=1)
+                next_period_start = current_date + relativedelta(years=1)
+            
+            # Check if payment record exists
+            payment = self.payments.filter(
+                billing_period_start=current_date
+            ).first()
+            
+            # Create payment record if:
+            # 1. Period is current or past due AND no payment record exists
+            # 2. User manually marks as paid
+            should_create_record = (
+                (period_end >= today or current_date <= today) and 
+                not payment
+            )
+            
+            if should_create_record:
+                payment = self._create_payment_record(
+                    period_start=current_date,
+                    period_end=period_end,
+                    period_number=period_num
+                )
+            
+            periods.append({
+                'period_number': period_num,
+                'start': current_date,
+                'end': period_end,
+                'amount': self.get_current_cost(),
+                'is_paid': payment.is_paid if payment else False,
+                'payment': payment,
+                'is_current': self._is_current_period(current_date, period_end),
+                'is_past_due': self._is_past_due(current_date, period_end)
+            })
+            
+            current_date = next_period_start
+        
+        return periods
+    
+    def _create_payment_record(self, period_start, period_end, period_number):
+        """Create a payment record for a specific period."""
+        from .payment import Payment
+        return Payment.objects.create(
+            subscription=self,
+            billing_period_start=period_start,
+            billing_period_end=period_end,
+            amount=self.get_current_cost(),
+            payment_date=None,  # Will be set when user marks as paid
+            is_paid=False
+        )
+    
+    def _is_current_period(self, period_start, period_end):
+        """Check if this period is currently active."""
+        today = timezone.now().date()
+        return period_start <= today <= period_end
+    
+    def _is_past_due(self, period_start, period_end):
+        """Check if this period is past due."""
+        today = timezone.now().date()
+        return period_end < today
+    
+    # Payment Status Management
+    def mark_payment_paid(self, period_start, payment_date=None):
+        """Mark a specific period as paid."""
+        if not payment_date:
+            payment_date = timezone.now().date()
+        
+        # Get or create payment record
+        payment = self.payments.filter(
+            billing_period_start=period_start
+        ).first()
+        
+        if not payment:
+            # Create payment record if it doesn't exist
+            if self.billing_cycle == 'monthly':
+                period_end = period_start + relativedelta(months=1) - timedelta(days=1)
+            else:
+                period_end = period_start + relativedelta(years=1) - timedelta(days=1)
+            
+            from .payment import Payment
+            payment = Payment.objects.create(
+                subscription=self,
+                billing_period_start=period_start,
+                billing_period_end=period_end,
+                amount=self.get_current_cost(),
+                payment_date=payment_date,
+                is_paid=True
+            )
+        else:
+            # Update existing payment record
+            payment.payment_date = payment_date
+            payment.is_paid = True
+            payment.save()
+        
+        return payment
+    
+    def mark_payment_unpaid(self, period_start):
+        """Mark a specific period as unpaid (clears payment_date)."""
+        payment = self.payments.filter(
+            billing_period_start=period_start
+        ).first()
+        if payment:
+            payment.is_paid = False
+            payment.payment_date = None
+            payment.save()
+            return payment
+        # If no record exists yet, create an unpaid placeholder for consistency
+        if self.billing_cycle == 'monthly':
+            period_end = period_start + relativedelta(months=1) - timedelta(days=1)
+        else:
+            period_end = period_start + relativedelta(years=1) - timedelta(days=1)
+        
+        from .payment import Payment
+        return Payment.objects.create(
+            subscription=self,
+            billing_period_start=period_start,
+            billing_period_end=period_end,
+            amount=self.get_current_cost(),
+            payment_date=None,
+            is_paid=False
+        )
+    
+    # Renewal and Status Methods
+    def calculate_next_renewal(self):
+        """Calculate next renewal date from current renewal date."""
+        if self.billing_cycle == "monthly":
+            delta = relativedelta(months=1)
+        else:
+            delta = relativedelta(years=1)
+        
+        return self.renewal_date + delta
+    
+    def days_until_renewal(self):
+        """Return number of days until next renewal, or None if unknown."""
+        if not self.renewal_date or not self.is_active:
+            return None
+        today = timezone.now().date()
+        return (self.renewal_date - today).days
+    
+    def is_renewing_within(self, days: int = 7) -> bool:
+        """Whether the subscription renews within given days from today."""
+        remaining_days = self.days_until_renewal()
+        if remaining_days is None:
+            return False
+        # Do not flag if already past due
+        if remaining_days < 0:
+            return False
+        return remaining_days <= days
+    
+    def get_payment_status(self):
+        """Get current payment status."""
+        today = timezone.now().date()
+        
+        # Check if subscription has ended
+        ending_date = self.get_ending_date()
+        if ending_date and ending_date <= today:
+            self.is_active = False
+            self.save()
+            return "ended"
+        
+        # Check if renewal date has passed
+        if self.renewal_date <= today:
+            # Calculate the start of current billing period
+            if self.billing_cycle == 'monthly':
+                current_period_start = self.renewal_date - relativedelta(months=1)
+            else:
+                current_period_start = self.renewal_date - relativedelta(years=1)
+            
+            # Check if there's a payment for this period
+            has_payment = self.payments.filter(
+                billing_period_start=current_period_start,
+                is_paid=True
+            ).exists()
+            
+            if not has_payment:
+                return "unpaid"
+            else:
+                return "paid"
+        
+        return "paid"
+
+    def get_overall_payment_status(self):
+        """Aggregate subscription payment status across all required periods.
+
+        Returns one of: 'unpaid', 'progressing', 'completed'.
+        """
+        total_required = self.get_total_payments() or 0
+        intended_starts = {start for start, _ in self._generate_intended_periods()}
+        paid_count = self.payments.filter(is_paid=True, billing_period_start__in=intended_starts).count()
+
+        if total_required == 0:
+            # No duration configured; fallback to current-period logic
+            return "paid" if self.get_payment_status() == "paid" else "unpaid"
+
+        if paid_count <= 0:
+            return "unpaid"
+        if paid_count >= total_required:
+            return "completed"
+        return "progressing"
+
+    def get_paid_payments_count(self):
+        """Get count of paid payments within the current schedule."""
+        intended_starts = {start for start, _ in self._generate_intended_periods()}
+        return self.payments.filter(is_paid=True, billing_period_start__in=intended_starts).count()
+
+    def get_payment_progress_percentage(self):
+        """Calculate payment progress as a percentage."""
+        total_required = self.get_total_payments() or 0
+        if total_required == 0:
+            return 0
+        paid_count = self.get_paid_payments_count()
+        return int((paid_count / total_required) * 100)
+    
+    def should_auto_renew(self):
+        """Check if subscription should auto-renew (only if paid)."""
+        if not self.auto_renewal or not self.is_active or self.get_ending_date():
+            return False
+        
+        # Only auto-renew if current period is paid
+        return self.get_payment_status() == "paid"
+    
+    # Schedule Management
+    def _generate_intended_periods(self):
+        """Return a list of tuples (start_date, end_date) for intended periods."""
+        periods = []
+        total = self.get_total_payments() or 0
+        if total <= 0:
+            return periods
+        current_start = self.start_date
+        for _ in range(total):
+            if self.billing_cycle == 'monthly':
+                end = current_start + relativedelta(months=1) - timedelta(days=1)
+                next_start = current_start + relativedelta(months=1)
+            else:
+                end = current_start + relativedelta(years=1) - timedelta(days=1)
+                next_start = current_start + relativedelta(years=1)
+            periods.append((current_start, end))
+            current_start = next_start
+        return periods
+
+    def reconcile_payments(self):
+        """Reconcile stored Payment rows with the current schedule.
+
+        - Keep all paid payments (even if out of schedule) as history.
+        - Delete unpaid payments that are no longer part of the intended schedule.
+        - Ensure placeholders exist for current/past-due intended periods.
+
+        Returns a dict with counts of changes for optional display.
+        """
+        intended = self._generate_intended_periods()
+        intended_starts = {start for start, _ in intended}
+        today = timezone.now().date()
+
+        existing = list(self.payments.all())
+        deleted = 0
+        created = 0
+
+        # Delete unpaid records that do not belong to intended schedule
+        for p in existing:
+            if not p.is_paid and p.billing_period_start not in intended_starts:
+                p.delete()
+                deleted += 1
+
+        # Refresh existing after deletions
+        existing_by_start = {p.billing_period_start: p for p in self.payments.all()}
+
+        # Create placeholders for current/past-due intended periods if missing
+        for start, end in intended:
+            if start not in existing_by_start:
+                is_current = self._is_current_period(start, end)
+                is_past_due = end < today
+                if is_current or is_past_due:
+                    from .payment import Payment
+                    Payment.objects.create(
+                        subscription=self,
+                        billing_period_start=start,
+                        billing_period_end=end,
+                        amount=self.get_current_cost(),
+                        payment_date=None,
+                        is_paid=False,
+                    )
+                    created += 1
+
+        return {"deleted_unpaid": deleted, "created_placeholders": created}
+
+    def reset_payments_for_new_schedule(self):
+        """Delete all payments for this subscription (no placeholders created).
+
+        Returns dict with count of deleted rows.
+        """
+        qs = self.payments.all()
+        deleted = qs.count()
+        qs.delete()
+        return {"deleted": deleted}
+    
+    # Model Lifecycle
+    def save(self, *args, **kwargs):
+        """Override save to keep renewal_date in sync with start_date and billing_cycle.
+
+        Behaviors:
+        - On create: if no renewal_date provided, set to start_date + 1 period.
+        - On update: if start_date or billing_cycle changed, reset renewal_date relative to start_date.
+        """
+        should_reset_renewal = False
+        schedule_changed = False
+
+        if self.pk:
+            try:
+                original = Subscription.objects.get(pk=self.pk)
+                if (original.start_date != self.start_date or
+                    original.billing_cycle != self.billing_cycle or
+                    original.duration_months != self.duration_months or
+                    original.duration_years != self.duration_years):
+                    schedule_changed = True
+                if original.start_date != self.start_date or original.billing_cycle != self.billing_cycle:
+                    should_reset_renewal = True
+            except Subscription.DoesNotExist:
+                # If somehow not found, treat as create
+                should_reset_renewal = not bool(self.renewal_date)
+                schedule_changed = True
+        else:
+            # New instance
+            should_reset_renewal = not bool(self.renewal_date)
+            # On create we will reconcile after saving to create current/past due placeholders
+            schedule_changed = True
+
+        if should_reset_renewal:
+            if self.billing_cycle == "monthly":
+                delta = relativedelta(months=1)
+            else:
+                delta = relativedelta(years=1)
+            self.renewal_date = self.start_date + delta
+
+        super().save(*args, **kwargs)
+
+        # If the schedule changed, reset payments entirely (Option A)
+        if schedule_changed:
+            try:
+                result = self.reset_payments_for_new_schedule()
+                logger.info(
+                    "Subscription %s schedule changed; reset payments: deleted=%s",
+                    self.pk, result.get("deleted", 0)
+                )
+            except Exception as exc:
+                logger.exception("Failed to reset payments for subscription %s: %s", self.pk, exc)
+    
+    def _run_custom_validation(self):
+        """Validate subscription data."""
+        # Ensure category is set (fallback to "Other" if needed)
+        if not self.category_id:
+            from .category import Category
+            other_category, _ = Category.objects.get_or_create(
+                name="Other",
+                defaults={'description': 'Default category for uncategorized subscriptions'}
+            )
+            self.category = other_category
