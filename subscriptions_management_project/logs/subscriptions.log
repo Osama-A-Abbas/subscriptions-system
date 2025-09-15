@@ -64,3 +64,8 @@ INFO 2025-09-15 23:43:35,303 django.utils.autoreload trigger_reload 265 C:\Pytho
 INFO 2025-09-15 23:43:35,878 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
 INFO 2025-09-15 23:43:51,646 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\subscription.py changed, reloading.
 INFO 2025-09-15 23:43:52,193 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:57:05,795 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 12584
+INFO 2025-09-15 23:57:21,679 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 11968
+INFO 2025-09-15 23:57:21,694 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:57:29,823 django.server log_message 212 "POST /subscriptions/14/edit/ HTTP/1.1" 302 0
+INFO 2025-09-15 23:57:29,842 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 13045

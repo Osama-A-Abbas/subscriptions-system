@@ -157,3 +157,25 @@ INFO 2025-09-15 23:37:09,190 subscriptions.middleware process_request 58 Request
 INFO 2025-09-15 23:37:09,195 subscriptions.middleware process_request 59 User: Ahmed
 INFO 2025-09-15 23:37:09,196 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-15 23:37:09,223 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/
+INFO 2025-09-15 23:57:05,765 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/
+INFO 2025-09-15 23:57:05,768 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:57:05,768 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:57:05,794 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/
+INFO 2025-09-15 23:57:21,658 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/edit/
+INFO 2025-09-15 23:57:21,660 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:57:21,660 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:57:21,678 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/edit/
+INFO 2025-09-15 23:57:29,771 subscriptions.middleware process_request 58 Request: POST /subscriptions/14/edit/
+INFO 2025-09-15 23:57:29,773 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:57:29,773 subscriptions.middleware process_request 60 IP: 127.0.0.1
+WARNING 2025-09-15 23:57:29,779 subscriptions.form_mixins validate_costs 125 Unusual cost ratio detected: monthly=123.00, yearly=123.00, ratio=12
+WARNING 2025-09-15 23:57:29,779 subscriptions.forms _validate_business_rules 197 Very unusual cost ratio: monthly=123.00, yearly=123.00, ratio=12
+INFO 2025-09-15 23:57:29,794 subscriptions.models.mixins.schedule_management reset_payments_for_new_schedule 211 Reset payments for subscription 14: deleted 3 payment records
+INFO 2025-09-15 23:57:29,794 subscriptions.models.subscription save 152 Subscription 14 schedule changed; reset payments: deleted=3
+INFO 2025-09-15 23:57:29,795 subscriptions.models.mixins.schedule_management refresh_billing_periods 92 Refreshing billing periods for subscription 14
+INFO 2025-09-15 23:57:29,807 subscriptions.models.mixins.schedule_management refresh_billing_periods 101 Refreshed billing periods for subscription 14: 3 periods generated
+INFO 2025-09-15 23:57:29,822 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/14/edit/
+INFO 2025-09-15 23:57:29,826 subscriptions.middleware process_request 58 Request: GET /subscriptions/14/
+INFO 2025-09-15 23:57:29,829 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-15 23:57:29,829 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-15 23:57:29,842 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/14/
