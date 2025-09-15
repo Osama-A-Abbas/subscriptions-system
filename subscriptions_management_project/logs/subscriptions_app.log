@@ -191,3 +191,55 @@ INFO 2025-09-16 00:26:29,286 subscriptions.middleware process_request 58 Request
 INFO 2025-09-16 00:26:29,289 subscriptions.middleware process_request 59 User: Ahmed
 INFO 2025-09-16 00:26:29,290 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-16 00:26:29,298 subscriptions.middleware process_response 66 Response: 404 for GET /favicon.ico
+INFO 2025-09-16 01:14:55,462 subscriptions.middleware process_request 58 Request: GET /
+INFO 2025-09-16 01:14:55,464 subscriptions.middleware process_request 59 User: osama
+INFO 2025-09-16 01:14:55,465 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:14:55,468 subscriptions.middleware process_response 66 Response: 302 for GET /
+INFO 2025-09-16 01:14:55,482 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-16 01:14:55,485 subscriptions.middleware process_request 59 User: osama
+INFO 2025-09-16 01:14:55,486 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:14:55,498 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-16 01:15:12,527 subscriptions.middleware process_request 58 Request: GET /dashboard/
+INFO 2025-09-16 01:15:12,529 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:15:12,529 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:15:12,536 subscriptions.middleware process_response 66 Response: 200 for GET /dashboard/
+INFO 2025-09-16 01:27:48,224 subscriptions.middleware process_request 58 Request: GET /profile/
+INFO 2025-09-16 01:27:48,227 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:27:48,227 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:27:48,353 subscriptions.middleware process_response 66 Response: 404 for GET /profile/
+INFO 2025-09-16 01:27:51,866 subscriptions.middleware process_request 58 Request: GET /profile/
+INFO 2025-09-16 01:27:51,868 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:27:51,869 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:27:51,872 subscriptions.middleware process_response 66 Response: 404 for GET /profile/
+INFO 2025-09-16 01:28:05,888 subscriptions.middleware process_request 58 Request: GET /accounts/profile/
+INFO 2025-09-16 01:28:05,890 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:28:05,890 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:28:05,923 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/
+INFO 2025-09-16 01:28:36,605 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 01:28:36,607 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:28:36,607 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:28:36,619 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 01:28:40,442 subscriptions.middleware process_request 58 Request: GET /accounts/profile/
+INFO 2025-09-16 01:28:40,444 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:28:40,444 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:28:40,445 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/
+INFO 2025-09-16 01:28:46,472 subscriptions.middleware process_request 58 Request: GET /accounts/profile/
+INFO 2025-09-16 01:28:46,474 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:28:46,474 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:28:46,475 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/
+INFO 2025-09-16 01:28:47,915 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 01:28:47,918 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:28:47,918 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:28:47,922 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 01:28:50,472 subscriptions.middleware process_request 58 Request: GET /accounts/profile/
+INFO 2025-09-16 01:28:50,474 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:28:50,474 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:28:50,475 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/
+INFO 2025-09-16 01:29:10,348 subscriptions.middleware process_request 58 Request: POST /accounts/profile/
+INFO 2025-09-16 01:29:10,351 subscriptions.middleware process_request 59 User: Ahmed
+INFO 2025-09-16 01:29:10,351 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:29:10,362 subscriptions.middleware process_response 66 Response: 302 for POST /accounts/profile/
+INFO 2025-09-16 01:29:10,366 subscriptions.middleware process_request 58 Request: GET /accounts/profile/
+INFO 2025-09-16 01:29:10,369 subscriptions.middleware process_request 59 User: aw
+INFO 2025-09-16 01:29:10,370 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 01:29:10,371 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/

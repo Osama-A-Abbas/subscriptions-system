@@ -1,3 +1,192 @@
-<h2>Welcome, {{ user.username }}!</h2>
-<p>Email: {{ user.email }}</p>
-<a href="{% url 'logout' %}">Logout</a>
+{% extends 'base.html' %} {% load static %} {% block title %}Profile -
+Subscription Manager{% endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h4><i class="fas fa-user me-2"></i>User Profile</h4>
+      </div>
+      <div class="card-body">
+        <!-- Profile Information Display -->
+        <div class="row mb-4">
+          <div class="col-md-4 text-center">
+            <div class="profile-avatar mb-3">
+              <i class="fas fa-user-circle fa-5x text-primary"></i>
+            </div>
+            <h5 class="mb-1">{{ user.get_full_name|default:user.username }}</h5>
+            <p class="text-muted small">@{{ user.username }}</p>
+          </div>
+          <div class="col-md-8">
+            <div class="profile-info">
+              <div class="row mb-2">
+                <div class="col-sm-4"><strong>Username:</strong></div>
+                <div class="col-sm-8">{{ user.username }}</div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-sm-4"><strong>Email:</strong></div>
+                <div class="col-sm-8">
+                  {{ user.email|default:"Not provided" }}
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-sm-4"><strong>First Name:</strong></div>
+                <div class="col-sm-8">
+                  {{ user.first_name|default:"Not provided" }}
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-sm-4"><strong>Last Name:</strong></div>
+                <div class="col-sm-8">
+                  {{ user.last_name|default:"Not provided" }}
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-sm-4"><strong>Member Since:</strong></div>
+                <div class="col-sm-8">{{ user.date_joined|date:"F j, Y" }}</div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-sm-4"><strong>Last Login:</strong></div>
+                <div class="col-sm-8">
+                  {{ user.last_login|date:"F j, Y g:i A"|default:"Never" }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#editProfileModal"
+          >
+            <i class="fas fa-edit me-2"></i>Edit Profile
+          </button>
+          <a
+            href="{% url 'password_change' %}"
+            class="btn btn-outline-secondary"
+          >
+            <i class="fas fa-key me-2"></i>Change Password
+          </a>
+          <a href="{% url 'dashboard' %}" class="btn btn-outline-primary">
+            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div
+  class="modal fade"
+  id="editProfileModal"
+  tabindex="-1"
+  aria-labelledby="editProfileModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileModalLabel">
+          <i class="fas fa-edit me-2"></i>Edit Profile
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form method="post" action="{% url 'profile' %}">
+        <div class="modal-body">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="update_profile" />
+
+          <div class="mb-3">
+            <label for="id_username" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="id_username"
+              name="username"
+              value="{{ user.username }}"
+              required
+            />
+            <div class="form-text">
+              Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+              only.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="id_email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="id_email"
+              name="email"
+              value="{{ user.email }}"
+              required
+            />
+            <div class="form-text">Required. Enter a valid email address.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="id_first_name" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="id_first_name"
+              name="first_name"
+              value="{{ user.first_name }}"
+            />
+            <div class="form-text">Optional. Enter your first name.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="id_last_name" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="id_last_name"
+              name="last_name"
+              value="{{ user.last_name }}"
+            />
+            <div class="form-text">Optional. Enter your last name.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block extra_js %}
+<script>
+  // Handle form submission with loading state
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#editProfileModal form");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin me-2"></i>Saving...';
+        submitBtn.disabled = true;
+      });
+    }
+  });
+</script>
+{% endblock %}
