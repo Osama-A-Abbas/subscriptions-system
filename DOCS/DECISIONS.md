@@ -114,6 +114,164 @@ Core goals: allow users to track subscriptions, get renewal reminders, and analy
 
 ---
 
-## 5. Folder Structure
+## 5. Code Architecture & Organization (16 Sep 2025)
 
-- Kept Django's default nested structure:
+### Layered Architecture Implementation
+
+- **Models Package**: Refactored monolithic `models.py` (545 lines) into organized package structure:
+  - `models/base.py`: Base models, mixins, and constants
+  - `models/subscription.py`: Core Subscription model with mixin composition
+  - `models/category.py`: Category model with mixins
+  - `models/payment.py`: Payment model with mixins
+  - `models/managers.py`: Custom managers and querysets
+  - `models/mixins/`: Specialized mixins for different concerns:
+    - `cost_calculations.py`: Cost and duration calculations
+    - `payment_management.py`: Payment tracking and management
+    - `renewal_logic.py`: Renewal dates and status logic
+    - `schedule_management.py`: Billing periods and schedule management
+
+### Service Layer Architecture
+
+- **Services Package**: Created domain-specific services for business logic separation:
+  - `services/payment_services.py`: Atomic payment operations
+  - `services/subscription_services.py`: Subscription lifecycle management
+  - `services/calculation_services.py`: Financial calculations and comparisons
+  - `services/status_services.py`: Status determination and health monitoring
+- **Decision**: Services handle write-side operations, keeping models focused on data representation
+
+### View Layer Refactoring
+
+- **Class-Based Views**: Converted all function-based views to CBVs for better maintainability:
+  - `SubscriptionListView`, `SubscriptionDetailView`, `SubscriptionCreateView`
+  - `SubscriptionUpdateView`, `SubscriptionDeleteView`, `PaymentActionView`
+- **View Mixins**: Created reusable mixins for common functionality:
+  - `UserOwnershipMixin`: Ensures users only access their own data
+  - `LoggingMixin`: Consistent logging across views
+  - `MessageMixin`: User messaging and feedback
+  - `TransactionMixin`: Database transaction management
+  - `ContextDataMixin`: Common context data
+  - `ErrorHandlerMixin`: Consistent error handling
+
+### Form Architecture Enhancement
+
+- **Form Mixins**: Created specialized mixins for form functionality:
+  - `BootstrapFormMixin`: Automatic Bootstrap styling
+  - `CategoryOrderingMixin`: Smart category ordering
+  - `CostValidationMixin`: Cost validation logic
+  - `DurationValidationMixin`: Duration field validation
+  - `FieldHelpTextMixin`: Dynamic help text
+- **Form Utilities**: Created utility classes for form management:
+  - `FormFieldFactory`: Dynamic field creation
+  - `FormValidator`: Validation logic
+  - `FormHelper`: Form manipulation utilities
+  - `FormErrorHandler`: Error handling and display
+
+### Template Component System
+
+- **Reusable Partials**: Created modular template components:
+  - `partials/form_field.html`: Standardized form field rendering
+  - `partials/checkbox_field.html`: Checkbox field component
+  - `partials/duration_fields.html`: Duration field group
+  - `partials/form_actions.html`: Form action buttons
+  - `partials/subscriptions_table.html`: Reusable subscription table
+  - `partials/confirm_modal.html`: Bootstrap confirmation modals
+- **Template Tags**: Created custom template filters:
+  - `form_extras.py`: `add_class`, `add_attr` filters for dynamic styling
+
+### JavaScript Architecture
+
+- **Modular JavaScript**: Extracted inline JavaScript into organized modules:
+  - `dashboard.js`: Dashboard functionality with robust content management
+  - `subscription-forms.js`: Form behavior and validation
+  - `utils.js`: General utility functions (toast notifications, formatting, etc.)
+- **Error Handling**: Added comprehensive client-side error handling with try-catch blocks
+- **Content Management**: Implemented robust content storage/restoration for dynamic UI
+
+### Error Handling & Logging Infrastructure
+
+- **Custom Exceptions**: Created domain-specific exception classes:
+  - `SubscriptionError`, `PaymentError`, `ValidationError`
+  - `BusinessLogicError`, `DataIntegrityError`, `ExternalServiceError`
+- **Error Handlers**: Created decorators and mixins for consistent error handling:
+  - `handle_errors` decorator for function-based views
+  - `ErrorHandlerMixin` for class-based views
+  - `log_operation` decorator for operation logging
+- **Middleware**: Created custom middleware for global error handling:
+  - `ErrorLoggingMiddleware`: Logs all unhandled exceptions
+  - `RequestLoggingMiddleware`: Logs all requests for monitoring
+- **Logging Configuration**: Comprehensive logging setup with multiple handlers:
+  - File handlers for different log levels
+  - Console handlers for development
+  - Detailed formatters for debugging
+
+### Selectors Pattern
+
+- **Read-Only Queries**: Created `selectors.py` for read-only data access:
+  - `get_user_subscriptions`: User-specific subscription queries
+  - `compute_dashboard_totals`: Dashboard statistics calculation
+- **Decision**: Separates read operations from write operations for better performance and clarity
+
+### Management Commands
+
+- **Debugging Tools**: Created management command for troubleshooting:
+  - `debug_billing_periods.py`: Comprehensive billing period debugging
+- **Existing Commands**: Maintained existing commands:
+  - `update_subscriptions.py`: Subscription updates
+  - `seed_categories.py`: Category seeding
+
+### Settings & Configuration
+
+- **Middleware Integration**: Added custom middleware to Django settings
+- **Logging Configuration**: Comprehensive logging setup with file rotation
+- **Environment Configuration**: Maintained environment-based configuration
+
+---
+
+## 6. Folder Structure
+
+- **Refactored Structure**: Organized code into logical packages:
+  ```
+  subscriptions/
+  ├── models/
+  │   ├── __init__.py
+  │   ├── base.py
+  │   ├── subscription.py
+  │   ├── category.py
+  │   ├── payment.py
+  │   ├── managers.py
+  │   └── mixins/
+  │       ├── __init__.py
+  │       ├── cost_calculations.py
+  │       ├── payment_management.py
+  │       ├── renewal_logic.py
+  │       └── schedule_management.py
+  ├── services/
+  │   ├── __init__.py
+  │   ├── payment_services.py
+  │   ├── subscription_services.py
+  │   ├── calculation_services.py
+  │   └── status_services.py
+  ├── templates/partials/
+  │   ├── form_field.html
+  │   ├── checkbox_field.html
+  │   ├── duration_fields.html
+  │   ├── form_actions.html
+  │   ├── subscriptions_table.html
+  │   └── confirm_modal.html
+  ├── static/js/
+  │   ├── dashboard.js
+  │   ├── subscription-forms.js
+  │   └── utils.js
+  ├── templatetags/
+  │   ├── __init__.py
+  │   └── form_extras.py
+  ├── mixins.py
+  ├── form_mixins.py
+  ├── form_utils.py
+  ├── selectors.py
+  ├── error_handlers.py
+  ├── exceptions.py
+  ├── middleware.py
+  └── views.py (refactored to CBVs)
+  ```
+- **Decision**: This structure promotes separation of concerns, reusability, and maintainability
