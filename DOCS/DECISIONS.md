@@ -65,11 +65,11 @@ Core goals: allow users to track subscriptions, get renewal reminders, and analy
 
 ### Payment Tracking
 
-- `Payment` model with virtual payment system for period-by-period tracking.
-- Payment records created on-demand (not upfront) to maintain clean database.
+- `Payment` model supports period-by-period tracking.
 - `payment_date` allows null values for unpaid periods.
 - `is_paid` defaults to False for new payment records.
-- Decision: Virtual payment system reduces database clutter while providing accurate tracking.
+- Decision (initial): Virtual payments created on-demand (no upfront future rows) to keep DB clean.
+- Decision (revised 15 Sep 2025): When schedule changes (start date, billing cycle, duration), we reset payments by deleting all existing `Payment` rows for the subscription and letting the new schedule reflect fresh state. This avoids mismatches (e.g., switching monthly→yearly after paying months showing as fully paid years).
 
 ### Renewal Date
 
@@ -96,11 +96,14 @@ Core goals: allow users to track subscriptions, get renewal reminders, and analy
 
 ### Payment Management
 
-- **Virtual payment system** with period-by-period tracking.
-- "Mark as Paid" buttons for individual billing periods.
-- Confirmation pages for payment actions to prevent accidental changes.
-- Status indicators (Current, Past Due, Paid) for clear visual feedback.
-- Decision: This provides granular control while maintaining data integrity.
+- Period list shows Current (blue), Overdue Unpaid (red), Paid (green), Future Unpaid (default) with clear badges.
+- Toggle actions: Mark as Paid / Mark as Unpaid per period.
+- Confirmation pages when marking payments; consistent action texts/icons.
+- Reusable components:
+  - Boolean badge partial (`partials/badge_boolean.html`) used for Auto Renewal and Status.
+  - Confirm modal partial (`partials/confirm_modal.html`) used on edit/save and can be reused elsewhere.
+- Edit Subscription: When schedule-affecting fields change, show a confirm modal that warns “this will delete all payments and reset schedule”, then submit.
+- Decision: On-demand creation of placeholders remains the default; after a reset we do not pre-create future rows.
 
 ### Admin Interface
 
