@@ -88,11 +88,19 @@ Subscription Manager{% endblock %} {% block content %}
       <div class="card-body">
         <p>
           <strong>Status:</strong>
+          {% with overall=subscription.get_overall_payment_status %}
           <span
-            class="badge bg-{% if subscription.get_payment_status == 'paid' %}success{% elif subscription.get_payment_status == 'unpaid' %}danger{% else %}secondary{% endif %}"
+            class="badge bg-{% if overall == 'completed' %}success{% elif overall == 'progressing' %}info{% else %}danger{% endif %}"
           >
-            {{ subscription.get_payment_status|title }}
+            {{ overall|title }}
           </span>
+          {% endwith %}
+        </p>
+        <p>
+          <strong>Progress:</strong>
+          {{ subscription.get_paid_payments_count }} / 
+          {{subscription.get_total_payments|default:'0' }} 
+          ({% firstof subscription.get_payment_progress_percentage 0 %}%)
         </p>
         <p><strong>Total Payments:</strong> {{ payments.count }}</p>
       </div>
@@ -139,8 +147,8 @@ Subscription Manager{% endblock %} {% block content %}
                   </span>
                 </td>
                 <td>
-                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }} 
-                  {% else %} - {% endif %}
+                  {% if period.payment %} {{ period.payment.payment_date|date:"M d, Y" }}
+                   {% else %} - {% endif %}
                 </td>
                 <td>${{ period.amount|floatformat:2 }}</td>
                 <td>

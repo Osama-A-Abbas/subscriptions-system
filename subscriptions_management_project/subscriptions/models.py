@@ -359,6 +359,34 @@ class Subscription(models.Model):
                 return "paid"
         
         return "paid"
+
+    def get_overall_payment_status(self):
+        """Aggregate subscription payment status across all required periods.
+
+        Returns one of: 'unpaid', 'progressing', 'completed'.
+        """
+        total_required = self.get_total_payments() or 0
+        paid_count = self.payments.filter(is_paid=True).count()
+
+        if total_required == 0:
+            # No duration configured; fallback to current-period logic
+            return "paid" if self.get_payment_status() == "paid" else "unpaid"
+
+        if paid_count <= 0:
+            return "unpaid"
+        if paid_count >= total_required:
+            return "completed"
+        return "progressing"
+
+    def get_paid_payments_count(self):
+        return self.payments.filter(is_paid=True).count()
+
+    def get_payment_progress_percentage(self):
+        total_required = self.get_total_payments() or 0
+        if total_required == 0:
+            return 0
+        paid_count = self.get_paid_payments_count()
+        return int((paid_count / total_required) * 100)
     
     def should_auto_renew(self):
         """Check if subscription should auto-renew (only if paid)"""
