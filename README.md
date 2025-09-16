@@ -505,7 +505,17 @@ chmod +x manage.py
 - **Session Management**: Advanced session management and security features
 - **Database Optimization**: Index optimization and query performance tuning
 
-### Preview Video:
+### Preview Video: https://youtu.be/1Qmw5hdP9hI
+
+<img width="1852" height="897" alt="image" src="https://github.com/user-attachments/assets/b02b4c4a-2026-4679-898a-f1a634e1bd32" />
+
+<img width="1525" height="902" alt="image" src="https://github.com/user-attachments/assets/235e6e5d-9299-4c34-b5c8-49cd09406002" />
+
+<img width="777" height="777" alt="image" src="https://github.com/user-attachments/assets/9afeeddf-f12b-4a74-a9fa-3733ddeca93f" />
+
+<img width="1696" height="515" alt="image" src="https://github.com/user-attachments/assets/7448696f-7754-41bf-9011-d68e35da6604" />
+
+<img width="1393" height="372" alt="image" src="https://github.com/user-attachments/assets/c0b38b7d-cfe6-4f90-ae54-25342e8c594b" />
 
 ---
 **Built with ❤️ By Osama-A-Abbas using Django and modern web technologies**
