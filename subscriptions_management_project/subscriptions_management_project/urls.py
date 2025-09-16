@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
-# from accounts import views
 def redirect_to_dashboard(request):
+    """Redirect to dashboard if authenticated, otherwise to login."""
     if request.user.is_authenticated:
         return redirect('dashboard')
     else:
@@ -27,8 +27,7 @@ def redirect_to_dashboard(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),  # login/logout/password reset
-    path('', include('accounts.urls')),  # register, profile
+    path('accounts/', include('accounts.urls')),  # All authentication views
     path('subscriptions/', include('subscriptions.urls')),  # subscription management
     path('', redirect_to_dashboard, name='home'),  # redirect to appropriate page
 ]

@@ -180,7 +180,7 @@ class SubscriptionUpdateView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
                 old_value = getattr(original, field)
                 new_value = form.cleaned_data.get(field)
                 if old_value != new_value:
-                    changes.append(f"{field}: {old_value} → {new_value}")
+                    changes.append(f"{field}: {old_value} -> {new_value}")
             
             subscription = form.save()
             
@@ -212,7 +212,6 @@ class SubscriptionDeleteView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
     """
     model = Subscription
     template_name = 'subscriptions/delete_subscription.html'
-    success_url = reverse_lazy('subscription_list')
     
     def get_queryset(self):
         """Ensure user can only delete their own subscriptions."""
@@ -237,6 +236,57 @@ class SubscriptionDeleteView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
                         request.user.id, e)
             messages.error(request, 'Error deleting subscription. Please try again.')
             return redirect('subscription_list')
+    
+    def get_success_url(self):
+        """
+        Determine the success URL based on the referring page or next parameter.
+        
+        Priority:
+        1. 'next' parameter in POST data
+        2. HTTP_REFERER header analysis
+        3. Default to subscription_list
+        """
+        from urllib.parse import urlparse
+        import re
+        
+        # Check for 'next' parameter in POST data
+        next_url = self.request.POST.get('next')
+        if next_url:
+            # Validate that the next URL is safe (same domain)
+            parsed_next = urlparse(next_url)
+            if parsed_next.netloc == '' or parsed_next.netloc == self.request.get_host():
+                # Special handling: if coming from subscription detail page, redirect to subscription list
+                # This prevents redirecting back to a deleted subscription's detail page
+                # Check if this is a subscription detail page (pattern: /subscriptions/{id}/)
+                detail_pattern = r'^/subscriptions/\d+/$'
+                if re.match(detail_pattern, parsed_next.path):
+                    # This is a subscription detail page, redirect to subscription list instead
+                    return reverse_lazy('subscription_list')
+                return next_url
+        
+        # Check HTTP_REFERER header
+        referer = self.request.META.get('HTTP_REFERER')
+        if referer:
+            # Parse the referer URL to get the path
+            parsed_url = urlparse(referer)
+            referer_path = parsed_url.path
+            
+            # If coming from dashboard, redirect back to dashboard
+            if referer_path in ['/dashboard/', '/']:
+                return reverse_lazy('dashboard')
+            
+            # If coming from subscription list, redirect back to subscription list
+            if referer_path == '/subscriptions/':
+                return reverse_lazy('subscription_list')
+            
+            # If coming from subscription detail page, redirect to subscription list
+            # This handles URLs like /subscriptions/123/ (detail page)
+            detail_pattern = r'^/subscriptions/\d+/$'
+            if re.match(detail_pattern, referer_path):
+                return reverse_lazy('subscription_list')
+        
+        # Default fallback
+        return reverse_lazy('subscription_list')
 
 
 class PaymentActionView(LoginRequiredMixin, ErrorHandlerMixin, View):

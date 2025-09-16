@@ -1,14 +1,31 @@
-{% extends "admin/base_site.html" %}
-{% load i18n %}
+{% extends 'base.html' %} {% load static %} {% block title %}Logged Out - Subscription Manager{% endblock %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-4">
+    <div class="card shadow">
+      <div class="card-header bg-secondary text-white text-center">
+        <h4><i class="fas fa-sign-out-alt me-2"></i>Logged Out</h4>
+      </div>
+      <div class="card-body text-center">
+        <div class="mb-4">
+          <i class="fas fa-hand-wave fa-3x text-secondary mb-3"></i>
+          <h5>See You Later!</h5>
+        </div>
 
-{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% translate 'Home' %}</a></div>{% endblock %}
+        <p class="text-muted">
+          You have been successfully logged out. Thank you for using
+          Subscription Manager!
+        </p>
 
-{% block nav-sidebar %}{% endblock %}
-
-{% block content %}
-
-<p>{% translate "Thanks for spending some quality time with the web site today." %}</p>
-
-<p><a href="{% url 'admin:index' %}">{% translate 'Log in again' %}</a></p>
-
+        <div class="d-grid gap-2">
+          <a href="{% url 'login' %}" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt me-2"></i>Log In Again
+          </a>
+          <a href="{% url 'register' %}" class="btn btn-outline-primary">
+            <i class="fas fa-user-plus me-2"></i>Create New Account
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
