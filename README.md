@@ -423,25 +423,7 @@ coverage report
 SECRET_KEY=your-production-secret-key
 DJANGO_DEBUG=False
 DATABASE_URL=postgresql://user:password@host:port/dbname
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER=your-email@gmail.com
-EMAIL_HOST_PASSWORD=your-app-password
 ```
-
-## 🤝 Contributing Guidelines
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Make your changes
-4. Add tests for new functionality
-5. Run tests: `python manage.py test`
-6. Commit changes: `git commit -m 'Add new feature'`
-7. Push to branch: `git push origin feature/new-feature`
-8. Submit a pull request
 
 ### Code Standards
 
@@ -523,6 +505,7 @@ chmod +x manage.py
 - **Session Management**: Advanced session management and security features
 - **Database Optimization**: Index optimization and query performance tuning
 
----
+### Preview Video:
 
+---
 **Built with ❤️ By Osama-A-Abbas using Django and modern web technologies**
