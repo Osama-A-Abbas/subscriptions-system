@@ -1,0 +1,462 @@
+INFO 2025-09-15 23:23:21,743 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:23:48,462 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 17271
+INFO 2025-09-15 23:23:52,372 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:23:54,303 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10608
+INFO 2025-09-15 23:23:54,390 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 200 6377
+INFO 2025-09-15 23:24:03,515 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-15 23:24:03,533 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18857
+INFO 2025-09-15 23:24:05,562 django.server log_message 212 "GET /subscriptions/13/ HTTP/1.1" 200 28665
+INFO 2025-09-15 23:24:07,904 django.server log_message 212 "GET /subscriptions/13/edit/ HTTP/1.1" 200 12189
+INFO 2025-09-15 23:24:07,922 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:24:13,459 django.server log_message 212 "POST /subscriptions/13/edit/ HTTP/1.1" 302 0
+INFO 2025-09-15 23:24:13,496 django.server log_message 212 "GET /subscriptions/13/ HTTP/1.1" 200 13012
+INFO 2025-09-15 23:24:17,194 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14536
+INFO 2025-09-15 23:24:17,210 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:24:22,702 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14536
+INFO 2025-09-15 23:24:23,879 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14536
+INFO 2025-09-15 23:24:28,200 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18434
+INFO 2025-09-15 23:24:30,607 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14536
+INFO 2025-09-15 23:24:34,163 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18434
+INFO 2025-09-15 23:24:36,171 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14536
+INFO 2025-09-15 23:24:47,340 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18434
+INFO 2025-09-15 23:25:01,472 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14536
+INFO 2025-09-15 23:25:03,496 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 12194
+INFO 2025-09-15 23:25:03,518 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:25:14,055 django.server log_message 212 "POST /subscriptions/14/edit/ HTTP/1.1" 200 12184
+INFO 2025-09-15 23:25:14,078 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:25:31,448 django.server log_message 212 "POST /subscriptions/14/edit/ HTTP/1.1" 302 0
+INFO 2025-09-15 23:25:31,741 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 47696
+INFO 2025-09-15 23:25:40,345 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 12195
+INFO 2025-09-15 23:25:40,361 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:27:22,946 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 11969
+INFO 2025-09-15 23:27:22,973 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:28:20,495 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14538
+INFO 2025-09-15 23:29:10,726 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:29:10,746 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 4592
+WARNING 2025-09-15 23:29:11,595 django.server log_message 212 "GET /favicon.ico HTTP/1.1" 404 3345
+INFO 2025-09-15 23:32:47,704 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:32:53,342 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:32:58,422 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:33:36,229 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:35:18,568 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-15 23:35:18,587 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 7603
+INFO 2025-09-15 23:36:50,855 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18436
+INFO 2025-09-15 23:36:56,346 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 47272
+INFO 2025-09-15 23:37:01,041 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 11969
+INFO 2025-09-15 23:37:01,056 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:37:09,187 django.server log_message 212 "POST /subscriptions/14/edit/ HTTP/1.1" 302 0
+INFO 2025-09-15 23:37:09,224 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 13008
+INFO 2025-09-15 23:39:26,401 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:39:27,062 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:39:47,912 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:39:48,677 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:39:59,292 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:39:59,855 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:40:09,482 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:40:10,069 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:40:20,692 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:40:21,317 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:43:12,966 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:43:13,509 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:43:26,174 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\mixins\schedule_management.py changed, reloading.
+INFO 2025-09-15 23:43:26,726 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:43:35,303 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\subscription.py changed, reloading.
+INFO 2025-09-15 23:43:35,878 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:43:51,646 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\models\subscription.py changed, reloading.
+INFO 2025-09-15 23:43:52,193 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-15 23:57:05,795 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 12584
+INFO 2025-09-15 23:57:21,679 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 11968
+INFO 2025-09-15 23:57:21,694 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-15 23:57:29,823 django.server log_message 212 "POST /subscriptions/14/edit/ HTTP/1.1" 302 0
+INFO 2025-09-15 23:57:29,842 django.server log_message 212 "GET /subscriptions/14/ HTTP/1.1" 200 13045
+INFO 2025-09-16 00:26:25,593 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 00:26:28,936 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 00:26:28,962 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-16 00:26:29,051 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 7595
+WARNING 2025-09-16 00:26:29,300 django.server log_message 212 "GET /favicon.ico HTTP/1.1" 404 3345
+INFO 2025-09-16 01:14:51,578 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 01:14:55,468 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 01:14:55,498 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 8586
+INFO 2025-09-16 01:14:55,573 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 7595
+INFO 2025-09-16 01:15:12,537 django.server log_message 212 "GET /dashboard/ HTTP/1.1" 200 14543
+INFO 2025-09-16 01:15:12,568 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 7595
+INFO 2025-09-16 01:27:44,788 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+WARNING 2025-09-16 01:27:48,354 django.server log_message 212 "GET /profile/ HTTP/1.1" 404 2463
+WARNING 2025-09-16 01:27:51,873 django.server log_message 212 "GET /profile/ HTTP/1.1" 404 2463
+INFO 2025-09-16 01:28:05,924 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11220
+INFO 2025-09-16 01:28:36,620 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 01:28:36,636 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 01:28:40,446 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11220
+INFO 2025-09-16 01:28:46,476 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11220
+INFO 2025-09-16 01:28:47,923 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 01:28:50,476 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11220
+INFO 2025-09-16 01:29:10,363 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-09-16 01:29:10,372 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11638
+INFO 2025-09-16 01:29:32,450 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
+INFO 2025-09-16 01:29:33,038 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 01:30:20,919 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-09-16 01:30:20,948 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11643
+INFO 2025-09-16 01:30:52,840 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-09-16 01:30:52,850 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11641
+INFO 2025-09-16 01:33:03,552 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 200 11628
+INFO 2025-09-16 01:33:09,893 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 01:33:28,392 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 01:33:28,403 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 01:33:32,704 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11224
+INFO 2025-09-16 01:33:42,460 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 200 11628
+INFO 2025-09-16 01:34:18,479 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
+INFO 2025-09-16 01:34:19,066 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 01:34:27,598 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
+INFO 2025-09-16 01:34:28,138 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 01:35:17,885 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\urls.py changed, reloading.
+INFO 2025-09-16 01:35:18,454 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 01:36:06,133 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
+INFO 2025-09-16 01:36:06,659 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 01:43:08,968 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 200 11737
+INFO 2025-09-16 01:43:09,020 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 200 6841
+WARNING 2025-09-16 01:43:15,077 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 01:43:16,137 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+INFO 2025-09-16 01:43:16,376 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 302 0
+INFO 2025-09-16 01:43:16,383 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11750
+WARNING 2025-09-16 01:43:24,222 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 01:43:24,722 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+INFO 2025-09-16 01:43:26,781 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 200 11737
+INFO 2025-09-16 01:43:34,655 django.server log_message 212 "GET /admin/subscriptions/subscription/ HTTP/1.1" 200 18189
+INFO 2025-09-16 01:43:34,672 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 01:43:37,018 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11753
+INFO 2025-09-16 01:43:37,034 django.server log_message 212 "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+INFO 2025-09-16 01:43:37,036 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 01:43:41,408 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11753
+INFO 2025-09-16 01:43:41,421 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+WARNING 2025-09-16 01:43:55,274 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 01:43:56,308 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+INFO 2025-09-16 01:43:56,537 django.server log_message 212 "POST /accounts/profile/ HTTP/1.1" 200 11737
+INFO 2025-09-16 01:43:56,551 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:02:24,618 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\accounts\forms.py changed, reloading.
+INFO 2025-09-16 02:02:25,249 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:03:52,551 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 02:03:52,565 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:04:53,960 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:04:57,102 django.server log_message 212 "GET /subscriptions/14/edit/ HTTP/1.1" 200 12004
+INFO 2025-09-16 02:04:57,163 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 200 6377
+INFO 2025-09-16 02:05:06,913 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 02:05:08,715 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14579
+INFO 2025-09-16 02:05:10,541 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 18472
+INFO 2025-09-16 02:05:14,849 django.server log_message 212 "POST /subscriptions/14/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:05:14,869 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 17306
+INFO 2025-09-16 02:05:19,026 django.server log_message 212 "POST /subscriptions/13/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:05:19,044 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 16140
+INFO 2025-09-16 02:05:21,803 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14573
+INFO 2025-09-16 02:07:18,897 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 16469
+INFO 2025-09-16 02:07:23,356 django.server log_message 212 "POST /subscriptions/12/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:07:23,372 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 14977
+ERROR 2025-09-16 02:07:32,476 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:07:36,885 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:07:45,333 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:07:49,568 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 14977
+INFO 2025-09-16 02:07:51,022 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:07:57,690 django.server log_message 212 "POST /subscriptions/11/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:07:57,702 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 13680
+ERROR 2025-09-16 02:07:59,297 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:08:42,556 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 16343
+INFO 2025-09-16 02:08:50,253 django.server log_message 212 "POST /subscriptions/8/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:08:50,266 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 12520
+INFO 2025-09-16 02:11:54,645 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:11:55,247 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:19,242 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:12:19,997 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:34,699 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:12:35,281 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:47,955 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:12:48,636 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:12:49,179 django.server log_message 212 "POST /subscriptions/6/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:12:49,208 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:12:53,945 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:13:03,091 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10667
+INFO 2025-09-16 02:13:10,533 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10677
+INFO 2025-09-16 02:13:30,040 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10678
+INFO 2025-09-16 02:13:30,052 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:13:41,388 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10678
+INFO 2025-09-16 02:13:48,033 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:13:51,552 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:13:53,130 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10644
+INFO 2025-09-16 02:14:13,851 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:14:13,864 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 13159
+INFO 2025-09-16 02:14:19,392 django.server log_message 212 "GET /subscriptions/15/edit/ HTTP/1.1" 200 12007
+INFO 2025-09-16 02:14:22,222 django.server log_message 212 "GET /subscriptions/15/ HTTP/1.1" 200 12042
+INFO 2025-09-16 02:14:27,313 django.server log_message 212 "POST /subscriptions/15/delete/ HTTP/1.1" 302 0
+ERROR 2025-09-16 02:14:27,346 django.server log_message 212 "GET /subscriptions/15/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:14:38,064 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:16:09,235 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:09,771 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:16:25,547 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:26,086 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:16:34,631 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:35,209 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:16:44,800 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:16:45,323 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:17:12,506 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:17:13,097 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:17:26,816 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:17:27,329 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:17:34,723 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11568
+INFO 2025-09-16 02:17:40,935 django.server log_message 212 "GET /subscriptions/3/edit/ HTTP/1.1" 200 12007
+INFO 2025-09-16 02:17:43,829 django.server log_message 212 "GET /subscriptions/3/ HTTP/1.1" 200 11987
+INFO 2025-09-16 02:17:48,223 django.server log_message 212 "POST /subscriptions/3/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:17:48,235 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 10403
+INFO 2025-09-16 02:17:51,884 django.server log_message 212 "POST /subscriptions/2/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:17:51,895 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 9236
+INFO 2025-09-16 02:17:57,910 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 11895
+INFO 2025-09-16 02:17:57,934 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:18:01,771 django.server log_message 212 "POST /subscriptions/1/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:18:01,780 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 10727
+INFO 2025-09-16 02:18:09,098 django.server log_message 212 "GET /accounts/logout/ HTTP/1.1" 302 0
+ERROR 2025-09-16 02:18:09,122 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+WARNING 2025-09-16 02:19:11,280 django.server log_message 212 "GET /login/ HTTP/1.1" 404 2457
+ERROR 2025-09-16 02:19:27,275 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:19:27,785 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:19:35,809 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 500 111
+INFO 2025-09-16 02:24:40,810 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 6733
+INFO 2025-09-16 02:24:40,820 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
+ERROR 2025-09-16 02:24:52,965 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:24:53,230 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+WARNING 2025-09-16 02:24:58,198 django.server log_message 212 "GET /login/ HTTP/1.1" 404 2457
+ERROR 2025-09-16 02:25:01,501 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+ERROR 2025-09-16 02:25:02,055 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 500 111
+WARNING 2025-09-16 02:25:54,717 django.server log_message 212 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2583
+INFO 2025-09-16 02:39:00,506 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 02:39:05,128 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:39:12,016 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:39:22,121 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:39:29,515 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11753
+INFO 2025-09-16 02:39:29,533 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:39:42,528 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:39:59,286 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:40:07,943 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11753
+INFO 2025-09-16 02:40:07,957 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:40:09,650 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11753
+INFO 2025-09-16 02:40:09,662 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:40:39,692 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:40:41,802 django.server log_message 212 "GET /accounts/password_reset/ HTTP/1.1" 200 3994
+INFO 2025-09-16 02:40:41,814 django.server log_message 212 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-09-16 02:40:41,816 django.server log_message 212 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-09-16 02:40:41,817 django.server log_message 212 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-09-16 02:40:41,833 django.server log_message 212 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:40:41,866 django.server log_message 212 "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+INFO 2025-09-16 02:40:41,876 django.server log_message 212 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+INFO 2025-09-16 02:40:58,363 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11753
+INFO 2025-09-16 02:40:58,378 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:42:06,358 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 200 6092
+INFO 2025-09-16 02:42:10,930 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 6733
+INFO 2025-09-16 02:42:10,943 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
+WARNING 2025-09-16 02:42:15,494 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+INFO 2025-09-16 02:42:32,233 django.server log_message 212 "POST /admin/auth/user/ HTTP/1.1" 200 7888
+INFO 2025-09-16 02:42:32,243 django.server log_message 212 "GET /static/admin/js/cancel.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:42:34,491 django.server log_message 212 "POST /admin/auth/user/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:42:34,503 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11495
+INFO 2025-09-16 02:42:34,518 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:42:36,086 django.server log_message 212 "GET /admin/subscriptions/category/ HTTP/1.1" 200 18410
+INFO 2025-09-16 02:42:36,109 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:42:40,338 django.server log_message 212 "GET /admin/subscriptions/subscription/ HTTP/1.1" 200 10411
+INFO 2025-09-16 02:42:40,354 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:42:42,194 django.server log_message 212 "GET /admin/subscriptions/category/ HTTP/1.1" 200 18410
+INFO 2025-09-16 02:42:42,218 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO 2025-09-16 02:43:06,271 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:43:07,803 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 02:43:07,819 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 02:43:21,233 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 6733
+INFO 2025-09-16 02:44:04,277 django.server log_message 212 "GET /admin/auth/user/ HTTP/1.1" 200 11361
+INFO 2025-09-16 02:44:04,298 django.server log_message 212 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+WARNING 2025-09-16 02:47:41,064 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 02:47:42,097 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 02:47:42,754 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 02:47:43,321 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 02:47:44,049 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 02:47:44,986 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+WARNING 2025-09-16 02:47:45,283 django.server log_message 212 "POST /api/check-username/ HTTP/1.1" 404 2497
+INFO 2025-09-16 02:48:07,837 django.server log_message 212 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:48:07,851 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 11188
+INFO 2025-09-16 02:48:07,875 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:48:13,797 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 8009
+INFO 2025-09-16 02:48:15,981 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 02:48:15,995 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:48:16,848 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 8009
+INFO 2025-09-16 02:48:18,118 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 02:49:00,916 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:49:00,930 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 9676
+INFO 2025-09-16 02:49:04,940 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 14588
+INFO 2025-09-16 02:49:08,676 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-07-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:49:09,494 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-07-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:49:09,518 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15034
+INFO 2025-09-16 02:49:11,193 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-08-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:49:12,023 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-08-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:49:12,051 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15056
+INFO 2025-09-16 02:49:20,397 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 02:49:51,665 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:49:51,677 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 10844
+INFO 2025-09-16 02:49:55,285 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 02:50:33,760 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:50:33,777 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 12149
+INFO 2025-09-16 02:50:40,471 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 02:51:04,802 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:04,816 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 13322
+INFO 2025-09-16 02:51:11,054 django.server log_message 212 "GET /subscriptions/19/ HTTP/1.1" 200 14456
+INFO 2025-09-16 02:51:20,071 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 14637
+INFO 2025-09-16 02:51:22,492 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-09-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:51:23,421 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-09-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:23,446 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15077
+INFO 2025-09-16 02:51:27,444 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-10-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:51:28,271 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-10-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:28,296 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15078
+INFO 2025-09-16 02:51:31,383 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-11-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:51:32,613 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-11-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:32,642 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15078
+INFO 2025-09-16 02:51:36,792 django.server log_message 212 "GET /subscriptions/16/mark-unpaid/2025-09-01/ HTTP/1.1" 200 6445
+INFO 2025-09-16 02:51:37,848 django.server log_message 212 "POST /subscriptions/16/mark-unpaid/2025-09-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:37,877 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15058
+INFO 2025-09-16 02:51:39,667 django.server log_message 212 "GET /subscriptions/16/mark-unpaid/2025-08-01/ HTTP/1.1" 200 6445
+INFO 2025-09-16 02:51:40,410 django.server log_message 212 "POST /subscriptions/16/mark-unpaid/2025-08-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:40,435 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15036
+INFO 2025-09-16 02:51:41,763 django.server log_message 212 "GET /subscriptions/16/mark-unpaid/2025-07-01/ HTTP/1.1" 200 6445
+INFO 2025-09-16 02:51:42,393 django.server log_message 212 "POST /subscriptions/16/mark-unpaid/2025-07-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:42,418 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15009
+INFO 2025-09-16 02:51:44,584 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-07-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:51:45,558 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-07-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:45,584 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15034
+INFO 2025-09-16 02:51:47,049 django.server log_message 212 "GET /subscriptions/16/mark-paid/2025-08-01/ HTTP/1.1" 200 6462
+INFO 2025-09-16 02:51:47,819 django.server log_message 212 "POST /subscriptions/16/mark-paid/2025-08-01/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:51:47,842 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 15056
+INFO 2025-09-16 02:51:55,531 django.server log_message 212 "GET /subscriptions/16/edit/ HTTP/1.1" 200 12013
+INFO 2025-09-16 02:52:02,942 django.server log_message 212 "POST /subscriptions/16/edit/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:52:02,964 django.server log_message 212 "GET /subscriptions/16/ HTTP/1.1" 200 13361
+INFO 2025-09-16 02:52:07,262 django.server log_message 212 "GET /subscriptions/16/edit/ HTTP/1.1" 200 12013
+INFO 2025-09-16 02:52:15,464 django.server log_message 212 "POST /subscriptions/16/edit/ HTTP/1.1" 200 12003
+INFO 2025-09-16 02:54:07,181 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\views.py changed, reloading.
+INFO 2025-09-16 02:54:07,816 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:54:18,463 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions\services\subscription_services.py changed, reloading.
+INFO 2025-09-16 02:54:19,023 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:54:42,009 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
+INFO 2025-09-16 02:54:42,679 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:55:02,641 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
+INFO 2025-09-16 02:55:03,387 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:55:16,113 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
+INFO 2025-09-16 02:55:16,636 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:55:35,609 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 02:55:35,632 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 15564
+WARNING 2025-09-16 02:55:35,915 django.server log_message 212 "GET /favicon.ico HTTP/1.1" 404 2472
+INFO 2025-09-16 02:55:40,400 django.server log_message 212 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:55:40,408 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 02:55:53,290 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:55:53,311 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11395
+INFO 2025-09-16 02:55:53,333 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
+INFO 2025-09-16 02:57:11,342 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
+INFO 2025-09-16 02:57:11,881 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:57:17,323 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
+INFO 2025-09-16 02:57:18,063 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 02:57:21,515 django.server log_message 212 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:21,529 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 02:57:23,220 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:23,237 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 15564
+INFO 2025-09-16 02:57:30,353 django.server log_message 212 "POST /subscriptions/16/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:30,363 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14387
+INFO 2025-09-16 02:57:32,501 django.server log_message 212 "POST /subscriptions/17/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:32,510 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 13216
+INFO 2025-09-16 02:57:34,728 django.server log_message 212 "POST /subscriptions/18/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:34,738 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 11912
+INFO 2025-09-16 02:57:36,551 django.server log_message 212 "POST /subscriptions/19/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:36,560 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 10739
+INFO 2025-09-16 02:57:39,749 django.server log_message 212 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-16 02:57:39,755 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:04:28,270 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 6733
+INFO 2025-09-16 03:04:28,377 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 304 0
+INFO 2025-09-16 03:04:34,061 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:04:34,069 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 10739
+INFO 2025-09-16 03:04:34,089 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 03:04:39,187 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 6903
+INFO 2025-09-16 03:04:50,082 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 7853
+INFO 2025-09-16 03:04:55,117 django.server log_message 212 "GET /accounts/password_reset/ HTTP/1.1" 200 3362
+INFO 2025-09-16 03:04:59,580 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:04:59,588 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 10739
+INFO 2025-09-16 03:05:03,046 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11395
+INFO 2025-09-16 03:05:07,268 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 8009
+INFO 2025-09-16 03:05:09,771 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 03:05:09,785 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-16 03:05:29,253 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:05:29,265 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 9671
+INFO 2025-09-16 03:05:31,718 django.server log_message 212 "GET /subscriptions/20/edit/ HTTP/1.1" 200 12015
+INFO 2025-09-16 03:05:37,437 django.server log_message 212 "POST /subscriptions/20/edit/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:05:37,460 django.server log_message 212 "GET /subscriptions/20/ HTTP/1.1" 200 14135
+INFO 2025-09-16 03:05:41,950 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 11918
+INFO 2025-09-16 03:05:45,574 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 9253
+INFO 2025-09-16 03:05:48,411 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 03:06:16,035 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:06:16,048 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 10974
+INFO 2025-09-16 03:06:21,307 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 03:06:52,686 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:06:52,699 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 12152
+INFO 2025-09-16 03:06:55,358 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21215
+INFO 2025-09-16 03:06:59,332 django.server log_message 212 "GET /subscriptions/22/mark-paid/2025-06-17/ HTTP/1.1" 200 6461
+INFO 2025-09-16 03:07:00,275 django.server log_message 212 "POST /subscriptions/22/mark-paid/2025-06-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:00,309 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21660
+INFO 2025-09-16 03:07:01,712 django.server log_message 212 "GET /subscriptions/22/mark-paid/2025-07-17/ HTTP/1.1" 200 6461
+INFO 2025-09-16 03:07:02,368 django.server log_message 212 "POST /subscriptions/22/mark-paid/2025-07-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:02,405 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21683
+INFO 2025-09-16 03:07:04,182 django.server log_message 212 "GET /subscriptions/22/mark-paid/2025-08-17/ HTTP/1.1" 200 6461
+INFO 2025-09-16 03:07:05,131 django.server log_message 212 "POST /subscriptions/22/mark-paid/2025-08-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:05,164 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21704
+INFO 2025-09-16 03:07:07,642 django.server log_message 212 "GET /subscriptions/22/mark-paid/2025-09-17/ HTTP/1.1" 200 6461
+INFO 2025-09-16 03:07:08,613 django.server log_message 212 "POST /subscriptions/22/mark-paid/2025-09-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:08,647 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21705
+INFO 2025-09-16 03:07:10,988 django.server log_message 212 "GET /subscriptions/22/mark-unpaid/2025-08-17/ HTTP/1.1" 200 6444
+INFO 2025-09-16 03:07:11,923 django.server log_message 212 "POST /subscriptions/22/mark-unpaid/2025-08-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:11,956 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21685
+INFO 2025-09-16 03:07:18,490 django.server log_message 212 "GET /subscriptions/22/mark-unpaid/2025-07-17/ HTTP/1.1" 200 6444
+INFO 2025-09-16 03:07:19,176 django.server log_message 212 "POST /subscriptions/22/mark-unpaid/2025-07-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:19,210 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21662
+INFO 2025-09-16 03:07:20,522 django.server log_message 212 "GET /subscriptions/22/mark-unpaid/2025-06-17/ HTTP/1.1" 200 6444
+INFO 2025-09-16 03:07:21,152 django.server log_message 212 "POST /subscriptions/22/mark-unpaid/2025-06-17/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:21,185 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 21636
+INFO 2025-09-16 03:07:27,689 django.server log_message 212 "GET /subscriptions/22/edit/ HTTP/1.1" 200 12014
+INFO 2025-09-16 03:07:34,558 django.server log_message 212 "POST /subscriptions/22/edit/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:34,581 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 15016
+INFO 2025-09-16 03:07:37,348 django.server log_message 212 "GET /subscriptions/22/edit/ HTTP/1.1" 200 12013
+INFO 2025-09-16 03:07:46,731 django.server log_message 212 "POST /subscriptions/22/edit/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:07:46,749 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 12475
+INFO 2025-09-16 03:07:49,421 django.server log_message 212 "GET /subscriptions/22/edit/ HTTP/1.1" 200 12013
+INFO 2025-09-16 03:08:03,766 django.server log_message 212 "POST /subscriptions/22/edit/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:08:03,784 django.server log_message 212 "GET /subscriptions/22/ HTTP/1.1" 200 13302
+INFO 2025-09-16 03:08:12,463 django.server log_message 212 "POST /subscriptions/22/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:08:12,475 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 10552
+INFO 2025-09-16 03:08:16,994 django.server log_message 212 "POST /subscriptions/20/delete/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:08:17,008 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 9374
+INFO 2025-09-16 03:08:18,643 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 03:08:38,102 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:08:38,115 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 10970
+INFO 2025-09-16 03:08:39,774 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 03:09:04,762 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 200 10686
+INFO 2025-09-16 03:09:19,735 django.server log_message 212 "POST /subscriptions/add/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:09:19,750 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 12139
+INFO 2025-09-16 03:09:23,976 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 03:09:31,474 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 03:09:35,075 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11716
+INFO 2025-09-16 03:09:44,835 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11716
+INFO 2025-09-16 03:09:50,698 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11395
+INFO 2025-09-16 03:09:57,844 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 03:16:53,521 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
+INFO 2025-09-16 03:16:54,134 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 03:56:11,630 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 03:56:13,942 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:13,960 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:56:16,182 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:16,201 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 03:56:16,227 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 03:56:16,278 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 7595
+INFO 2025-09-16 03:56:22,595 django.server log_message 212 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:22,602 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:56:26,111 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 6733
+INFO 2025-09-16 03:56:26,138 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 200 6841
+INFO 2025-09-16 03:56:26,152 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 200 6841
+INFO 2025-09-16 03:56:28,588 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:56:30,496 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:30,508 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 03:56:33,448 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11395
