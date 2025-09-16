@@ -460,3 +460,21 @@ INFO 2025-09-16 03:56:28,588 django.server log_message 212 "GET /accounts/login/
 INFO 2025-09-16 03:56:30,496 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
 INFO 2025-09-16 03:56:30,508 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
 INFO 2025-09-16 03:56:33,448 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11395
+INFO 2025-09-16 04:30:24,721 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 04:30:26,799 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 04:30:26,829 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 04:30:26,879 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+WARNING 2025-09-16 04:30:27,231 django.server log_message 212 "GET /favicon.ico HTTP/1.1" 404 2472
+INFO 2025-09-16 04:30:50,873 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11716
+INFO 2025-09-16 04:30:58,324 django.server log_message 212 "GET /subscriptions/24/ HTTP/1.1" 200 11216
+INFO 2025-09-16 04:31:01,694 django.server log_message 212 "GET /subscriptions/23/ HTTP/1.1" 200 14446
+INFO 2025-09-16 04:31:08,094 django.server log_message 212 "GET /subscriptions/21/ HTTP/1.1" 200 12868
+INFO 2025-09-16 04:31:14,459 django.server log_message 212 "GET /subscriptions/21/mark-paid/2025-08-19/ HTTP/1.1" 200 6457
+INFO 2025-09-16 04:31:15,548 django.server log_message 212 "POST /subscriptions/21/mark-paid/2025-08-19/ HTTP/1.1" 302 0
+INFO 2025-09-16 04:31:15,573 django.server log_message 212 "GET /subscriptions/21/ HTTP/1.1" 200 13313
+INFO 2025-09-16 04:31:19,112 django.server log_message 212 "GET /subscriptions/21/mark-unpaid/2025-08-19/ HTTP/1.1" 200 6440
+INFO 2025-09-16 04:31:20,314 django.server log_message 212 "POST /subscriptions/21/mark-unpaid/2025-08-19/ HTTP/1.1" 302 0
+INFO 2025-09-16 04:31:20,338 django.server log_message 212 "GET /subscriptions/21/ HTTP/1.1" 200 13289
+INFO 2025-09-16 04:32:17,345 django.server log_message 212 "GET /subscriptions/add/ HTTP/1.1" 200 10650
+INFO 2025-09-16 04:32:17,374 django.server log_message 212 "GET /static/js/subscription-forms.js HTTP/1.1" 304 0
+INFO 2025-09-16 04:32:41,281 django.server log_message 212 "GET /subscriptions/ HTTP/1.1" 200 11716

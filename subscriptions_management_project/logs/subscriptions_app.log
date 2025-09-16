@@ -2445,3 +2445,67 @@ INFO 2025-09-16 03:56:33,425 subscriptions.middleware process_request 58 Request
 INFO 2025-09-16 03:56:33,427 subscriptions.middleware process_request 59 User: Osama-Abbas
 INFO 2025-09-16 03:56:33,427 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-16 03:56:33,448 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/
+INFO 2025-09-16 04:30:26,790 subscriptions.middleware process_request 58 Request: GET /
+INFO 2025-09-16 04:30:26,793 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:30:26,794 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:30:26,798 subscriptions.middleware process_response 66 Response: 302 for GET /
+INFO 2025-09-16 04:30:26,805 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 04:30:26,808 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:30:26,809 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:30:26,828 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 04:30:27,211 subscriptions.middleware process_request 58 Request: GET /favicon.ico
+INFO 2025-09-16 04:30:27,214 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:30:27,215 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:30:27,229 subscriptions.middleware process_response 66 Response: 404 for GET /favicon.ico
+INFO 2025-09-16 04:30:50,862 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 04:30:50,864 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:30:50,864 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:30:50,872 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
+INFO 2025-09-16 04:30:58,303 subscriptions.middleware process_request 58 Request: GET /subscriptions/24/
+INFO 2025-09-16 04:30:58,306 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:30:58,306 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:30:58,323 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/24/
+INFO 2025-09-16 04:31:01,673 subscriptions.middleware process_request 58 Request: GET /subscriptions/23/
+INFO 2025-09-16 04:31:01,676 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:01,676 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:01,693 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/23/
+INFO 2025-09-16 04:31:08,076 subscriptions.middleware process_request 58 Request: GET /subscriptions/21/
+INFO 2025-09-16 04:31:08,078 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:08,078 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:08,094 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/21/
+INFO 2025-09-16 04:31:14,452 subscriptions.middleware process_request 58 Request: GET /subscriptions/21/mark-paid/2025-08-19/
+INFO 2025-09-16 04:31:14,455 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:14,455 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:14,459 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/21/mark-paid/2025-08-19/
+INFO 2025-09-16 04:31:15,533 subscriptions.middleware process_request 58 Request: POST /subscriptions/21/mark-paid/2025-08-19/
+INFO 2025-09-16 04:31:15,535 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:15,535 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:15,541 subscriptions.services.payment_services mark_period_paid 49 Payment marked as paid: subscription=21, period=2025-08-19, amount=20.00
+INFO 2025-09-16 04:31:15,546 subscriptions.views post 346 Payment marked as paid: subscription 21, period 2025-08-19 by user 3
+INFO 2025-09-16 04:31:15,547 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/21/mark-paid/2025-08-19/
+INFO 2025-09-16 04:31:15,551 subscriptions.middleware process_request 58 Request: GET /subscriptions/21/
+INFO 2025-09-16 04:31:15,557 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:15,558 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:15,573 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/21/
+INFO 2025-09-16 04:31:19,107 subscriptions.middleware process_request 58 Request: GET /subscriptions/21/mark-unpaid/2025-08-19/
+INFO 2025-09-16 04:31:19,109 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:19,109 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:19,111 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/21/mark-unpaid/2025-08-19/
+INFO 2025-09-16 04:31:20,299 subscriptions.middleware process_request 58 Request: POST /subscriptions/21/mark-unpaid/2025-08-19/
+INFO 2025-09-16 04:31:20,301 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:20,301 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:20,308 subscriptions.services.payment_services mark_period_unpaid 92 Payment marked as unpaid: subscription=21, period=2025-08-19
+INFO 2025-09-16 04:31:20,313 subscriptions.views post 380 Payment marked as unpaid: subscription 21, period 2025-08-19 by user 3
+INFO 2025-09-16 04:31:20,313 subscriptions.middleware process_response 66 Response: 302 for POST /subscriptions/21/mark-unpaid/2025-08-19/
+INFO 2025-09-16 04:31:20,317 subscriptions.middleware process_request 58 Request: GET /subscriptions/21/
+INFO 2025-09-16 04:31:20,323 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:31:20,324 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:31:20,337 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/21/
+INFO 2025-09-16 04:32:17,323 subscriptions.middleware process_request 58 Request: GET /subscriptions/add/
+INFO 2025-09-16 04:32:17,326 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:32:17,326 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:32:17,344 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/add/
+INFO 2025-09-16 04:32:41,271 subscriptions.middleware process_request 58 Request: GET /subscriptions/
+INFO 2025-09-16 04:32:41,273 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 04:32:41,273 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 04:32:41,280 subscriptions.middleware process_response 66 Response: 200 for GET /subscriptions/
