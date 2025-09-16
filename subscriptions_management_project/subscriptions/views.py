@@ -180,7 +180,7 @@ class SubscriptionUpdateView(LoginRequiredMixin, UserOwnershipMixin, LoggingMixi
                 old_value = getattr(original, field)
                 new_value = form.cleaned_data.get(field)
                 if old_value != new_value:
-                    changes.append(f"{field}: {old_value} → {new_value}")
+                    changes.append(f"{field}: {old_value} -> {new_value}")
             
             subscription = form.save()
             

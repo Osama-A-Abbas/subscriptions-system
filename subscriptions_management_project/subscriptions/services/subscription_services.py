@@ -143,7 +143,7 @@ def update_subscription(
                 original_data[field] = old_value
                 
                 if old_value != new_value:
-                    changes.append(f"{field}: {old_value} → {new_value}")
+                    changes.append(f"{field}: {old_value} -> {new_value}")
                     setattr(subscription, field, new_value)
         
         if changes:

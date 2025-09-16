@@ -4,3 +4,10 @@ ERROR 2025-09-16 02:07:45,332 django.request log_response 246 Internal Server Er
 ERROR 2025-09-16 02:07:59,297 django.request log_response 246 Internal Server Error: /accounts/dashboard/
 ERROR 2025-09-16 02:14:27,345 django.request log_response 246 Internal Server Error: /subscriptions/15/
 ERROR 2025-09-16 02:18:09,121 django.request log_response 246 Internal Server Error: /accounts/login/
+ERROR 2025-09-16 02:19:27,275 django.request log_response 246 Internal Server Error: /accounts/login/
+ERROR 2025-09-16 02:19:27,785 django.request log_response 246 Internal Server Error: /accounts/login/
+ERROR 2025-09-16 02:19:35,809 django.request log_response 246 Internal Server Error: /accounts/register/
+ERROR 2025-09-16 02:24:52,964 django.request log_response 246 Internal Server Error: /accounts/login/
+ERROR 2025-09-16 02:24:53,229 django.request log_response 246 Internal Server Error: /accounts/login/
+ERROR 2025-09-16 02:25:01,501 django.request log_response 246 Internal Server Error: /accounts/login/
+ERROR 2025-09-16 02:25:02,055 django.request log_response 246 Internal Server Error: /accounts/login/
