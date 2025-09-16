@@ -2401,3 +2401,47 @@ INFO 2025-09-16 03:09:57,837 subscriptions.middleware process_request 58 Request
 INFO 2025-09-16 03:09:57,839 subscriptions.middleware process_request 59 User: Osama-Abbas
 INFO 2025-09-16 03:09:57,840 subscriptions.middleware process_request 60 IP: 127.0.0.1
 INFO 2025-09-16 03:09:57,843 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 03:56:13,933 subscriptions.middleware process_request 58 Request: GET /
+INFO 2025-09-16 03:56:13,936 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:13,936 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:13,942 subscriptions.middleware process_response 66 Response: 302 for GET /
+INFO 2025-09-16 03:56:13,947 subscriptions.middleware process_request 58 Request: GET /accounts/login/
+INFO 2025-09-16 03:56:13,947 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:13,948 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:13,960 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/login/
+INFO 2025-09-16 03:56:15,910 subscriptions.middleware process_request 58 Request: POST /accounts/login/
+INFO 2025-09-16 03:56:15,911 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:15,911 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:16,177 subscriptions.middleware process_response 66 Response: 302 for POST /accounts/login/
+INFO 2025-09-16 03:56:16,185 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 03:56:16,189 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 03:56:16,189 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:16,200 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 03:56:22,581 subscriptions.middleware process_request 58 Request: GET /accounts/logout/
+INFO 2025-09-16 03:56:22,583 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 03:56:22,584 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:22,595 subscriptions.middleware process_response 66 Response: 302 for GET /accounts/logout/
+INFO 2025-09-16 03:56:22,598 subscriptions.middleware process_request 58 Request: GET /accounts/login/
+INFO 2025-09-16 03:56:22,598 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:22,598 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:22,601 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/login/
+INFO 2025-09-16 03:56:26,090 subscriptions.middleware process_request 58 Request: GET /accounts/register/
+INFO 2025-09-16 03:56:26,090 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:26,090 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:26,110 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/register/
+INFO 2025-09-16 03:56:28,586 subscriptions.middleware process_request 58 Request: GET /accounts/login/
+INFO 2025-09-16 03:56:28,586 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:28,586 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:28,588 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/login/
+INFO 2025-09-16 03:56:30,218 subscriptions.middleware process_request 58 Request: POST /accounts/login/
+INFO 2025-09-16 03:56:30,218 subscriptions.middleware process_request 59 User: AnonymousUser
+INFO 2025-09-16 03:56:30,219 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:30,491 subscriptions.middleware process_response 66 Response: 302 for POST /accounts/login/
+INFO 2025-09-16 03:56:30,499 subscriptions.middleware process_request 58 Request: GET /accounts/dashboard/
+INFO 2025-09-16 03:56:30,504 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 03:56:30,504 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:30,507 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/dashboard/
+INFO 2025-09-16 03:56:33,425 subscriptions.middleware process_request 58 Request: GET /accounts/profile/
+INFO 2025-09-16 03:56:33,427 subscriptions.middleware process_request 59 User: Osama-Abbas
+INFO 2025-09-16 03:56:33,427 subscriptions.middleware process_request 60 IP: 127.0.0.1
+INFO 2025-09-16 03:56:33,448 subscriptions.middleware process_response 66 Response: 200 for GET /accounts/profile/

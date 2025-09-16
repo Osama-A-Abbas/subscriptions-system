@@ -444,3 +444,19 @@ INFO 2025-09-16 03:09:50,698 django.server log_message 212 "GET /accounts/profil
 INFO 2025-09-16 03:09:57,844 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
 INFO 2025-09-16 03:16:53,521 django.utils.autoreload trigger_reload 265 C:\Python-Projects\subscriptions-system\subscriptions_management_project\subscriptions_management_project\settings.py changed, reloading.
 INFO 2025-09-16 03:16:54,134 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 03:56:11,630 django.utils.autoreload run_with_reloader 667 Watching for file changes with StatReloader
+INFO 2025-09-16 03:56:13,942 django.server log_message 212 "GET / HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:13,960 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:56:16,182 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:16,201 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 03:56:16,227 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 304 0
+INFO 2025-09-16 03:56:16,278 django.server log_message 212 "GET /static/js/dashboard.js HTTP/1.1" 200 7595
+INFO 2025-09-16 03:56:22,595 django.server log_message 212 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:22,602 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:56:26,111 django.server log_message 212 "GET /accounts/register/ HTTP/1.1" 200 6733
+INFO 2025-09-16 03:56:26,138 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 200 6841
+INFO 2025-09-16 03:56:26,152 django.server log_message 212 "GET /static/js/username-validation.js HTTP/1.1" 200 6841
+INFO 2025-09-16 03:56:28,588 django.server log_message 212 "GET /accounts/login/ HTTP/1.1" 200 5783
+INFO 2025-09-16 03:56:30,496 django.server log_message 212 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-16 03:56:30,508 django.server log_message 212 "GET /accounts/dashboard/ HTTP/1.1" 200 14384
+INFO 2025-09-16 03:56:33,448 django.server log_message 212 "GET /accounts/profile/ HTTP/1.1" 200 11395
