@@ -10,8 +10,7 @@ Working on this project was quite exciting. I wanted to make a few things clear,
 
 ---
 
-## Why the Renewal Date Can Be in the Past  
-…and why the Start Date can be in the past or future:
+## Why the Renewal Date Can Be in the Past …and why the Start Date can be in the past or future:
 
 - **User perspective:**  
   If I were to use this kind of app, I’d want to be able to add my old subscriptions or subscriptions I may have in the future, with maximum flexibility.
@@ -40,14 +39,13 @@ Working on this project was quite exciting. I wanted to make a few things clear,
 - I used **Cursor** as my main IDE.  
   The Cursor AI enabled me to accomplish this project within three days.  
   I would often plan entire features in detail for it to build step by step.  
-  I would then do the steps myself—creating files, pasting code blocks, and reviewing everything—which gave me a deep understanding of the project.
+  I would then do the steps myself, creating files, pasting code blocks, and reviewing everything, which gave me a deep understanding of the project.
 
 - To be honest, at some points I was short on time but full of ideas, so I focused on planning, reviewing, and analyzing progress while it handled the coding part.
 
-- One small note: it cannot fully fix Django template syntax.
+- One small note: it cannot fully fix Django Jinja template syntax.
 
 ---
 
 ## Final Thoughts  
-
-Either way, it was a fun journey 👌
+It was a fun and teaching journey 👌
